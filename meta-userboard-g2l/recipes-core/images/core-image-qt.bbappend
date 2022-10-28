@@ -3,7 +3,7 @@ TOOLCHAIN_HOST_TASK_append = " nativesdk-qtwayland-tools "
 FEATURE_PACKAGES_tools-sdk += " packagegroup-qt5-toolchain-target kernel-devsrc "
 
 IMAGE_INSTALL_append = " \
-	tslib nfs-utils e2fsprogs e2fsprogs-resize2fs udev curl bc usbutils wget \
+	tslib nfs-utils e2fsprogs e2fsprogs-mke2fs e2fsprogs-resize2fs udev curl bc usbutils wget \
 	mmc-utils squashfs-tools iputils sqlite3 libevent \
 	devmem2 i2c-tools libgpiod sysbench \
 	\
@@ -24,7 +24,7 @@ IMAGE_INSTALL_append = " \
         ", "", d)} \
 "
 
-update_issues () {
+greenpak_update_issues () {
     # Set BSP version
     BSP_VERSION="3.0.0-update2"
 
@@ -79,4 +79,4 @@ update_issues () {
     echo "Version: ${BSP_VERSION}" >> ${IMAGE_ROOTFS}/etc/issue
 }
 ROOTFS_POSTPROCESS_COMMAND_remove = "update_issue; "
-ROOTFS_POSTPROCESS_COMMAND += " update_issues; "
+ROOTFS_POSTPROCESS_COMMAND_append = " greenpak_update_issues; "
