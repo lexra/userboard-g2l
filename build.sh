@@ -138,6 +138,7 @@ bitbake ${CORE_IMAGE} -v
 echo ""
 
 ##########################################################
+cd ${SCRIP_DIR}
 print_boot_example
 exit 0
 
