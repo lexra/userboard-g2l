@@ -13,11 +13,12 @@ SOC_FAMILY=r9a07g044l
 SOC_FAMILY_PLUS=${SOC_FAMILY}2
 SCRIP_DIR=$(pwd)
 
-BOARD_LIST=("smarc-rzg2l" "greenpak-rzg2l" "smarc-rzv2l" "rzv2l-dev")
+BOARD_LIST=("smarc-rzg2l" "smarc-rzv2l" "rzv2l-dev" "gnk-rzg2l" "gnk-rzv2l")
 TARGET_BOARD=$1
 BUILD_DIR=build_${TARGET_BOARD}
 [ "${TARGET_BOARD}" == "smarc-rzv2l" ] && SOC_FAMILY=r9a07g054l
 [ "${TARGET_BOARD}" == "rzv2l-dev" ] && SOC_FAMILY=r9a07g054l
+[ "${TARGET_BOARD}" == "gnk-rzv2l" ] && SOC_FAMILY=r9a07g054l
 
 ##########################################################
 function Usage () {
@@ -76,7 +77,7 @@ sudo chown -R ${USER}.${USER} Renesas_software meta-userboard* build.sh
 sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib \
 	build-essential chrpath socat libsdl1.2-dev xterm python-crypto cpio python python3 \
 	python3-pip python3-pexpect xz-utils debianutils iputils-ping libssl-dev p7zip-full libyaml-dev \
-	nfs-kernel-server parted
+	nfs-kernel-server parted ffmpeg
 echo ""
 
 ##########################################################
@@ -113,6 +114,12 @@ git -C meta-clang checkout -b develop e63d6f9abba5348e2183089d6ef5ea384d7ae8d8 |
 echo -e ${GREEN}'>> meta-browser '${NC}
 git clone https://github.com/OSSystems/meta-browser || true
 git -C meta-browser checkout -b develop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67 || true
+echo -e ${GREEN}'>> meta-browser '${NC}
+git clone https://github.com/xlloss/meta-gnk-board.git || true
+git -C meta-gnk-board checkout -b develop 1dd69239e0bf6f994f025d8166c3c0cbca54cf6b || true
+sed 's/^BBFILE_COLLECTIONS/#BBFILE_COLLECTIONS/g' -i meta-gnk-board/conf/layer.conf
+sed 's/^BBFILE_PATTERN/#BBFILE_PATTERN/g' -i meta-gnk-board/conf/layer.conf
+sed 's/^BBFILE_PRIORITY/#BBFILE_PRIORITY/g' -i meta-gnk-board/conf/layer.conf
 
 ##########################################################
 cd ${SCRIP_DIR}
@@ -135,6 +142,7 @@ echo ""
 echo -e ${GREEN}'>> core-image '${NC}
 cd ${SCRIP_DIR}/${BUILD_DIR}
 bitbake ${CORE_IMAGE} -v
+#bitbake ${CORE_IMAGE} -v -c populate_sdk
 echo ""
 
 ##########################################################
