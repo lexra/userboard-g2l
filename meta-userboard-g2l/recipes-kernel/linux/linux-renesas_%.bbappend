@@ -6,6 +6,7 @@ SRC_URI_append = " \
 	file://nfsd.cfg \
 "
 
-COMPATIBLE_MACHINE_rzg2l = "(smarc-rzg2l|smarc-rzg2lc|smarc-rzg2ul|smarc-rzv2l|rzv2l-dev|gnk-rzg2l|gnk-rzv2l)"
+COMPATIBLE_MACHINE_rzg2l = "(smarc-rzg2l|gnk-rzg2l)"
+COMPATIBLE_MACHINE_rzv2l = "(smarc-rzv2l|rzv2l-dev|gnk-rzv2l)"
 
 EXTRA_OEMAKE_append = " V=1"
