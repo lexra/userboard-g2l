@@ -114,12 +114,12 @@ git -C meta-clang checkout -b develop e63d6f9abba5348e2183089d6ef5ea384d7ae8d8 |
 echo -e ${GREEN}'>> meta-browser '${NC}
 git clone https://github.com/OSSystems/meta-browser || true
 git -C meta-browser checkout -b develop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67 || true
-echo -e ${GREEN}'>> meta-browser '${NC}
+echo -e ${GREEN}'>> meta-gnk-board '${NC}
 git clone https://github.com/xlloss/meta-gnk-board.git || true
-git -C meta-gnk-board checkout -b develop 1dd69239e0bf6f994f025d8166c3c0cbca54cf6b || true
-sed 's/^BBFILE_COLLECTIONS/#BBFILE_COLLECTIONS/g' -i meta-gnk-board/conf/layer.conf
-sed 's/^BBFILE_PATTERN/#BBFILE_PATTERN/g' -i meta-gnk-board/conf/layer.conf
-sed 's/^BBFILE_PRIORITY/#BBFILE_PRIORITY/g' -i meta-gnk-board/conf/layer.conf
+git -C meta-gnk-board checkout -b develop 6ce09ce5733b1765c3547826816fb081fdbd84b7 || true
+sed 's|userboard|gnk|g' -i meta-gnk-board/conf/layer.conf
+sed 's|^BBFILES += "${@|#BBFILES += "${@|g' -i meta-gnk-board/conf/layer.conf
+sed 's|^               for layer in BBFILE_COLLECTIONS.split()|#               for layer in BBFILE_COLLECTIONS.split()|g' -i meta-gnk-board/conf/layer.conf
 
 ##########################################################
 cd ${SCRIP_DIR}
