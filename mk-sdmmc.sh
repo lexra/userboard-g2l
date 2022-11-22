@@ -13,7 +13,7 @@ SOC_FAMILY=r9a07g044l
 SOC_FAMILY_PLUS=${SOC_FAMILY}2
 SCRIP_DIR=$(pwd)
 
-BOARD_LIST=("smarc-rzg2l" "greenpak-rzg2l" "smarc-rzv2l" "rzv2l-dev")
+BOARD_LIST=("smarc-rzg2l" "smarc-rzv2l" "rzv2l-dev" "gnk-rzg2l" "gnk-rzv2l")
 TARGET_BOARD=$1
 BUILD_DIR=build_${TARGET_BOARD}
 [ "${TARGET_BOARD}" == "smarc-rzv2l" ] && SOC_FAMILY=r9a07g054l
