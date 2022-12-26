@@ -7,7 +7,7 @@ SRC_URI = " \
 
 S = "${WORKDIR}"
 
-do_install () {
+do_install_class-target () {
 	install -d ${D}/home/root
         install -m 755 ${WORKDIR}/mkfs-helper.sh ${D}/home/root
 }
