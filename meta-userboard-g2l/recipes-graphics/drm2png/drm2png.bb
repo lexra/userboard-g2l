@@ -24,7 +24,7 @@ do_compile () {
 	make -C ${S}
 }
 
-do_install () {
+do_install_class-target () {
 	install -d ${D}${bindir}
 	install ${S}/drm2png ${D}${bindir}
 	install ${S}/fbgrab ${D}${bindir}
