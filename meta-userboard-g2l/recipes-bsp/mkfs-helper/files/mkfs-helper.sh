@@ -14,6 +14,9 @@ umount ${MMCBLK}p5 || true
 umount ${MMCBLK}p6 || true
 umount ${MMCBLK}p7 || true
 umount ${MMCBLK}p8 || true
+
+wipefs -a -f ${MMCBLK} || true
+
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${MMCBLK}
  d
 
