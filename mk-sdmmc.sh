@@ -35,11 +35,11 @@ function print_boot_example() {
 
 function make_rootfs_dir () {
         sudo rm -rf rootfs && mkdir -p rootfs
-        sudo tar zxvf build_${1}/tmp/deploy/images/${1}/core-image-qt-${1}.tar.gz -C rootfs
+        sudo tar zxvf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-${1}.tar.gz -C rootfs
         sudo tar zxvf build_${1}/tmp/deploy/images/${1}/modules-${1}.tgz -C rootfs
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/*.dtb rootfs/boot
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/Image* rootfs/boot
-        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/core-image-qt-*${1}*.tar.gz rootfs/boot
+        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-*${1}*.tar.gz rootfs/boot
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/modules-*${1}*.tgz rootfs/boot
         sudo chmod go+rwx rootfs/home/root
 }
