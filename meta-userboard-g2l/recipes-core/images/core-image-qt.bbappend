@@ -16,12 +16,7 @@ IMAGE_INSTALL_append = " \
 IMAGE_INSTALL_append = " \
 	bayer2raw drm2png \
 	mkfs-helper \
-"
-
-IMAGE_INSTALL_append = " \
-	${@oe.utils.conditional("CHROMIUM", "1", " \
-        chromium-ozone-wayland \
-        ", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-tinyyolov2-isp app-yolo-img", "", d)} \
 "
 
 greenpak_update_issues () {
