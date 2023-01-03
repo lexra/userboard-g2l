@@ -25,8 +25,18 @@ TOTAL=5120
 PART1=1280
 
 function print_boot_example() {
-        echo ""
-        echo ">> FOR SD BOOT"
+	echo ""
+	echo ">> FOR SD BOOT"
+	echo ""
+	echo -e "${YELLOW} => dcache off ${NC}"
+	echo -e "${YELLOW} => mmc dev 1 ${NC}"
+	echo -e "${YELLOW} => fatload mmc 1:1 0x0001FF80 rzv2l_cm33_rpmsg_demo_secure_vector.bin ${NC}"
+	echo -e "${YELLOW} => fatload mmc 1:1 0x42EFF440 rzv2l_cm33_rpmsg_demo_secure_code.bin ${NC}"
+	echo -e "${YELLOW} => fatload mmc 1:1 0x00010000 rzv2l_cm33_rpmsg_demo_non_secure_vector.bin ${NC}"
+	echo -e "${YELLOW} => fatload mmc 1:1 0x40010000 rzv2l_cm33_rpmsg_demo_non_secure_code.bin ${NC}"
+	echo -e "${YELLOW} => cm33 start_debug 0x1001FF80 0x00010000 ${NC}"
+	echo -e "${YELLOW} => dcache on ${NC}"
+	echo ""
 	echo -e "${YELLOW} => setenv bootargs rw rootwait ipv6.disable=1 earlycon root=/dev/mmcblk1p2 ${NC}"
 	echo -e "${YELLOW} => setenv bootcmd 'ext4load mmc 1:1 0x48080000 Image; ext4load mmc 1:1 0x48000000 ${SOC_FAMILY_PLUS}-${TARGET_BOARD}.dtb; booti 0x48080000 - 0x48000000' ${NC}"
 	echo -e "${YELLOW} => saveenv ${NC}"
@@ -37,8 +47,9 @@ function make_rootfs_dir () {
         sudo rm -rf rootfs && mkdir -p rootfs
         sudo tar zxvf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-${1}.tar.gz -C rootfs
         sudo tar zxvf build_${1}/tmp/deploy/images/${1}/modules-${1}.tgz -C rootfs
-        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/*.dtb rootfs/boot
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/Image* rootfs/boot
+        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/*.dtb rootfs/boot
+        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/rzv2l_cm33_rpmsg_demo_*.bin rootfs/boot
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-*${1}*.tar.gz rootfs/boot
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/modules-*${1}*.tgz rootfs/boot
         sudo chmod go+rwx rootfs/home/root
@@ -107,6 +118,7 @@ echo y | sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=1 ${LOOP}p1 -L b
 sudo mount ${LOOP}p1 mnt
 sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/Image* mnt
 sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/*.dtb mnt
+sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/rzv2l_cm33_rpmsg_demo_*.bin mnt
 sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/${CORE_IMAGE}-${TARGET_BOARD}*.tar.gz mnt
 sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/modules-*.tgz mnt
 sudo umount mnt
