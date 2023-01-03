@@ -2,6 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
 	file://qspiFlash-writer-helper \
+	file://rzv2l_cm33_rpmsg_demo*.bin \
 "
 
 do_compile() {
@@ -44,5 +45,6 @@ do_compile() {
 
 do_deploy_append () {
 	install -d ${DEPLOYDIR}
+	install -m 755 ${WORKDIR}/rzv2l_cm33_rpmsg_demo*.bin ${DEPLOYDIR}
 	install -m 755 ${WORKDIR}/qspiFlash-writer-helper ${DEPLOYDIR}
 }
