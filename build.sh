@@ -77,7 +77,7 @@ sudo chown -R ${USER}.${USER} Renesas_software meta-userboard* build.sh
 sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib \
 	build-essential chrpath socat libsdl1.2-dev xterm python-crypto cpio python python3 \
 	python3-pip python3-pexpect xz-utils debianutils iputils-ping libssl-dev p7zip-full libyaml-dev \
-	nfs-kernel-server parted ffmpeg patchelf default-jdk iproute2 python3-serial libftdi-dev ccache
+	nfs-kernel-server parted ffmpeg patchelf default-jdk iproute2 python3-serial libftdi-dev ccache python3-git python3-jinja2 libegl1-mesa pylint3
 echo ""
 
 ##########################################################
@@ -91,6 +91,12 @@ if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]
 	patch -p1 -l -f --fuzz 3 -i ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2/rzv_v300-to-v300update2.patch
 fi
 
+#echo -e ${GREEN}'>> RZ/G Verified Linux Package V3.0.2'${NC}
+#[ ! -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 ] && \
+#	(mkdir -p ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 && unzip -o ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2.zip -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2)
+#if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
+#	tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2/rzv_bsp_v3.0.2.tar.gz
+#fi
 echo -e ${GREEN}'>> RZ MPU Graphics Library Evaluation Version V1.21 for RZ/G2L, RZ/G2LC, and RZ/V2L'${NC}
 [ ! -d ../Renesas_software/RTK0EF0045Z13001ZJ-v1.21_EN ] && \
 	unzip -o ../Renesas_software/RTK0EF0045Z13001ZJ-v1.21_EN.zip -d ../Renesas_software
@@ -102,6 +108,47 @@ echo -e ${GREEN}'>> RZ MPU Video Codec Library Evaluation Version V0.58 for RZ/G
 	unzip -o ../Renesas_software/RTK0EF0045Z15001ZJ-v0.58_EN.zip -d ../Renesas_software
 [ ! -e meta-rz-features/recipes-codec/omx-module/omx-user-module.bb ] && \
 	tar zxvf ../Renesas_software/RTK0EF0045Z15001ZJ-v0.58_EN/meta-rz-features.tar.gz
+
+if [ ! -e Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz ]; then
+	unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip -d ../Renesas_software
+	unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/rzv2l_cm33_rpmsg_demo.zip -d ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg
+	tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz
+fi
+
+if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "${TARGET_BOARD}" == "gnk-rzv2l" ]; then
+	echo -e ${GREEN}'>> r11an0549ej0720-rzv2l-drpai-sp.zip'${NC}
+	if [ ! -e ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz ]; then
+		unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
+
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application
+		#tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-evaluation-software/rzv2l_ai-evaluation-software_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-evaluation-software
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide
+	fi
+	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}
+	if [ ! -e ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz ]; then
+		unzip -o ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp.zip -d ../Renesas_software
+
+		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz
+		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-adjustment-tool_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
+		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-sample-application_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
+	fi
+	echo -e ${GREEN}'>> r20ut5035ej0180-drp-ai-translator.zip'${NC}
+	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install ]; then
+		unzip -o ../Renesas_software/r20ut5035ej0180-drp-ai-translator.zip -d ../Renesas_software/drp-ai-translator
+		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+		#echo y | ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+	fi
+else
+	rm -rfv ../Renesas_software/rzv2l-drpai-sp ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp ../Renesas_software/drp-ai-translator
+	rm -rfv meta-rz-features/recipes-drpai
+	rm -rfv meta-rz-features/recipes-isp
+	rm -rfv meta-rz-features/include/drpai
+fi
+
+##########################################################
+cd ${SCRIP_DIR}/sources
+cp -fv ../meta-userboard-g2l/conf/meta-rz-features-layer.conf meta-rz-features/conf/layer.conf
 
 ##########################################################
 cd ${SCRIP_DIR}/sources
