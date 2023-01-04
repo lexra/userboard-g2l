@@ -3,15 +3,23 @@ MODEL = "resnet50"
 IMG_SRC = "cam"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${APP_NAME}:"
-
 LICENSE = "CLOSED"
+
+inherit autotools pkgconfig
+
+DEPENDS += " \
+	drpai \
+	opencv \
+	wayland-protocols \
+"
 
 SRC_URI = " \
 	file://etc \
 	file://exe \
+	file://src \
 "
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/src"
 
 do_install_class-target () {
 	install -d ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC}
@@ -23,11 +31,20 @@ do_install_class-target () {
 
 	install -d ${D}/home/root/${APP_NAME}/etc
 	install ${WORKDIR}/etc/*.yaml ${D}/home/root/${APP_NAME}/etc || true
+
+	install ${S}/sample_app_${MODEL}_${IMG_SRC} ${D}/home/root/${APP_NAME}/exe
+}
+
+do_compile_prepend() {
+	SDKTARGETSYSROOT=${STAGING_DIR_TARGET} oe_runmake -C ${S} clean
+}
+
+do_compile () {
+	SDKTARGETSYSROOT=${STAGING_DIR_TARGET} oe_runmake -C ${S}
 }
 
 do_configure[noexec] = "1"
 do_patch[noexec] = "1"
-do_compile[noexec] = "1"
 
 FILES_${PN} = " \
 	/home/root/${APP_NAME} \
