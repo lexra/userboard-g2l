@@ -141,10 +141,10 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 	fi
 
 	echo -e ${GREEN}'>> r20ut5035ej0180-drp-ai-translator.zip'${NC}
-	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install ]; then
+	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install -o ! -e drp-ai_translator_release/pytorch/resnet50/convert_to_onnx.py ]; then
 		unzip -o ../Renesas_software/r20ut5035ej0180-drp-ai-translator.zip -d ../Renesas_software/drp-ai-translator
-		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
-		echo y | ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install && (echo y | ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install)
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_resnet/pytorch_resnet_ver7.20.tar.gz -C drp-ai_translator_release
 	fi
 
 	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}
