@@ -75,7 +75,7 @@ sudo chown -R ${USER}.${USER} Renesas_software meta-userboard* build.sh
 
 ##########################################################
 sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib \
-	build-essential chrpath socat libsdl1.2-dev xterm python-crypto cpio python python3 \
+	build-essential chrpath socat libsdl1.2-dev xterm python-crypto cpio python python3.8 \
 	python3-pip python3-pexpect xz-utils debianutils iputils-ping libssl-dev p7zip-full libyaml-dev \
 	nfs-kernel-server parted ffmpeg patchelf default-jdk iproute2 python3-serial libftdi-dev ccache python3-git python3-jinja2 libegl1-mesa pylint3
 echo ""
@@ -117,14 +117,20 @@ fi
 
 if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "${TARGET_BOARD}" == "gnk-rzv2l" ]; then
 	echo -e ${GREEN}'>> r11an0549ej0720-rzv2l-drpai-sp.zip'${NC}
-	if [ ! -e ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz ]; then
-		unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
+	if [ ! -e ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz \
+		-o ! -e ../meta-userboard-g2l/recipes-demo/app-hrnet-cam/app_hrnet_cam \
+		-o ! -e ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam/app_hrnet_pre-tinyyolov2_cam \
+		-o ! -e ../meta-userboard-g2l/recipes-demo/app-resnet50-cam/app_resnet50_cam \
+		-o ! -e ../meta-userboard-g2l/recipes-demo/app-resnet50-img/app_resnet50_img \
+		-o ! -e ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam/app_tinyyolov2_cam \
+		-o ! -e ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp/app_tinyyolov2_isp \
+		-o ! -e ../meta-userboard-g2l/recipes-demo/app-yolo-img/app_yolo_img ]; then
 
+		unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application
 		#tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-evaluation-software/rzv2l_ai-evaluation-software_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-evaluation-software
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide
-
 		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-cam
 		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_pre-tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam
 		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_cam ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
@@ -133,19 +139,20 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_isp ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp
 		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img ../meta-userboard-g2l/recipes-demo/app-yolo-img
 	fi
-	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}
-	if [ ! -e ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz ]; then
-		unzip -o ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp.zip -d ../Renesas_software
 
-		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz
-		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-adjustment-tool_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
-		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-sample-application_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
-	fi
 	echo -e ${GREEN}'>> r20ut5035ej0180-drp-ai-translator.zip'${NC}
 	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install ]; then
 		unzip -o ../Renesas_software/r20ut5035ej0180-drp-ai-translator.zip -d ../Renesas_software/drp-ai-translator
 		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
-		#echo y | ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+		echo y | ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+	fi
+
+	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}
+	if [ ! -e ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz ]; then
+		unzip -o ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp.zip -d ../Renesas_software
+		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz
+		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-adjustment-tool_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
+		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-sample-application_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
 	fi
 else
 	rm -rfv ../Renesas_software/rzv2l-drpai-sp ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp ../Renesas_software/drp-ai-translator
