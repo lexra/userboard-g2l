@@ -143,8 +143,16 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 	echo -e ${GREEN}'>> r20ut5035ej0180-drp-ai-translator.zip'${NC}
 	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install -o ! -e drp-ai_translator_release/pytorch/resnet50/convert_to_onnx.py ]; then
 		unzip -o ../Renesas_software/r20ut5035ej0180-drp-ai-translator.zip -d ../Renesas_software/drp-ai-translator
-		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install && (echo y | ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install)
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_resnet/pytorch_resnet_ver7.20.tar.gz -C drp-ai_translator_release
+		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+		cd ..
+		echo y | Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+		cd -
+
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_resnet/pytorch_resnet_ver7.20.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/mmpose_hrnet/mmpose_hrnet_ver7.20.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/darknet_yolo/darknet_yolo_ver7.20.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_mobilenet/pytorch_mobilenet_ver7.20.tar.gz -C ../drp-ai_translator_release
+		#git clone -b v0.18.0 https://github.com/open-mmlab/mmpose.git -C drp-ai_translator_release || true
 	fi
 
 	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}

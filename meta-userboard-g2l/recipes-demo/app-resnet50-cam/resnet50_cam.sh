@@ -6,7 +6,9 @@ YELLOW='\033[1;33m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-[ ! -x ../../../sources/drp-ai_translator_release/run_DRP-AI_translator_V2L.sh ] && exit 1
+DRPAI_TRANSLATOR_RELEASE=../../../drp-ai_translator_release
+[ ! -x ${DRPAI_TRANSLATOR_RELEASE}/run_DRP-AI_translator_V2L.sh ] && exit 1
+[ ! -e ${DRPAI_TRANSLATOR_RELEASE}/pytorch/resnet50/convert_to_onnx.py ] && exit 1
 
 ##########################################################
 APP_NAME=app_resnet50_cam
@@ -28,7 +30,7 @@ fi
 ##########################################################
 if [ "${MODEL}" == "resnet50" ]; then
 	echo -e "${YELLOW} => ${MODEL}.onnx ${NC}"
-	cd ../../../sources/drp-ai_translator_release/pytorch/${MODEL}
+	cd ${DRPAI_TRANSLATOR_RELEASE}/pytorch/${MODEL}
 	python3 convert_to_onnx.py
 	cp -Rpfv ./${MODEL}.onnx ../../onnx
 	cd -
@@ -37,19 +39,19 @@ fi
 ##########################################################
 echo ""
 echo -e "${YELLOW} => DRP-AI Translate ${NC}"
-cd ../../../sources/drp-ai_translator_release
+cd ${DRPAI_TRANSLATOR_RELEASE}
 rm -rf output/${MODEL}_${IMG_SRC}
 ./run_DRP-AI_translator_V2L.sh ${MODEL}_${IMG_SRC} \
 	-onnx onnx/${MODEL}.onnx \
-	-prepost ../../meta-userboard-g2l/recipes-demo/${APP_RECIPE}/${APP_NAME}/etc/prepost_${MODEL}.yaml \
-	-addr ../../meta-userboard-g2l/recipes-demo/${APP_RECIPE}/${APP_NAME}/etc/addrmap_in_${MODEL}.yaml
+	-prepost ../meta-userboard-g2l/recipes-demo/${APP_RECIPE}/${APP_NAME}/etc/prepost_${MODEL}.yaml \
+	-addr ../meta-userboard-g2l/recipes-demo/${APP_RECIPE}/${APP_NAME}/etc/addrmap_in_${MODEL}.yaml
 cd -
 
 ##########################################################
 echo ""
 echo -e "${YELLOW} => ${APP_NAME}/exe/${MODEL}_${IMG_SRC} ${NC}"
 rm -rf ${APP_NAME}/exe/${MODEL}_${IMG_SRC}
-/bin/cp -Rpf ../../../sources/drp-ai_translator_release/output/${MODEL}_${IMG_SRC} ${APP_NAME}/exe
+/bin/cp -Rpf ${DRPAI_TRANSLATOR_RELEASE}/output/${MODEL}_${IMG_SRC} ${APP_NAME}/exe
 ls -l --color ${APP_NAME}/exe/${MODEL}_${IMG_SRC}
 
 ##########################################################
