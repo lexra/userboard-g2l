@@ -53,6 +53,11 @@ function make_rootfs_dir () {
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-*${1}*.tar.gz rootfs/boot
         sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/modules-*${1}*.tgz rootfs/boot
         sudo chmod go+rwx rootfs/home/root
+
+	if [ -d /tftpboot ]; then
+		 cp -Rpfv build_${1}/tmp/deploy/images/${1}/Image* /tftpboot
+		 cp -Rpfv build_${1}/tmp/deploy/images/${1}/*.dtb /tftpboot
+	fi
 }
 
 function Usage () {
