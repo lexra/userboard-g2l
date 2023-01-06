@@ -141,7 +141,7 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 	fi
 
 	echo -e ${GREEN}'>> r20ut5035ej0180-drp-ai-translator.zip'${NC}
-	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install -o ! -e drp-ai_translator_release/pytorch/resnet50/convert_to_onnx.py ]; then
+	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install -o ! -e ../drp-ai_translator_release/pytorch/resnet50/convert_to_onnx.py ]; then
 		unzip -o ../Renesas_software/r20ut5035ej0180-drp-ai-translator.zip -d ../Renesas_software/drp-ai-translator
 		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
 		cd ..
