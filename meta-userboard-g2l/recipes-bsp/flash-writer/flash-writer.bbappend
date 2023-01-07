@@ -3,10 +3,11 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += " \
 	file://qspiFlash-writer-helper \
 	file://rzv2l_cm33_rpmsg_demo*.bin \
+	${@'file://makefile' if ('${MACHINE}' != 'gnk-rzg2l' and '${MACHINE}' != 'gnk-rzv2l') else ''} \
 "
 
 do_compile() {
-	cp -fv ${WORKDIR}/makefile ${S}
+	cp -fv ${WORKDIR}/makefile ${S} || true
 
 	if [ "${MACHINE}" == "gnk-rzg2l" ]; then
 		BOARD="GNK_RZG2L";
