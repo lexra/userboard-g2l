@@ -3,10 +3,14 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += " \
 	file://qspiFlash-writer-helper \
 	file://rzv2l_cm33_rpmsg_demo*.bin \
-	${@'file://makefile' if ('${MACHINE}' != 'gnk-rzg2l' and '${MACHINE}' != 'gnk-rzv2l') else ''} \
 "
+SRC_URI_append_smarc-rzg2l = " file://makefile "
+SRC_URI_append_smarc-rzg2lc = " file://makefile "
+SRC_URI_append_smarc-rzv2l = " file://makefile "
+SRC_URI_append_smarc-rzv2ul = " file://makefile "
+SRC_URI_append_rzv2l-dev = " file://makefile "
 
-do_compile() {
+do_compile () {
 	cp -fv ${WORKDIR}/makefile ${S} || true
 
 	if [ "${MACHINE}" == "gnk-rzg2l" ]; then
