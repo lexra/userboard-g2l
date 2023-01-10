@@ -362,6 +362,7 @@ RZ/G2L Evaluation Board Kit PMIC version
 | VLP/G v3.0.0-update2                  | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip       | RZ/G Verified Linux Package                                                   |
 | CM33 multi os package                 | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip | RZ/V2l CM33 multi os package                                                  |
 | DRP-AI sample program                 | r11an0549ej0720-rzv2l-drpai-sp.zip          | RZ/V2L DRP-AI sample program                                                  |
+| DRP-AI Translator v1.80               | r20ut5035ej0180-drp-ai-translator.zip       | DRP-AI Translator                                                             |
 
 ```bash
  + build.sh
@@ -377,6 +378,8 @@ RZ/G2L Evaluation Board Kit PMIC version
                       +-- r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip
                       |
                       +-- r11an0549ej0720-rzv2l-drpai-sp.zip
+                      |
+                      +-- r20ut5035ej0180-drp-ai-translator.zip
 ```
 
 #### Common notes
