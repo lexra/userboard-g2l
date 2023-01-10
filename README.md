@@ -476,6 +476,11 @@ MACHINE_FEATURES_append = " ecc"
 ECC_MODE = "Full"
 ```
 
+##### Usb camera test
+```
+gst-launch-1.0 v4l2src device=/dev/video0 ! videoconvert ! waylandsink
+```
+
 ##### Video playback
 - Due to the specification of open source software (GStreamer and others) and drivers, multiple GStreamer pipelines with hardware scale cannot run. Also, below formats of video are not supported.
   - NV61
