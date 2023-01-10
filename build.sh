@@ -191,7 +191,6 @@ echo -e ${GREEN}'>> meta-gnk-board '${NC}
 git clone https://github.com/xlloss/meta-gnk-board.git || true
 git -C meta-gnk-board checkout -b develop 6ce09ce5733b1765c3547826816fb081fdbd84b7 || true
 git -C meta-gnk-board checkout .
-[ -e patches/meta-gnk-board.patch ] && patch -p1 -l -f --fuzz 3 -d meta-gnk-board -i ../../patches/meta-gnk-board.patch
 sed 's|userboard|gnk|g' -i meta-gnk-board/conf/layer.conf
 sed 's|^BBFILES += "${@|#BBFILES += "${@|g' -i meta-gnk-board/conf/layer.conf
 sed 's|^               for layer in BBFILE_COLLECTIONS.split()|#               for layer in BBFILE_COLLECTIONS.split()|g' -i meta-gnk-board/conf/layer.conf
