@@ -130,13 +130,13 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide
-		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-cam
-		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_pre-tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam
-		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_cam ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
-		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_img ../meta-userboard-g2l/recipes-demo/app-resnet50-img
-		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam
-		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_isp ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp
-		/bin/cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img ../meta-userboard-g2l/recipes-demo/app-yolo-img
+		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-cam
+		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_pre-tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam
+		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_cam ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
+		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_img ../meta-userboard-g2l/recipes-demo/app-resnet50-img
+		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam
+		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_isp ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp
+		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img ../meta-userboard-g2l/recipes-demo/app-yolo-img
 	fi
 
 	echo -e ${GREEN}'>> r20ut5035ej0180-drp-ai-translator.zip'${NC}
@@ -202,9 +202,9 @@ echo ""
 ##########################################################
 cd ${SCRIP_DIR}/${BUILD_DIR}
 echo -e ${GREEN}'>> local.conf bblayers.conf '${NC}
-/bin/cp -fv ../meta-userboard-g2l/docs/template/conf/${TARGET_BOARD}/local.conf ./conf/local.conf
-/bin/cp -fv ../meta-userboard-g2l/docs/template/conf/${TARGET_BOARD}/bblayers.conf ./conf/bblayers.conf
-/bin/cp -Rpfv ../meta-userboard-g2l/conf/machine/${TARGET_BOARD}.conf ../sources/meta-renesas/conf/machine
+cp -fv ../meta-userboard-g2l/docs/template/conf/${TARGET_BOARD}/local.conf ./conf/local.conf
+cp -fv ../meta-userboard-g2l/docs/template/conf/${TARGET_BOARD}/bblayers.conf ./conf/bblayers.conf
+cp -Rpfv ../meta-userboard-g2l/conf/machine/${TARGET_BOARD}.conf ../sources/meta-renesas/conf/machine
 echo ""
 
 ##########################################################
