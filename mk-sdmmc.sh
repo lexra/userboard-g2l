@@ -40,6 +40,8 @@ function print_boot_example() {
 	echo -e "${YELLOW} => setenv bootcmd 'ext4load mmc 1:1 0x48080000 Image; ext4load mmc 1:1 0x48000000 ${SOC_FAMILY_PLUS}-${TARGET_BOARD}.dtb; booti 0x48080000 - 0x48000000' ${NC}"
 	echo -e "${YELLOW} => saveenv ${NC}"
 	echo ""
+	echo -e "${YELLOW} root@smarc-rzv2l:~# rpmsg_sample_client 0 ${NC}"
+	echo ""
 }
 
 function make_rootfs_dir () {
