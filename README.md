@@ -370,7 +370,7 @@ RZ/G2L Evaluation Board Kit PMIC version
  |
  + meta-userboard-g2l 
  |
- + Renesas_software --+ RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
+ + Renesas_software --+-- RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
                       |
                       +-- RTK0EF0045Z13001ZJ-v1.2_EN.zip
                       |
