@@ -359,7 +359,7 @@ RZ/G2L Evaluation Board Kit PMIC version
 | :------------------------------------ | :--------------------------------------- | :---------------------------------------------------------------------------- |
 | RZ MPU Graphics Library v1.2          | RTK0EF0045Z13001ZJ-v1.2_EN.zip           | This provides graphics function compliant with the OpenGL ES standard.        |
 | RZ MPU Video Codec Library v0.58      | RTK0EF0045Z15001ZJ-v0.58_EN.zip          | RZ MPU Video Codec Library for RZ/G2L.                                        |
-| VLP/G v3.0.0-update1                  | RTK0EF0045Z0021AZJ-v3.0.0-update1.zip    | RZ/G Verified Linux Package                                                   |
+| VLP/G v3.0.0-update2                  | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip    | RZ/G Verified Linux Package                                                   |
 
 
 ```bash
@@ -367,7 +367,7 @@ RZ/G2L Evaluation Board Kit PMIC version
  |
  + meta-userboard-g2l 
  |
- + Renesas_software --+ RTK0EF0045Z0021AZJ-v3.0.0-update1.zip
+ + Renesas_software --+ RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
                       |
                       +-- RTK0EF0045Z13001ZJ-v1.2_EN.zip
                       |
