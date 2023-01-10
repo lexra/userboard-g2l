@@ -372,6 +372,8 @@ RZ/G2L Evaluation Board Kit PMIC version
                       +-- RTK0EF0045Z13001ZJ-v1.2_EN.zip
                       |
                       +-- RTK0EF0045Z15001ZJ-v0.58_EN.zip
+                      |
+                      +-- r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip
 ```
 
 #### Common notes
