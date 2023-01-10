@@ -32,7 +32,7 @@ do_install_class-target () {
 
 	install -d ${D}/home/root/${APP_NAME}/etc
 	install ${WORKDIR}/etc/*.yaml ${D}/home/root/${APP_NAME}/etc || true
-	install ${S}/sample_app_${MODEL}_${IMG_SRC} ${D}/home/root/${APP_NAME}/exe
+	install ${S}/sample_${APP_NAME} ${D}/home/root/${APP_NAME}/exe
 }
 
 do_compile_prepend() {
