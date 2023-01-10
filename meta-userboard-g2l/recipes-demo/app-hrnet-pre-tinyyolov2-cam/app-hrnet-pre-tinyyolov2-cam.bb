@@ -9,9 +9,9 @@ LICENSE = "CLOSED"
 inherit autotools pkgconfig
 
 DEPENDS += " \
-        drpai \
-        opencv \
-        wayland-protocols \
+	drpai \
+	opencv \
+	wayland-protocols \
 "
 
 SRC_URI = " \
