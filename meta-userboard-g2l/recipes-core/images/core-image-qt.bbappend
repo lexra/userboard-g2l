@@ -16,7 +16,8 @@ IMAGE_INSTALL_append = " \
 IMAGE_INSTALL_append = " \
 	bayer2raw drm2png \
 	mkfs-helper \
-	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-tinyyolov2-isp app-yolo-img", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
+	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
 "
 
 greenpak_update_issues () {
