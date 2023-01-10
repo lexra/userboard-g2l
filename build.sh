@@ -158,7 +158,7 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}
 	if [ ! -e ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz ]; then
 		unzip -o ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp.zip -d ../Renesas_software
-		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz
+		#tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz
 		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-adjustment-tool_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
 		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-sample-application_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
 	fi
