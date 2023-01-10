@@ -360,10 +360,10 @@ RZ/G2L Evaluation Board Kit PMIC version
 | RZ MPU Graphics Library v1.2          | RTK0EF0045Z13001ZJ-v1.2_EN.zip              | This provides graphics function compliant with the OpenGL ES standard.        |
 | RZ MPU Video Codec Library v0.58      | RTK0EF0045Z15001ZJ-v0.58_EN.zip             | RZ MPU Video Codec Library for RZ/G2L.                                        |
 | VLP/G v3.0.0-update2                  | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip       | RZ/G Verified Linux Package                                                   |
-| RZ/V2L Group Multi-OS Package         | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip | RZ/V2L Group Multi-OS Package                                                 |
+| RZ/V2L Group Multi-OS Package [V1.02] | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip | RZ/V2L Group Multi-OS Package                                                 |
 | RZ/V2L DRP-AI Support Package [V7.20] | r11an0549ej0720-rzv2l-drpai-sp.zip          | RZ/V2L DRP-AI Support Package                                                 |
-| DRP-AI Translator v1.80               | r20ut5035ej0180-drp-ai-translator.zip       | DRP-AI Translator                                                             |
-| RZ/V2L ISP sample program             | r11an0561ej0120-rzv2l-isp-sp.zip            | RZ/V2L ISP Support Package                                                    |
+| DRP-AI Translator [V1.80]             | r20ut5035ej0180-drp-ai-translator.zip       | DRP-AI Translator                                                             |
+| RZ/V2L ISP Support Package [V.1.20]   | r11an0561ej0120-rzv2l-isp-sp.zip            | RZ/V2L ISP Support Package                                                    |
 
 ```bash
  + build.sh
