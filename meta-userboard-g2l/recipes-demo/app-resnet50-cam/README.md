@@ -70,7 +70,7 @@ tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-fea
 
 #### 2.3 Bitbake core-image-qt
 
-Run `bitbake core-image-qt` shall install CM33 Multi OS package properly. 
+Run `bitbake core-image-qt` shall install the CM33 Multi OS package properly. 
 
 ```bash
 bitbake core-image-qt
@@ -133,4 +133,20 @@ cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-a
 cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img \
          ../meta-userboard-g2l/recipes-demo/app-yolo-img
 ```
+
+#### 3.2 Bitbake core-image-qt
+
+Run `bitbake core-image-qt` shall properly rebuild and install the RZ/V2L DRPAI sample applications. 
+
+```bash
+bitbake core-image-qt
+```
+
+To uninstall, 
+
+```bash
+rm -rfv meta-rz-features/recipes-drpai
+rm -rfv meta-rz-features/include/drpai
+```
+
 
