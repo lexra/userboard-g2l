@@ -22,6 +22,7 @@ IMAGE_INSTALL_append = " \
 	mkfs-helper \
 	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
 	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
+	${@oe.utils.conditional("CHROMIUM", "1", "chromium-ozone-wayland", "", d)} \
 "
 
 greenpak_update_issues () {
