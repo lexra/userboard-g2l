@@ -269,6 +269,8 @@ cd -
 
 ![image](https://user-images.githubusercontent.com/33512027/211740259-e999dcfc-65d7-4991-8b95-3a9999bdc099.png)
 
+For detail, refer to the `r11an0617ej0721-rzv-ai-imp-resnet.pdf` .
+
 
 ##### 4.3.5  Copy output data to `app_resnet50_cam/exe`
 
