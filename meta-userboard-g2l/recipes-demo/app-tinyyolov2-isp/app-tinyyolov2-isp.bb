@@ -12,6 +12,7 @@ DEPENDS += " \
 	drpai \
 	opencv \
 	wayland-protocols \
+	${@oe.utils.conditional("ISP_RECIPES", "True", "isp", "", d)} \
 "
 
 SRC_URI = " \

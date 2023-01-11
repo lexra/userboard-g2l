@@ -2,6 +2,10 @@ inherit populate_sdk_qt5
 TOOLCHAIN_HOST_TASK_append = " nativesdk-qtwayland-tools "
 FEATURE_PACKAGES_tools-sdk += " packagegroup-qt5-toolchain-target kernel-devsrc "
 
+TOOLCHAIN_TARGET_TASK_append = " \
+	${@oe.utils.conditional("ISP_RECIPES", "True", "isp", "", d)} \
+"
+
 IMAGE_INSTALL_append = " \
 	tslib nfs-utils e2fsprogs e2fsprogs-mke2fs e2fsprogs-resize2fs udev curl bc usbutils wget \
 	mmc-utils squashfs-tools iputils sqlite3 libevent \
