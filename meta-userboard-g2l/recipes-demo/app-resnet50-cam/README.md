@@ -2,7 +2,7 @@
 
 RZ/V2L is capable of multi-OS running at the same time, thus allows the given OS communication with each other. And an AI accelerator plus.  
 
-#### 1 Placeholder 'Renesas_software'
+#### 1. Placeholder 'Renesas_software'
 
 Place the CM33 Multi OS package, the DRPAI support package and the DRPAI translator package into this placeholder. 
 
@@ -38,7 +38,7 @@ Place the CM33 Multi OS package, the DRPAI support package and the DRPAI transla
                       +-- r20ut5035ej0180-drp-ai-translator.zip
 ```
 
-### 2 RZ/V2L Cortex-M33 Multi OS package
+### 2. RZ/V2L Cortex-M33 Multi OS package
 
 ![image](https://user-images.githubusercontent.com/33512027/211717414-10c60ae3-1d53-4aa1-b412-812adaa96c30.png)
 
@@ -81,7 +81,7 @@ To uninstall,
 rm -rfv meta-rz-features/recipes-openamp
 ```
 
-### 3 RZ/V2L DRP-AI support package
+### 3. RZ/V2L DRP-AI support package
 
 ![image](https://user-images.githubusercontent.com/33512027/211717812-11ddd876-0e96-427a-a600-771dbe3affb7.png)
 
