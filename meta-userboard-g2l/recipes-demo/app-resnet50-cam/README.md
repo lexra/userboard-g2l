@@ -191,4 +191,29 @@ rm -rfv meta-rz-features/recipes-drpai
 rm -rfv meta-rz-features/include/drpai
 ```
 
+### 4. `DRPAI` Translate
+
+#### 4.1  Inatall the `DRPAI` translator
+
+```bash
+unzip -o ../Renesas_software/r20ut5035ej0180-drp-ai-translator.zip -d ../Renesas_software/drp-ai-translator
+chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+cd ..
+echo y | Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+cd -
+```
+
+#### 4.1  Untar the `pytorch_resnet_ver7.20.tar.gz`
+
+```
+tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_resnet/pytorch_resnet_ver7.20.tar.gz \
+      -C ../drp-ai_translator_release
+tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/mmpose_hrnet/mmpose_hrnet_ver7.20.tar.gz \
+      -C ../drp-ai_translator_release
+tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/darknet_yolo/darknet_yolo_ver7.20.tar.gz \
+      -C ../drp-ai_translator_release
+tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_mobilenet/pytorch_mobilenet_ver7.20.tar.gz \
+      -C ../drp-ai_translator_release
+```
+
 
