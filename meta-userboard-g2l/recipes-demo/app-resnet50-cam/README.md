@@ -123,9 +123,13 @@ tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementatio
 ##### 3.1.4 Copy prebuilt sample applications
 
 ```bash
-cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_cam ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
-cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_img ../meta-userboard-g2l/recipes-demo/app-resnet50-img
-cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam
-cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img ../meta-userboard-g2l/recipes-demo/app-yolo-img
+cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_cam \
+         ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
+cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_img \
+         ../meta-userboard-g2l/recipes-demo/app-resnet50-img
+cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_cam \
+         ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam
+cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img \
+         ../meta-userboard-g2l/recipes-demo/app-yolo-img
 ```
 
