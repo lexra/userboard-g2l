@@ -203,7 +203,7 @@ echo y | Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64
 cd -
 ```
 
-#### 4.1  Extract the `pytorch_resnet_ver7.20.tar.gz` to `drp-ai_translator_release`
+#### 4.2  Extract the `pytorch_resnet_ver7.20.tar.gz` to `drp-ai_translator_release`
 
 ```
 tar zxvf \
@@ -221,9 +221,58 @@ tar zxvf \
 -C ../drp-ai_translator_release
 ```
 
+#### 4.3  DRPAI translate
+
+##### 4.3.1  Environment export
+
+```bash
+export DRPAI_TRANSLATOR_RELEASE=../../../drp-ai_translator_release
+export APP_NAME=app_resnet50_cam
+export APP_RECIPE=$(echo $APP_NAME | sed 's/_/-/g')
+export MODEL=resnet50
+export IMG_SRC=cam
+```
+
+##### 4.3.2  Change directory to `meta-userboard-g2l/recipes-demo/app-resnet50-cam`
 
 ```bash
 cd ${PROJECT_DIR}
 cd meta-userboard-g2l/recipes-demo/app-resnet50-cam
 ```
+
+##### 4.3.3  Generate a new `resnet50.onnx`
+
+```bash
+cd ${DRPAI_TRANSLATOR_RELEASE}/pytorch/${MODEL}
+python3 convert_to_onnx.py
+cp -Rpfv ./${MODEL}.onnx ../../onnx
+cd -
+```
+
+##### 4.3.4  DRPAI translate for `app-resnet50-cam`
+
+```bash
+cd ${DRPAI_TRANSLATOR_RELEASE}
+rm -rf output/${MODEL}_${IMG_SRC}
+./run_DRP-AI_translator_V2L.sh ${MODEL}_${IMG_SRC} \
+	-onnx onnx/${MODEL}.onnx \
+	-prepost ../meta-userboard-g2l/recipes-demo/${APP_RECIPE}/${APP_NAME}/etc/prepost_${MODEL}.yaml \
+	-addr ../meta-userboard-g2l/recipes-demo/${APP_RECIPE}/${APP_NAME}/etc/addrmap_in_${MODEL}.yaml
+cd -
+```
+
+##### 4.3.4  Copy output data to `app_resnet50_cam/exe`
+
+```bash
+cp -Rpf ${DRPAI_TRANSLATOR_RELEASE}/output/${MODEL}_${IMG_SRC} ${APP_NAME}/exe
+```
+
+##### 4.3.5 Bitbake core-image-qt
+
+Run `bitbake core-image-qt` shall properly rebuild and install the RZ/V2L DRPAI sample applications. 
+
+```bash
+bitbake core-image-qt
+```
+
 
