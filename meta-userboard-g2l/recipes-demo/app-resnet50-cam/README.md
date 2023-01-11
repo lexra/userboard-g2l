@@ -134,7 +134,49 @@ cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-a
          ../meta-userboard-g2l/recipes-demo/app-yolo-img
 ```
 
-#### 3.2 Bitbake core-image-qt
+#### 3.2 Edit the  `meta-rz-features/conf/layer.conf`
+
+```bash
+# We have a conf and classes directory, add to BBPATH
+
+include ${LAYERDIR}/include/graphic/feature.inc
+include ${LAYERDIR}/include/codec/plugin.inc
+include ${LAYERDIR}/include/demos/demos.inc
+include ${LAYERDIR}/include/drpai/core-image-sdk.inc
+include ${LAYERDIR}/include/drpai/extend_packages.inc
+include ${LAYERDIR}/include/openamp/openamp.inc
+
+LAYERDEPENDS_rz-features = "rzg2"
+
+BBPATH .= ":${LAYERDIR}"
+
+BBFILE_COLLECTIONS += "rz-features"
+BBFILE_PATTERN_rz-features := "^${LAYERDIR}/"
+
+# We have recipes-* directories, add to BBFILES
+BBFILES += "${LAYERDIR}/recipes-*/*/*.bb \
+    ${LAYERDIR}/recipes-*/*.bb \
+    ${LAYERDIR}/recipes-*/*.bbappend \
+    ${LAYERDIR}/recipes-*/*/*.bbappend"
+
+# Add DRP-AI Support PKG
+DRPAI_RECIPES = "${@os.path.isdir("${LAYERDIR}/recipes-drpai")}"
+
+BBFILES_append += "${@'${LAYERDIR}/recipes-drpai/*/*/*.bb' if '${DRPAI_RECIPES}' == 'True' else ''} \
+                   ${@'${LAYERDIR}/recipes-drpai/*/*/*/*.bb' if '${DRPAI_RECIPES}' == 'True' else ''} \
+                   ${@'${LAYERDIR}/recipes-drpai/*/*/*.bbappend' if '${DRPAI_RECIPES}' == 'True' else ''} \
+                   ${@'${LAYERDIR}/recipes-drpai/*/*/*/*.bbappend' if '${DRPAI_RECIPES}' == 'True' else ''} "
+
+# Add ISP Support PKG
+ISP_RECIPES = "${@os.path.isdir("${LAYERDIR}/recipes-isp")}"
+
+BBFILES_append += "${@'${LAYERDIR}/recipes-isp/*/*/*.bb' if '${ISP_RECIPES}' == 'True' else ''} \
+                   ${@'${LAYERDIR}/recipes-isp/*/*/*/*.bb' if '${ISP_RECIPES}' == 'True' else ''} \
+                   ${@'${LAYERDIR}/recipes-isp/*/*/*.bbappend' if '${ISP_RECIPES}' == 'True' else ''} \
+                   ${@'${LAYERDIR}/recipes-isp/*/*/*/*.bbappend' if '${ISP_RECIPES}' == 'True' else ''} "
+```
+
+#### 3.3 Bitbake core-image-qt
 
 Run `bitbake core-image-qt` shall properly rebuild and install the RZ/V2L DRPAI sample applications. 
 
