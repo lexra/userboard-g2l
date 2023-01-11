@@ -1,4 +1,6 @@
-### DRP-AI + Multi OS package
+### DRP-AI + Multi-OS package
+
+RZ/V2L allows multi-OS running at the same time, and allows multi-OS communication with each other. 
 
 #### 1 Placeholder 'Renesas_software'
 
