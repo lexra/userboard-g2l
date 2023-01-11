@@ -1,4 +1,4 @@
-### RZ/V2L Quick Start Guide for DRP-AI and for Multi-OS package
+### RZ/V2L `DRP-AI`, `CM33 Multi-OS` support packages Quick Start Guide 
 
 RZ/V2L contains a proprietary AI accelerator which we called `DRPAI` and additionally is capable of multi-OS running at the same time, thus allows the given OS communication with each other accordingly.  
 
