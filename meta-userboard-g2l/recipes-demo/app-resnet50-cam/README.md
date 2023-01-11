@@ -87,6 +87,8 @@ unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_so
 
 ##### 3.1.1 Unzip the meta-rz-features.tar.gz into the `sources` directory
 
+This step is identical to 2.2.2, just the content of meta-rz-features.tar.gz different. 
+
 ```
 tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
 ```
