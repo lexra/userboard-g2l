@@ -203,7 +203,7 @@ echo y | Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64
 cd -
 ```
 
-#### 4.1  Untar the `pytorch_resnet_ver7.20.tar.gz`
+#### 4.1  Extract the `pytorch_resnet_ver7.20.tar.gz` to `drp-ai_translator_release`
 
 ```
 tar zxvf \
