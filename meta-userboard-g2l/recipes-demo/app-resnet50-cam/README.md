@@ -44,7 +44,8 @@ Place the CM33 Multi OS package, the DRPAI support package and the DRPAI transla
 
 #### 2.1 Enter the sources directory
 
-```
+```bash
+cd ${PROJECT_DIR}
 mkdir -p sources && cd sources
 ```
 
@@ -56,14 +57,14 @@ unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip -d ../R
 
 ##### 2.2.1 Unzip the `rzv2l_cm33_rpmsg_demo.zip`
 
-```
+```bash
 unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/rzv2l_cm33_rpmsg_demo.zip \
       -d ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg
 ```
 
 ##### 2.2.2 Unzip the `meta-rz-features.tar.gz` into the `sources` directory
 
-```
+```bash
 tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz
 ```
 
@@ -71,13 +72,13 @@ tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-fea
 
 Run `bitbake core-image-qt` shall install CM33 Multi OS package properly. 
 
-```
+```bash
 bitbake core-image-qt
 ```
 
 To uninstall, 
 
-```
+```bash
 rm -rfv meta-rz-features/recipes-openamp
 ```
 
@@ -87,13 +88,18 @@ rm -rfv meta-rz-features/recipes-openamp
 
 #### 3.1 Unzip the `DRPAI` support package
 
+```bash
+cd ${PROJECT_DIR}
+mkdir -p sources && cd sources
 ```
+
+```bash
 unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
 ```
 
 ##### 3.1.1 Unzip the `meta-rz-features.tar.gz` into the `sources` directory
 
-```
+```bash
 tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
 ```
 
@@ -101,7 +107,7 @@ This step is identical to `2.2.2`, just the content of each `meta-rz-features.ta
 
 ##### 3.1.2 Unzip the `DRPAI` sample application
 
-```
+```bash
 tar zxvf \
   ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.20.tar.gz \
   -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application
@@ -109,7 +115,7 @@ tar zxvf \
 
 ##### 3.1.3 Unzip the `DRPAI` implementation guide
 
-```
+```bash
 tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.20.tar.gz \
   -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide
 ```
