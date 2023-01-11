@@ -82,6 +82,8 @@ To uninstall,
 rm -rfv meta-rz-features/recipes-openamp
 ```
 
+For detail, refer to the `r01an6238ej0102-rzv2l-cm33-multi-os-pkg.pdf` .
+
 ### 3. RZ/V2L `DRPAI` support package
 
 ![image](https://user-images.githubusercontent.com/33512027/211717812-11ddd876-0e96-427a-a600-771dbe3affb7.png)
