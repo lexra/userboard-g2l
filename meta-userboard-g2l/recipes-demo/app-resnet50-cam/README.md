@@ -57,7 +57,7 @@ unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/rzv2l_cm33_
       -d ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg
 ```
 
-##### Unzip the meta-rz-features.tar.gz into the sources directory
+##### Unzip the meta-rz-features.tar.gz into the `sources` directory
 
 ```
 tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz
