@@ -265,6 +265,9 @@ rm -rf output/${MODEL}_${IMG_SRC}
 cd -
 ```
 
+![image](https://user-images.githubusercontent.com/33512027/211740259-e999dcfc-65d7-4991-8b95-3a9999bdc099.png)
+
+
 ##### 4.3.4  Copy output data to `app_resnet50_cam/exe`
 
 ```bash
@@ -273,7 +276,7 @@ cp -Rpf ${DRPAI_TRANSLATOR_RELEASE}/output/${MODEL}_${IMG_SRC} ${APP_NAME}/exe
 
 ##### 4.3.5 Bitbake core-image-qt
 
-Run `bitbake core-image-qt` shall properly rebuild and install the `app_resnet50_cam`. 
+Run `bitbake core-image-qt` shall properly rebuild and install the newly generated `app_resnet50_cam`. 
 
 ```bash
 bitbake core-image-qt
