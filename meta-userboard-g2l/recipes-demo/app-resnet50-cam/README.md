@@ -116,7 +116,8 @@ tar zxvf \
 ##### 3.1.3 Unzip the `DRPAI` implementation guide
 
 ```bash
-tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.20.tar.gz \
+tar zxvf \
+  ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.20.tar.gz \
   -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide
 ```
 
