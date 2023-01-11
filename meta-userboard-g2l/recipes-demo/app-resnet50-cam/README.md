@@ -251,7 +251,7 @@ cp -Rpfv ./${MODEL}.onnx ../../onnx
 cd -
 ```
 
-##### 4.3.4  DRPAI translate for `app-resnet50-cam`
+##### 4.3.4  DRPAI translate for `app_resnet50_cam`
 
 ```bash
 cd ${DRPAI_TRANSLATOR_RELEASE}
@@ -271,7 +271,7 @@ cp -Rpf ${DRPAI_TRANSLATOR_RELEASE}/output/${MODEL}_${IMG_SRC} ${APP_NAME}/exe
 
 ##### 4.3.5 Bitbake core-image-qt
 
-Run `bitbake core-image-qt` shall properly rebuild and install the `app-resnet50-cam`. 
+Run `bitbake core-image-qt` shall properly rebuild and install the `app_resnet50_cam`. 
 
 ```bash
 bitbake core-image-qt
