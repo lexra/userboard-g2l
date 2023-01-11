@@ -50,14 +50,14 @@ mkdir -p sources && cd sources
 unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip -d ../Renesas_software
 ```
 
-##### 2.2.1 Unzip the rzv2l_cm33_rpmsg_demo.zip
+##### 2.2.1 Unzip the `rzv2l_cm33_rpmsg_demo.zip`
 
 ```
 unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/rzv2l_cm33_rpmsg_demo.zip \
       -d ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg
 ```
 
-##### 2.2.2 Unzip the meta-rz-features.tar.gz into the `sources` directory
+##### 2.2.2 Unzip the `meta-rz-features.tar.gz` into the `sources` directory
 
 ```
 tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz
@@ -85,13 +85,13 @@ rm -rfv meta-rz-features/recipes-openamp
 unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
 ```
 
-##### 3.1.1 Unzip the meta-rz-features.tar.gz into the `sources` directory
+##### 3.1.1 Unzip the `meta-rz-features.tar.gz` into the `sources` directory
 
 ```
 tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
 ```
 
-This step is identical to 2.2.2, just the content of meta-rz-features.tar.gz different. 
+This step is identical to 2.2.2, just the content of `meta-rz-features.tar.gz` different. 
 
 ##### 3.1.2 Unzip the DRPAI sample application
 
