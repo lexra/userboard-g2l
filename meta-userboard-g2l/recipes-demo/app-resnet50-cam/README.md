@@ -1,6 +1,6 @@
 ### DRP-AI + Multi-OS package
 
-RZ/V2L is capable of multi-OS running at the same time, thus allows the given OS communication with each other. And an AI accelerator plus.  
+RZ/V2L contains a proprietary AI accelerator which we called `DRPAI` and additionally is capable of multi-OS running at the same time, thus allows the given OS communication with each other accordingly.  
 
 #### 1. Placeholder 'Renesas_software'
 
