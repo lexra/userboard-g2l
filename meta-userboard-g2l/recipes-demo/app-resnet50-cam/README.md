@@ -134,7 +134,9 @@ cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-a
          ../meta-userboard-g2l/recipes-demo/app-yolo-img
 ```
 
-#### 3.2 Edit the  `meta-rz-features/conf/layer.conf`
+#### 3.2 Edit the `meta-rz-features/conf/layer.conf`
+
+The steps described might modify the content of `meta-rz-features/conf/layer.conf` ; please use the following to correct the `meta-rz-features/conf/layer.conf` .  
 
 ```bash
 # We have a conf and classes directory, add to BBPATH
