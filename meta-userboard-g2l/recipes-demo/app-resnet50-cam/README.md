@@ -1,8 +1,8 @@
 ### DRP-AI + Multi OS package
 
-#### Placeholder 'Renesas_software'
+#### 1 Placeholder 'Renesas_software'
 
-Place the CM33 Multi OS package, the DRP-AI support package and the DRP-AI translator package into this placeholder. 
+Place the CM33 Multi OS package, the DRPAI support package and the DRPAI translator package into this placeholder. 
 
 ```bash
  + build.sh
@@ -36,34 +36,34 @@ Place the CM33 Multi OS package, the DRP-AI support package and the DRP-AI trans
                       +-- r20ut5035ej0180-drp-ai-translator.zip
 ```
 
-### RZ/V2L Cortex-M33 Multi OS package
+### 2 RZ/V2L Cortex-M33 Multi OS package
 
-#### Enter the sources directory
+#### 2.1 Enter the sources directory
 
 ```
 mkdir -p sources && cd sources
 ```
 
-#### Unzip the CM33 Multi OS package
+#### 2.2 Unzip the CM33 Multi OS package
 
 ```bash
 unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip -d ../Renesas_software
 ```
 
-##### Unzip the rzv2l_cm33_rpmsg_demo.zip
+##### 2.2.1 Unzip the rzv2l_cm33_rpmsg_demo.zip
 
 ```
 unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/rzv2l_cm33_rpmsg_demo.zip \
       -d ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg
 ```
 
-##### Unzip the meta-rz-features.tar.gz into the `sources` directory
+##### 2.2.2 Unzip the meta-rz-features.tar.gz into the `sources` directory
 
 ```
 tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz
 ```
 
-##### Bitbake core-image-qt
+#### 2.3 Bitbake core-image-qt
 
 Run `bitbake core-image-qt` shall install CM33 Multi OS package properly. 
 
@@ -77,13 +77,17 @@ To uninstall,
 rm -rfv meta-rz-features/recipes-openamp
 ```
 
+### 3 RZ/V2L DRP-AI support package
 
-
-
-### RZ/V2L DRP-AI support package
+#### 3.1 Unzip the DRPAI support package
 
 ```
 unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
+```
+
+##### 3.1.1 Unzip the meta-rz-features.tar.gz into the `sources` directory
+
+```
 tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
 ```
 
