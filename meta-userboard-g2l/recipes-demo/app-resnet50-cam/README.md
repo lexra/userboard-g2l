@@ -271,7 +271,7 @@ cp -Rpf ${DRPAI_TRANSLATOR_RELEASE}/output/${MODEL}_${IMG_SRC} ${APP_NAME}/exe
 
 ##### 4.3.5 Bitbake core-image-qt
 
-Run `bitbake core-image-qt` shall properly rebuild and install the RZ/V2L DRPAI sample applications. 
+Run `bitbake core-image-qt` shall properly rebuild and install the `app-resnet50-cam`. 
 
 ```bash
 bitbake core-image-qt
