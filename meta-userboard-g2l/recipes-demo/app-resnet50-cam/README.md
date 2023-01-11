@@ -94,7 +94,8 @@ tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/m
 ##### 3.1.2 Unzip the DRPAI sample application
 
 ```
-tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.20.tar.gz \
-      -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application
+tar zxvf \
+      ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.20.tar.gz \
+   -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application
 ```
 
