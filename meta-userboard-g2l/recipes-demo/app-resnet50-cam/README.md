@@ -1,6 +1,6 @@
 ### DRP-AI + Multi-OS package
 
-RZ/V2L allows multi-OS running at the same time, and allows multi-OS communication with each other. 
+RZ/V2L is capable of multi-OS running at the same time, thus allows the given OS communication with each other. 
 
 #### 1 Placeholder 'Renesas_software'
 
