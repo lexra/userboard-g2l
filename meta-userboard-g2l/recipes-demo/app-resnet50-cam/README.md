@@ -193,6 +193,8 @@ rm -rfv meta-rz-features/include/drpai
 
 ### 4. `DRPAI` Translate
 
+We take the `app-resnet50-cam` for an example to demostrate steps of DRPAI-Translate. 
+
 #### 4.1  Inatall the `DRPAI` translator
 
 ```bash
