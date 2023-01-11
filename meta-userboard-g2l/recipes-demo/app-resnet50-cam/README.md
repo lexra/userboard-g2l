@@ -97,7 +97,7 @@ unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_so
 tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
 ```
 
-This step is identical to 2.2.2, just the content of `meta-rz-features.tar.gz` different. 
+This step is identical to `2.2.2`, just the content of each `meta-rz-features.tar.gz` is different. 
 
 ##### 3.1.2 Unzip the DRPAI sample application
 
