@@ -222,3 +222,8 @@ tar zxvf \
 ```
 
 
+```bash
+cd ${PROJECT_DIR}
+cd meta-userboard-g2l/recipes-demo/app-resnet50-cam
+```
+
