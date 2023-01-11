@@ -81,11 +81,11 @@ To uninstall,
 rm -rfv meta-rz-features/recipes-openamp
 ```
 
-### 3. RZ/V2L DRP-AI support package
+### 3. RZ/V2L `DRPAI` support package
 
 ![image](https://user-images.githubusercontent.com/33512027/211717812-11ddd876-0e96-427a-a600-771dbe3affb7.png)
 
-#### 3.1 Unzip the DRPAI support package
+#### 3.1 Unzip the `DRPAI` support package
 
 ```
 unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
@@ -99,7 +99,7 @@ tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/m
 
 This step is identical to `2.2.2`, just the content of each `meta-rz-features.tar.gz` is different. 
 
-##### 3.1.2 Unzip the DRPAI sample application
+##### 3.1.2 Unzip the `DRPAI` sample application
 
 ```
 tar zxvf \
