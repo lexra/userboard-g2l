@@ -217,8 +217,8 @@ tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementatio
       -C ../drp-ai_translator_release
 
 tar zxvf \
- ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_mobilenet/pytorch_mobilenet_ver7.20.tar.gz \
- -C ../drp-ai_translator_release
+../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_mobilenet/pytorch_mobilenet_ver7.20.tar.gz \
+-C ../drp-ai_translator_release
 ```
 
 
