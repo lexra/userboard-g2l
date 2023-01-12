@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-MACHINE=smarc-rzg2l
+MACHINE=smarc-rzv2l
 MMCBLK=/dev/mmcblk0
 
 [ `mount | grep ' on / type nfs' | wc -l` -eq 0 ] && exit 0
@@ -64,8 +64,8 @@ tar zxvf /boot/modules-${MACHINE}.tgz -C /mnt
 umount /mnt
 mount ${MMCBLK}p1 /mnt
 rm -rfv /mnt/*
-/bin/cp -fv /boot/Image /mnt
-/bin/cp -fv /boot/*.dtb /mnt
+/bin/cp -Rpfv /boot/Image* /mnt
+/bin/cp -Rpfv /boot/*.dtb /mnt
 umount /mnt
 
 reboot
