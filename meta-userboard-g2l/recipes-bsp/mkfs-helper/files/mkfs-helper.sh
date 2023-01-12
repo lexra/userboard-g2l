@@ -64,8 +64,8 @@ tar zxvf /boot/modules-${MACHINE}.tgz -C /mnt
 umount /mnt
 mount ${MMCBLK}p1 /mnt
 rm -rfv /mnt/*
-/bin/cp -Rpfv /boot/Image* /mnt
-/bin/cp -Rpfv /boot/*.dtb /mnt
+/bin/cp -a /boot/Image* /mnt
+/bin/cp -a /boot/r*.dtb /mnt
 umount /mnt
 
 reboot
