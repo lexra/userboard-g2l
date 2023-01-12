@@ -211,7 +211,7 @@ cd -
 
 #### 4.2  Extract the `pytorch_resnet_ver7.20.tar.gz` to `drp-ai_translator_release`
 
-```
+```bash
 tar zxvf \
  ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_resnet/pytorch_resnet_ver7.20.tar.gz \
  -C ../drp-ai_translator_release
