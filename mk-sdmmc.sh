@@ -42,22 +42,27 @@ function print_boot_example() {
 	echo ""
 	echo -e "${YELLOW} root@smarc-rzv2l:~# rpmsg_sample_client 0 ${NC}"
 	echo ""
+	echo -e "${YELLOW} root@smarc-rzv2l:~# vi /etc/xdg/weston/weston.ini ${NC}"
+	echo ""
+	echo -e "${YELLOW}[output] ${NC}"
+	echo -e "${YELLOW}name=HDMI-A-1 ${NC}"
+	echo -e "${YELLOW}mode=1280x720 ${NC}"
+	echo ""
 }
 
 function make_rootfs_dir () {
-        sudo rm -rf rootfs && mkdir -p rootfs
-        sudo tar zxvf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-${1}.tar.gz -C rootfs
-        sudo tar zxvf build_${1}/tmp/deploy/images/${1}/modules-${1}.tgz -C rootfs
-        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/Image* rootfs/boot
-        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/*.dtb rootfs/boot
-        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/rzv2l_cm33_rpmsg_demo_*.bin rootfs/boot
-        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-*${1}*.tar.gz rootfs/boot
-        sudo cp -Rpf build_${1}/tmp/deploy/images/${1}/modules-*${1}*.tgz rootfs/boot
-        sudo chmod go+rwx rootfs/home/root
-
+	sudo rm -rf rootfs && mkdir -p rootfs
+	sudo tar zxvf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-${1}.tar.gz -C rootfs
+	sudo tar zxvf build_${1}/tmp/deploy/images/${1}/modules-${1}.tgz -C rootfs
+	sudo cp -a build_${1}/tmp/deploy/images/${1}/Image* rootfs/boot
+	sudo cp -a build_${1}/tmp/deploy/images/${1}/*.dtb rootfs/boot
+	sudo cp -a build_${1}/tmp/deploy/images/${1}/rzv2l_cm33_rpmsg_demo_*.bin rootfs/boot
+	sudo cp -a build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-*${1}*.tar.gz rootfs/boot
+	sudo cp -a build_${1}/tmp/deploy/images/${1}/modules-*${1}*.tgz rootfs/boot
+	sudo chmod ugo+rwx rootfs/home/root
 	if [ -d /tftpboot ]; then
-		 cp -Rpfv build_${1}/tmp/deploy/images/${1}/Image* /tftpboot
-		 cp -Rpfv build_${1}/tmp/deploy/images/${1}/*.dtb /tftpboot
+		 cp -a build_${1}/tmp/deploy/images/${1}/Image* /tftpboot
+		 cp -a build_${1}/tmp/deploy/images/${1}/r*.dtb /tftpboot
 	fi
 }
 
@@ -113,7 +118,6 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | sudo fdisk ${SDDEV}
  83
  p
  w
- q
 EOF
 
 ##############################
@@ -122,11 +126,14 @@ sudo losetup -Pf ${SDDEV}
 LOOP=$(losetup | grep SDMMC | awk '{print $1}')
 echo y | sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=1 ${LOOP}p1 -L boot -jDv
 sudo mount ${LOOP}p1 mnt
-sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/Image* mnt
-sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/*.dtb mnt
-sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/rzv2l_cm33_rpmsg_demo_*.bin mnt
-sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/${CORE_IMAGE}-${TARGET_BOARD}*.tar.gz mnt
-sudo cp -Rpf ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/modules-*.tgz mnt
+chmod ugo+rw ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/Image*
+chmod ugo+rw ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/*.dtb
+
+sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/Image* mnt
+sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/*.dtb mnt
+sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/rzv2l_cm33_rpmsg_demo_*.bin mnt
+sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/${CORE_IMAGE}-${TARGET_BOARD}*.tar.gz mnt
+sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/modules-*.tgz mnt
 sudo umount mnt
 
 echo y | sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=1 ${LOOP}p2 -L rootfs -U 614e0000-0000-4b53-8000-1d28000054a9 -jDv

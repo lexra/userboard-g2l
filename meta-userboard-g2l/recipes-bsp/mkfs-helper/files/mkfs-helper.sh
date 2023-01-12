@@ -1,9 +1,8 @@
 #!/bin/sh -e
 
-MACHINE=smarc-rzv2l
+MACHINE=$(cat /etc/hostname)
 MMCBLK=/dev/mmcblk0
 
-[ `mount | grep ' on / type nfs' | wc -l` -eq 0 ] && exit 0
 [ ! -f /boot/core-image-qt-${MACHINE}.tar.gz ] && exit 0
 
 umount ${MMCBLK}p1 || true
@@ -46,15 +45,15 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${MMCBLK}
 
  t
  1
- c
+ 83
  t
  2
  83
  w
 EOF
 sync
-echo yes | mkfs.vfat -n BOOT ${MMCBLK}p1
-echo yes | mkfs.ext4 -E lazy_itable_init=1,lazy_journal_init=1 ${MMCBLK}p2 -L rootfs -U 614e0000-0000-4b53-8000-1d28000054a9 -jDv
+echo yes | mkfs.ext4 -E lazy_itable_init=1,lazy_journal_init=1 ${MMCBLK}p1 -L boot -U 971f7d9a-684d-4f90-80f0-9825f95fcb7a -jDv
+echo yes | mkfs.ext4 -E lazy_itable_init=1,lazy_journal_init=1 ${MMCBLK}p2 -L root -U 614e0000-0000-4b53-8000-1d28000054a9 -jDv
 
 mount ${MMCBLK}p2 /mnt
 rm -rfv /mnt/*
