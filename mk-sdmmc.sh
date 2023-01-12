@@ -54,6 +54,7 @@ function make_rootfs_dir () {
 	sudo rm -rf rootfs && mkdir -p rootfs
 	sudo tar zxvf build_${1}/tmp/deploy/images/${1}/core-image-${HMI}-${1}.tar.gz -C rootfs
 	sudo tar zxvf build_${1}/tmp/deploy/images/${1}/modules-${1}.tgz -C rootfs
+	sudo cp -a build_${1}/tmp/deploy/images/${1}/rzv2l_cm33_rpmsg_demo_*.bin rootfs/boot
 	sudo cp -a build_${1}/tmp/deploy/images/${1}/Image* rootfs/boot
 	sudo cp -a build_${1}/tmp/deploy/images/${1}/*.dtb rootfs/boot
 	sudo cp -a build_${1}/tmp/deploy/images/${1}/rzv2l_cm33_rpmsg_demo_*.bin rootfs/boot
@@ -126,9 +127,6 @@ sudo losetup -Pf ${SDDEV}
 LOOP=$(losetup | grep SDMMC | awk '{print $1}')
 echo y | sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=1 ${LOOP}p1 -L boot -jDv
 sudo mount ${LOOP}p1 mnt
-chmod ugo+rw ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/Image*
-chmod ugo+rw ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/*.dtb
-
 sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/Image* mnt
 sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/*.dtb mnt
 sudo cp -a ${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/rzv2l_cm33_rpmsg_demo_*.bin mnt

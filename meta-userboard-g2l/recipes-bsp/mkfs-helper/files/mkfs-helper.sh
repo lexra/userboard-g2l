@@ -59,12 +59,13 @@ mount ${MMCBLK}p2 /mnt
 rm -rfv /mnt/*
 tar zxvf /boot/core-image-qt-${MACHINE}.tar.gz -C /mnt
 tar zxvf /boot/modules-${MACHINE}.tgz -C /mnt
-
 umount /mnt
+
 mount ${MMCBLK}p1 /mnt
 rm -rfv /mnt/*
 cp -a /boot/Image* /mnt
-cp -a /boot/r*.dtb /mnt
+cp -a /boot/*.dtb /mnt
+cp -a /boot/rzv2l_cm33_rpmsg_demo_*.bin /mnt || true
 umount /mnt
 
 reboot
