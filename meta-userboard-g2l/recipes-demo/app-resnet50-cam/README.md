@@ -125,15 +125,21 @@ tar zxvf \
   -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide
 ```
 
-##### 3.1.4 Copy prebuilt sample applications
+##### 3.1.4 Copy the prebuilt sample applications
 
 ```bash
+cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_cam \
+         ../meta-userboard-g2l/recipes-demo/app-hrnet-cam
+cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_pre-tinyyolov2_cam \
+         ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam
 cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_cam \
          ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
 cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_img \
          ../meta-userboard-g2l/recipes-demo/app-resnet50-img
 cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_cam \
          ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam
+cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_isp \
+         ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp
 cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img \
          ../meta-userboard-g2l/recipes-demo/app-yolo-img
 ```
@@ -241,7 +247,7 @@ export MODEL=resnet50
 export IMG_SRC=cam
 ```
 
-##### 4.3.2  Change directory to `meta-userboard-g2l/recipes-demo/app-resnet50-cam`
+##### 4.3.2  Change directory to `app-resnet50-cam`
 
 ```bash
 cd ${PROJECT_DIR}
