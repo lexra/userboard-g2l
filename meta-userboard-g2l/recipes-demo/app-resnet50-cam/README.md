@@ -1,10 +1,10 @@
-### RZ/V2L `DRP-AI`, `CM33 Multi-OS` support packages Quick Start Guide 
+## RZ/V2L `DRP-AI`, `CM33 Multi-OS` support packages Quick Start Guide 
 
 ![image](https://user-images.githubusercontent.com/33512027/211969214-fc007799-c42c-429e-85a3-96f78df51d34.png)
 
 RZ/V2L contains a proprietary AI accelerator which we called `DRPAI` and additionally is capable of multi-OS running at the same time, thus allows the given OS communication with each other accordingly.  
 
-#### 1. Placeholder 'Renesas_software'
+### 1. Placeholder `Renesas_software`
 
 Place the CM33 Multi OS package, the DRPAI support package and the DRPAI translator package into this placeholder. 
 
