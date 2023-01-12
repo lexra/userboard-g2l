@@ -151,6 +151,7 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/mmpose_hrnet/mmpose_hrnet_ver7.20.tar.gz -C ../drp-ai_translator_release
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/darknet_yolo/darknet_yolo_ver7.20.tar.gz -C ../drp-ai_translator_release
 		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_mobilenet/pytorch_mobilenet_ver7.20.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_deeplabv3/pytorch_deeplabv3_ver7.20.tar.gz -C ../drp-ai_translator_release
 	fi
 
 	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}
