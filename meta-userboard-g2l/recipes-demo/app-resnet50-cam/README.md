@@ -229,7 +229,7 @@ tar zxvf \
 
 #### 4.3  DRPAI translate
 
-##### 4.3.1  Environment export
+##### 4.3.1  Environment
 
 ```bash
 export DRPAI_TRANSLATOR_RELEASE=../../../drp-ai_translator_release
