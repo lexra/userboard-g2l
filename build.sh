@@ -61,12 +61,12 @@ if [ ! -e Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2.zip ]; then
 	echo -e ${YELLOW}'Please download the RTK0EF0045Z0024AZJ-v3.0.0-update2.zip from renesas.com . '${NC}
 	exit 1
 fi
-if [ ! -e Renesas_software/RTK0EF0045Z13001ZJ-v1.21_EN.zip ]; then
-	echo -e ${YELLOW}'Please download the RTK0EF0045Z13001ZJ-v1.21_EN.zip from renesas.com . '${NC}
+if [ ! -e Renesas_software/RTK0EF0045Z13001ZJ-v1.4_EN.zip ]; then
+	echo -e ${YELLOW}'Please download the RTK0EF0045Z13001ZJ-v1.4_EN.zip from renesas.com . '${NC}
 	exit 1
 fi
-if [ ! -e Renesas_software/RTK0EF0045Z15001ZJ-v0.58_EN.zip ]; then
-	echo -e ${YELLOW}'Please download the RTK0EF0045Z15001ZJ-v0.58_EN.zip from renesas.com . '${NC}
+if [ ! -e Renesas_software/RTK0EF0045Z15001ZJ-v1.0.1_EN.zip ]; then
+	echo -e ${YELLOW}'Please download the RTK0EF0045Z15001ZJ-v1.0.1_EN.zip from renesas.com . '${NC}
 	exit 1
 fi
 
@@ -97,17 +97,18 @@ fi
 #if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
 #	tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2/rzv_bsp_v3.0.2.tar.gz
 #fi
-echo -e ${GREEN}'>> RZ MPU Graphics Library Evaluation Version V1.21 for RZ/G2L, RZ/G2LC, and RZ/V2L'${NC}
-[ ! -d ../Renesas_software/RTK0EF0045Z13001ZJ-v1.21_EN ] && \
-	unzip -o ../Renesas_software/RTK0EF0045Z13001ZJ-v1.21_EN.zip -d ../Renesas_software
-[ ! -e meta-rz-features/recipes-graphics/mali/mali-library.bb ] && \
-	tar zxvf ../Renesas_software/RTK0EF0045Z13001ZJ-v1.21_EN/meta-rz-features.tar.gz
 
-echo -e ${GREEN}'>> RZ MPU Video Codec Library Evaluation Version V0.58 for RZ/G2L and RZ/V2L'${NC}
-[ ! -d ../Renesas_software/RTK0EF0045Z15001ZJ-v0.58_EN ] && \
-	unzip -o ../Renesas_software/RTK0EF0045Z15001ZJ-v0.58_EN.zip -d ../Renesas_software
+echo -e ${GREEN}'>> RZ MPU Graphics Library Evaluation Version 1.4 for RZ/G2L, RZ/G2LC, and RZ/V2L'${NC}
+[ ! -d ../Renesas_software/RTK0EF0045Z13001ZJ-v1.4_EN ] && \
+	unzip -o ../Renesas_software/RTK0EF0045Z13001ZJ-v1.4_EN.zip -d ../Renesas_software
+[ ! -e meta-rz-features/recipes-graphics/mali/mali-library.bb ] && \
+	tar zxvf ../Renesas_software/RTK0EF0045Z13001ZJ-v1.4_EN/meta-rz-features_graphics_v1.4.tar.gz
+
+echo -e ${GREEN}'>> RZ MPU Video Codec Library Evaluation Version 1.0.1 for RZ/G2L and RZ/V2L'${NC}
+[ ! -d ../Renesas_software/RTK0EF0045Z15001ZJ-v1.0.1_EN ] && \
+	unzip -o ../Renesas_software/RTK0EF0045Z15001ZJ-v1.0.1_EN.zip -d ../Renesas_software
 [ ! -e meta-rz-features/recipes-codec/omx-module/omx-user-module.bb ] && \
-	tar zxvf ../Renesas_software/RTK0EF0045Z15001ZJ-v0.58_EN/meta-rz-features.tar.gz
+	tar zxvf ../Renesas_software/RTK0EF0045Z15001ZJ-v1.0.1_EN/meta-rz-features_codec_v1.0.1.tar.gz
 
 if [ ! -e Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz ]; then
 	unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip -d ../Renesas_software

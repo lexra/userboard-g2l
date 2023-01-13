@@ -357,8 +357,8 @@ RZ/G2L Evaluation Board Kit PMIC version
 
 | Name                                  | File                                        | Description                                                                   |
 | :------------------------------------ | :------------------------------------------ | :---------------------------------------------------------------------------- |
-| RZ MPU Graphics Library v1.2          | RTK0EF0045Z13001ZJ-v1.2_EN.zip              | This provides graphics function compliant with the OpenGL ES standard.        |
-| RZ MPU Video Codec Library v0.58      | RTK0EF0045Z15001ZJ-v0.58_EN.zip             | RZ MPU Video Codec Library for RZ/G2L.                                        |
+| RZ MPU Graphics Library v1.4          | RTK0EF0045Z13001ZJ-v1.4_EN.zip              | This provides graphics function compliant with the OpenGL ES standard.        |
+| RZ MPU Video Codec Library v1.0.1     | RTK0EF0045Z15001ZJ-v1.0.1_EN.zip            | RZ MPU Video Codec Library for RZ/G2L.                                        |
 | VLP/G v3.0.0-update2                  | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip       | RZ/G Verified Linux Package                                                   |
 | RZ/V2L Group Multi-OS Package [V1.02] | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip | RZ/V2L Group Multi-OS Package                                                 |
 | RZ/V2L DRP-AI Support Package [V7.20] | r11an0549ej0720-rzv2l-drpai-sp.zip          | RZ/V2L DRP-AI Support Package                                                 |
@@ -374,7 +374,7 @@ RZ/G2L Evaluation Board Kit PMIC version
                       |
                       +-- RTK0EF0045Z13001ZJ-v1.2_EN.zip
                       |
-                      +-- RTK0EF0045Z15001ZJ-v0.58_EN.zip
+                      +-- RTK0EF0045Z15001ZJ-v1.0.1_EN.zip
                       |
                       +-- r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip
                       |
