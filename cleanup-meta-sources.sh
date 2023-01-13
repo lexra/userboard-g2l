@@ -8,9 +8,9 @@ NC='\033[0m' # No Color
 [ ! -d Renesas_software ] && exit 1
 
 cd Renesas_software
-find . -type d | xargs rm -rfv || true
+find . -type d | xargs sudo rm -rfv || true
 cd -
-rm -rfv sources mnt drp-ai_translator_release \
+sudo rm -rfv sources mnt drp-ai_translator_release \
 	meta-userboard-g2l/recipes-demo/app-hrnet-cam/app_hrnet_cam \
 	meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam/app_hrnet_pre-tinyyolov2_cam \
 	meta-userboard-g2l/recipes-demo/app-resnet50-cam/app_resnet50_cam \
