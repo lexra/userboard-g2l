@@ -27,7 +27,7 @@ Place the CM33 Multi OS package, the DRPAI support package and the DRPAI transla
  |
  + meta-userboard-g2l 
  |
- + Renesas_software --+-- RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
+ + Renesas_software --+-- RTK0EF0045Z0024AZJ-v3.0.2.zip
                       |
                       +-- RTK0EF0045Z13001ZJ-v1.4_EN.zip
                       |
