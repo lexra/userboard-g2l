@@ -84,22 +84,19 @@ echo ""
 mkdir -p ${SCRIP_DIR}/sources
 cd ${SCRIP_DIR}/sources
 
-if [ "${TARGET_BOARD}" == "gnk-rzg2l" -o "${TARGET_BOARD}" == "gnk-rzv2l" ]; then
-	echo -e ${GREEN}'>> RZ/G Verified Linux Package V3.0.0-update2'${NC}
-	[ ! -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2 ] && \
-		unzip -o ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2.zip -d ../Renesas_software
-	if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
-		tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2/rzv_bsp_v3.0.0.tar.gz
-		patch -p1 -l -f --fuzz 3 -i ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2/rzv_v300-to-v300update2.patch
-	fi
-else
-	echo -e ${GREEN}'>> RZ/G Verified Linux Package V3.0.2'${NC}
-	[ ! -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 ] && \
-		(mkdir -p ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 && unzip -o ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2.zip -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2)
-	if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
-		tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2/rzv_bsp_v3.0.2.tar.gz
-	fi
+echo -e ${GREEN}'>> RZ/G Verified Linux Package V3.0.0-update2'${NC}
+[ ! -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2 ] && \
+	unzip -o ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2.zip -d ../Renesas_software
+if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
+	tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2/rzv_bsp_v3.0.0.tar.gz
+	patch -p1 -l -f --fuzz 3 -i ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2/rzv_v300-to-v300update2.patch
 fi
+#echo -e ${GREEN}'>> RZ/G Verified Linux Package V3.0.2'${NC}
+#	[ ! -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 ] && \
+#		(mkdir -p ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 && unzip -o ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2.zip -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2)
+#	if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
+#		tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2/rzv_bsp_v3.0.2.tar.gz
+#	fi
 
 echo -e ${GREEN}'>> RZ MPU Graphics Library Evaluation Version 1.4 for RZ/G2L, RZ/G2LC, and RZ/V2L'${NC}
 [ ! -d ../Renesas_software/RTK0EF0045Z13001ZJ-v1.4_EN ] && \
