@@ -1,9 +1,11 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-#SRC_URI_remove = " 0006-update-cpg-function-for-drp.patch "
-#SRC_URI_append = " \
-#	${@oe.utils.conditional("DRPAI_RECIPES", "True", "0006-update-cpg-function-for-drp.patch", "", d)} \
-#"
+SRC_URI_remove = " \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "0006-update-cpg-function-for-drp.patch", "", d)} \
+"
+SRC_URI_append = " \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "0006-update-cpg-function-for-drp.patch", "", d)} \
+"
 
 SRC_URI_append = " \
 	file://nfsd.cfg \
