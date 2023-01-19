@@ -17,14 +17,9 @@ MODEL=resnet50
 IMG_SRC=cam
 
 ##########################################################
-NEED_RESTORE=0
-if [ -x /usr/bin/python3.8 -a -x /usr/bin/x86_64-linux-gnu-python3.8-config -a "$(lsb_release -a | grep 'Release:' | awk '{print $2}')" == ""18.04 ]; then
-	echo -e "${YELLOW} => update python3 to python3.8 ${NC}"
-	echo ""
-	sudo ln -sf python3.8 /usr/bin/python3
-	sudo ln -sf x86_64-linux-gnu-python3.8-config /usr/bin/python3.8-config
-	sudo ln -sf python3.8-config /usr/bin/python3-config
-	NEED_RESTORE=1
+if [ 0 -eq `python3 -m pip list | grep torch | wc -l` ]; then
+	pip3 uninstall torch torchvision torchaudio -y || true
+	pip3 install torch==1.11.0 torchvision==0.12.0+cpu torchaudio==0.11.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 fi
 
 ##########################################################
@@ -53,14 +48,5 @@ echo -e "${YELLOW} => ${APP_NAME}/exe/${MODEL}_${IMG_SRC} ${NC}"
 rm -rf ${APP_NAME}/exe/${MODEL}_${IMG_SRC}
 /bin/cp -Rpf ${DRPAI_TRANSLATOR_RELEASE}/output/${MODEL}_${IMG_SRC} ${APP_NAME}/exe
 ls -l --color ${APP_NAME}/exe/${MODEL}_${IMG_SRC}
-
-##########################################################
-if [ -x /usr/bin/python3.6 -a -x /usr/bin/x86_64-linux-gnu-python3.6-config -a 1 -eq ${NEED_RESTORE} ]; then
-	echo ""
-	echo -e "${YELLOW} => restore python3 to default ${NC}"
-	sudo ln -sf python3.6 /usr/bin/python3
-	sudo ln -sf x86_64-linux-gnu-python3.6-config /usr/bin/python3.6-config
-	sudo ln -sf python3.6-config /usr/bin/python3-config
-fi
 
 exit 0
