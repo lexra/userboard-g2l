@@ -37,11 +37,11 @@ do_install_class-target () {
 }
 
 do_compile_prepend() {
-	SDKTARGETSYSROOT=${STAGING_DIR_TARGET} oe_runmake -C ${S} clean
+	oe_runmake SDKTARGETSYSROOT=${STAGING_DIR_TARGET} -C ${S} clean
 }
 
 do_compile () {
-	SDKTARGETSYSROOT=${STAGING_DIR_TARGET} oe_runmake -C ${S}
+	oe_runmake SDKTARGETSYSROOT=${STAGING_DIR_TARGET} -C ${S}
 }
 
 do_configure[noexec] = "1"
