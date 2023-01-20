@@ -17,7 +17,7 @@ MODEL=resnet50
 IMG_SRC=cam
 
 ##########################################################
-if [ 0 -eq `python3 -m pip list | grep torch | wc -l` ]; then
+if [ 0 -eq `python3 -m pip list | grep torch | wc -l` -o 1 -eq `python3 -m pip list | grep torch | wc -l` ]; then
 	pip3 uninstall torch torchvision torchaudio -y || true
 	pip3 install torch==1.11.0 torchvision==0.12.0+cpu torchaudio==0.11.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 fi
