@@ -189,7 +189,7 @@ git -C meta-browser checkout -b develop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67
 cd ${SCRIP_DIR}/sources
 echo -e ${GREEN}'>> meta-gnk-board '${NC}
 git clone https://github.com/xlloss/meta-gnk-board.git || true
-git -C meta-gnk-board checkout -b develop 6ce09ce5733b1765c3547826816fb081fdbd84b7 || true
+git -C meta-gnk-board checkout -b develop 6963c722438e2ab0acde7154d52895107924b6ab || true
 git -C meta-gnk-board checkout .
 sed 's|userboard|gnk|g' -i meta-gnk-board/conf/layer.conf
 sed 's|^BBFILES += "${@|#BBFILES += "${@|g' -i meta-gnk-board/conf/layer.conf
