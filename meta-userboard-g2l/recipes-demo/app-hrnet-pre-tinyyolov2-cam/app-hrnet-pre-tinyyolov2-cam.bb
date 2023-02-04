@@ -1,5 +1,6 @@
 APP_NAME = "app_hrnet_pre-tinyyolov2_cam"
 MODEL = "hrnet"
+MODEL2 = "tinyyolov2"
 IMG_SRC = "cam"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${APP_NAME}:"
@@ -24,7 +25,9 @@ S = "${WORKDIR}/src"
 
 do_install_class-target () {
 	install -d ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC}
+	install -d ${D}/home/root/${APP_NAME}/exe/tinyyolov2_cam
 	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC} || true
+	install ${WORKDIR}/exe/${MODEL2}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/exe/${MODEL2}_${IMG_SRC} || true
 
 	install ${WORKDIR}/exe/sample_app* ${D}/home/root/${APP_NAME}/exe || true
 	install ${WORKDIR}/exe/*.txt ${D}/home/root/${APP_NAME}/exe || true
@@ -36,11 +39,11 @@ do_install_class-target () {
 }
 
 do_compile_prepend() {
-	SDKTARGETSYSROOT=${STAGING_DIR_TARGET} oe_runmake -C ${S} clean
+	oe_runmake SDKTARGETSYSROOT=${STAGING_DIR_TARGET} -C ${S} clean
 }
 
 do_compile () {
-	SDKTARGETSYSROOT=${STAGING_DIR_TARGET} oe_runmake -C ${S}
+	oe_runmake SDKTARGETSYSROOT=${STAGING_DIR_TARGET} -C ${S}
 }
 
 do_configure[noexec] = "1"
