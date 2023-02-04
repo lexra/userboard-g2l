@@ -17,6 +17,10 @@ IMAGE_INSTALL_append = " \
 	mpg123 libexif giflib \
 "
 
+IMAGE_INSTALL_append_smarc-rzv2l = " \
+	tvm \
+"
+
 IMAGE_INSTALL_append = " \
 	bayer2raw drm2png \
 	mkfs-helper \
@@ -80,5 +84,6 @@ greenpak_update_issues () {
     echo "LSI: ${BSP_SOC}" >> ${IMAGE_ROOTFS}/etc/issue
     echo "Version: ${BSP_VERSION}" >> ${IMAGE_ROOTFS}/etc/issue
 }
+
 ROOTFS_POSTPROCESS_COMMAND_remove = "update_issue; "
 ROOTFS_POSTPROCESS_COMMAND_append = " greenpak_update_issues; "
