@@ -9,8 +9,6 @@ SRC_URI = " \
 	file://* \
 "
 
-COMPATIBLE_MACHINE_rzv2l = "(smarc-rzv2l|rzv2l-dev|gnk-rzv2l)"
-
 inherit autotools cmake cmake-native pkgconfig python3native
 
 DEPENDS += " \

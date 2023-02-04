@@ -17,9 +17,9 @@ IMAGE_INSTALL_append = " \
 	mpg123 libexif giflib \
 "
 
-IMAGE_INSTALL_append_smarc-rzv2l = " \
-	tvm \
-"
+IMAGE_INSTALL_append_smarc-rzv2l = " tvm "
+IMAGE_INSTALL_append_rzv2l-dev = " tvm "
+IMAGE_INSTALL_append_gnk-rzv2l = " tvm "
 
 IMAGE_INSTALL_append = " \
 	bayer2raw drm2png \
