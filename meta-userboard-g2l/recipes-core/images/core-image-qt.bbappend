@@ -17,15 +17,25 @@ IMAGE_INSTALL_append = " \
 	mpg123 libexif giflib \
 "
 
-IMAGE_INSTALL_append_smarc-rzv2l = " tvm usbcam-http-demo "
-IMAGE_INSTALL_append_rzv2l-dev = " tvm usbcam-http-demo "
-IMAGE_INSTALL_append_gnk-rzv2l = " tvm usbcam-http-demo "
+IMAGE_INSTALL_append_smarc-rzv2l = " \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
+	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "tvm usbcam-http-demo", "", d)} \
+"
+IMAGE_INSTALL_append_rzv2l-dev = " \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
+	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "tvm usbcam-http-demo", "", d)} \
+"
+IMAGE_INSTALL_append_gnk-rzv2l = " \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
+	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "tvm usbcam-http-demo", "", d)} \
+"
 
 IMAGE_INSTALL_append = " \
 	bayer2raw drm2png \
 	mkfs-helper \
-	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
-	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
 	${@oe.utils.conditional("CHROMIUM", "1", "chromium-ozone-wayland", "", d)} \
 	${@bb.utils.contains("DISTRO_FEATURES", "wayland", "glmark2", "", d)} \
 	lws \
