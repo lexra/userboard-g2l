@@ -8,6 +8,10 @@ SRC_URI = " \
 	git://github.com/renesas-rz/rzv2l_smarc_sample_code.git;protocol=https;branch=main \
 	file://coco-labels-2014_2017.txt \
 	file://synset_words_imagenet.txt \
+	file://hrnet_cam \
+	file://resnet50_cam \
+	file://tinyyolov2_cam \
+	file://yolov3_cam \
 "
 
 inherit cmake pkgconfig
@@ -32,9 +36,16 @@ do_install_class-target () {
 	install ${S}/../etc/yolov3_cam/*.yaml ${D}/home/root/${PN}/etc/yolov3_cam
 
 	install -d ${D}/home/root/${PN}/exe/hrnet_cam
+	install ${WORKDIR}/hrnet_cam/* ${D}/home/root/${PN}/exe/hrnet_cam
+
 	install -d ${D}/home/root/${PN}/exe/resnet50_cam
+	install ${WORKDIR}/resnet50_cam/* ${D}/home/root/${PN}/exe/resnet50_cam
+
 	install -d ${D}/home/root/${PN}/exe/tinyyolov2_cam
+	install ${WORKDIR}/tinyyolov2_cam/* ${D}/home/root/${PN}/exe/tinyyolov2_cam
+
 	install -d ${D}/home/root/${PN}/exe/yolov3_cam
+	install ${WORKDIR}/yolov3_cam/* ${D}/home/root/${PN}/exe/yolov3_cam
 
 	install -d ${D}/home/root/${PN}/css
 	install -d ${D}/home/root/${PN}/js
