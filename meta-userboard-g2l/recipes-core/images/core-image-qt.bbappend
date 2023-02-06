@@ -34,6 +34,7 @@ IMAGE_INSTALL_append_gnk-rzv2l = " \
 "
 
 IMAGE_INSTALL_append = " \
+	cv-capture \
 	bayer2raw drm2png \
 	mkfs-helper \
 	${@oe.utils.conditional("CHROMIUM", "1", "chromium-ozone-wayland", "", d)} \
