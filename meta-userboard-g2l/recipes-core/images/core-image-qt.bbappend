@@ -28,6 +28,7 @@ IMAGE_INSTALL_append = " \
 	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
 	${@oe.utils.conditional("CHROMIUM", "1", "chromium-ozone-wayland", "", d)} \
 	${@bb.utils.contains("DISTRO_FEATURES", "wayland", "glmark2", "", d)} \
+	lws \
 "
 
 rz_update_issues () {

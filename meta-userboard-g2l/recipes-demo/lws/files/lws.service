@@ -1,0 +1,13 @@
+[Unit]
+Description=lws
+After=multi-user.target
+After=systemd-networkd.service
+After=rc-local.service
+
+[Service]
+ExecStart=/home/root/bin/lws.sh
+ExecStop=killall lws-minimal-ws-server-threads
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
