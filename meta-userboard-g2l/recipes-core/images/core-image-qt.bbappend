@@ -30,12 +30,16 @@ IMAGE_INSTALL_append = " \
 	${@bb.utils.contains("DISTRO_FEATURES", "wayland", "glmark2", "", d)} \
 "
 
-greenpak_update_issues () {
+rz_update_issues () {
     # Set BSP version
     BSP_VERSION="3.0.0-update2"
 
     # Set SoC and Board info
     case "${MACHINE}" in
+    greenpak-rzv2l)
+      BSP_SOC="RZV2L"
+      BSP_BOARD="RZV2L-GREENPAK-EVK"
+      ;;
     greenpak-rzg2l)
       BSP_SOC="RZG2L"
       BSP_BOARD="RZG2L-GREENPAK-EVK"
@@ -86,4 +90,4 @@ greenpak_update_issues () {
 }
 
 ROOTFS_POSTPROCESS_COMMAND_remove = "update_issue; "
-ROOTFS_POSTPROCESS_COMMAND_append = " greenpak_update_issues; "
+ROOTFS_POSTPROCESS_COMMAND_append = " rz_update_issues; "
