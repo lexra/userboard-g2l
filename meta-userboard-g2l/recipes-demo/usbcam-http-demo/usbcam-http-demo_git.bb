@@ -17,54 +17,42 @@ SRC_URI = " \
 inherit cmake pkgconfig
 
 DEPENDS += " \
-        drpai \
-        opencv \
-        wayland-protocols \
+	drpai \
+	opencv \
+	wayland-protocols \
 "
 
 S = "${WORKDIR}/git/usbcam_http_drp-ai/src"
 B = "${WORKDIR}/build"
 
 do_install_class-target () {
-	install -d ${D}/home/root/${PN}/etc/hrnet_cam
-	install -d ${D}/home/root/${PN}/etc/resnet50_cam
-	install -d ${D}/home/root/${PN}/etc/tinyyolov2_cam
-	install -d ${D}/home/root/${PN}/etc/yolov3_cam
-	install ${S}/../etc/hrnet_cam/*.yaml ${D}/home/root/${PN}/etc/hrnet_cam
-	install ${S}/../etc/resnet50_cam/*.yaml ${D}/home/root/${PN}/etc/resnet50_cam
-	install ${S}/../etc/tinyyolov2_cam/*.yaml ${D}/home/root/${PN}/etc/tinyyolov2_cam
-	install ${S}/../etc/yolov3_cam/*.yaml ${D}/home/root/${PN}/etc/yolov3_cam
+	install -d ${D}/home/root/${PN}/hrnet_cam
+	install -d ${D}/home/root/${PN}/resnet50_cam
+	install -d ${D}/home/root/${PN}/tinyyolov2_cam
+	install -d ${D}/home/root/${PN}/yolov3_cam
+	install -d ${D}/home/root/${PN}/webpages/css
+	install -d ${D}/home/root/${PN}/webpages/js
+	install -d ${D}/home/root/${PN}/webpages/libs
 
-	install -d ${D}/home/root/${PN}/exe/hrnet_cam
-	install ${WORKDIR}/hrnet_cam/* ${D}/home/root/${PN}/exe/hrnet_cam
+	install ${B}/sample_app_usbcam_http ${D}/home/root/${PN}
+	install ${WORKDIR}/coco-labels-2014_2017.txt ${D}/home/root/${PN} || true
+	install ${WORKDIR}/synset_words_imagenet.txt ${D}/home/root/${PN} || true
 
-	install -d ${D}/home/root/${PN}/exe/resnet50_cam
-	install ${WORKDIR}/resnet50_cam/* ${D}/home/root/${PN}/exe/resnet50_cam
+	install ${WORKDIR}/hrnet_cam/* ${D}/home/root/${PN}/hrnet_cam || true
+	install ${WORKDIR}/resnet50_cam/* ${D}/home/root/${PN}/resnet50_cam || true
+	install ${WORKDIR}/tinyyolov2_cam/* ${D}/home/root/${PN}/tinyyolov2_cam || true
+	install ${WORKDIR}/yolov3_cam/* ${D}/home/root/${PN}/yolov3_cam || true
 
-	install -d ${D}/home/root/${PN}/exe/tinyyolov2_cam
-	install ${WORKDIR}/tinyyolov2_cam/* ${D}/home/root/${PN}/exe/tinyyolov2_cam
-
-	install -d ${D}/home/root/${PN}/exe/yolov3_cam
-	install ${WORKDIR}/yolov3_cam/* ${D}/home/root/${PN}/exe/yolov3_cam
-
-	install -d ${D}/home/root/${PN}/css
-	install -d ${D}/home/root/${PN}/js
-	install -d ${D}/home/root/${PN}/libs
-
-	install ${B}/sample_app_usbcam_http ${D}/home/root/${PN}/exe
-	install ${WORKDIR}/coco-labels-2014_2017.txt ${D}/home/root/${PN}/exe
-	install ${WORKDIR}/synset_words_imagenet.txt ${D}/home/root/${PN}/exe
-
-	install ${S}/../etc/Websocket_Client/index.html ${D}/home/root/${PN}
-	install ${S}/../etc/Websocket_Client/css/websocket_demo.css ${D}/home/root/${PN}/css
-	install ${S}/../etc/Websocket_Client/js/websocket_demo.js ${D}/home/root/${PN}/css
-	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.css ${D}/home/root/${PN}/libs
-	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.js ${D}/home/root/${PN}/libs
-	install ${S}/../etc/Websocket_Client/libs/moment.min.js ${D}/home/root/${PN}/libs
+	install ${S}/../etc/Websocket_Client/index.html ${D}/home/root/${PN}/webpages || true
+	install ${S}/../etc/Websocket_Client/css/websocket_demo.css ${D}/home/root/${PN}/webpages/css || true
+	install ${S}/../etc/Websocket_Client/js/websocket_demo.js ${D}/home/root/${PN}/webpages/css || true
+	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.css ${D}/home/root/${PN}/webpages/libs || true
+	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.js ${D}/home/root/${PN}/webpages/libs || true
+	install ${S}/../etc/Websocket_Client/libs/moment.min.js ${D}/home/root/${PN}/webpages/libs || true
 }
 
 FILES_${PN} = " \
-        /home/root/${PN} \
+	/home/root/${PN} \
 "
 
 INSANE_SKIP_${PN} += " installed-vs-shipped "
