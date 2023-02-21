@@ -105,7 +105,7 @@ do_install_class-target () {
 	cp -Rfv ${WORKDIR}/Safety_helmet_vest_img ${D}/home/root || true
 	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_img/exe/04_Safety_helmet_vest_img_app ${D}/home/root/Safety_helmet_vest_img/exe/Safety_helmet_vest_img || true
 
-	cp -Rfv ${WORKDIR}/Face_recognition_cam ${D}/home/root/Face-dectio || true
+	cp -Rfv ${WORKDIR}/Face_recognition_cam ${D}/home/root/Face-dection || true
 	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_cam/exe/Face_recognition_cam ${D}/home/root/Face-dection/Face_recognition_cam/exe/ || true
 	cp -Rfv ${WORKDIR}/Face_recognition_img ${D}/home/root/Face-dection || true
 	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_img/exe/Face_recognition_img ${D}/home/root/Face-dection/Face_recognition_img/exe/ || true
@@ -129,6 +129,6 @@ FILES_${PN} = " \
 	/home/root/Face-dection \
 "
 
-INSANE_SKIP_${PN} += " file-rdeps "
-INSANE_SKIP_${PN}-dev += " file-rdeps "
+INSANE_SKIP_${PN} += " file-rdeps installed-vs-shipped "
+INSANE_SKIP_${PN}-dev += " file-rdeps iinstalled-vs-shipped "
 
