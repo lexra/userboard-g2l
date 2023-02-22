@@ -24,15 +24,16 @@ DEPENDS += " \
 
 S = "${WORKDIR}/git/usbcam_http_drp-ai/src"
 B = "${WORKDIR}/build"
+WEBDIR = "${localstatedir}/thttpd"
 
 do_install_class-target () {
 	install -d ${D}/home/root/${PN}/hrnet_cam
 	install -d ${D}/home/root/${PN}/resnet50_cam
 	install -d ${D}/home/root/${PN}/tinyyolov2_cam
 	install -d ${D}/home/root/${PN}/yolov3_cam
-	install -d ${D}/home/root/${PN}/webpages/css
-	install -d ${D}/home/root/${PN}/webpages/js
-	install -d ${D}/home/root/${PN}/webpages/libs
+	install -d ${D}${WEBDIR}/css
+	install -d ${D}${WEBDIR}/js
+	install -d ${D}${WEBDIR}/libs
 
 	install ${B}/sample_app_usbcam_http ${D}/home/root/${PN}
 	install ${WORKDIR}/coco-labels-2014_2017.txt ${D}/home/root/${PN} || true
@@ -43,16 +44,17 @@ do_install_class-target () {
 	install ${WORKDIR}/tinyyolov2_cam/* ${D}/home/root/${PN}/tinyyolov2_cam || true
 	install ${WORKDIR}/yolov3_cam/* ${D}/home/root/${PN}/yolov3_cam || true
 
-	install ${S}/../etc/Websocket_Client/index.html ${D}/home/root/${PN}/webpages || true
-	install ${S}/../etc/Websocket_Client/css/websocket_demo.css ${D}/home/root/${PN}/webpages/css || true
-	install ${S}/../etc/Websocket_Client/js/websocket_demo.js ${D}/home/root/${PN}/webpages/css || true
-	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.css ${D}/home/root/${PN}/webpages/libs || true
-	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.js ${D}/home/root/${PN}/webpages/libs || true
-	install ${S}/../etc/Websocket_Client/libs/moment.min.js ${D}/home/root/${PN}/webpages/libs || true
+	install ${S}/../etc/Websocket_Client/index.html ${D}${WEBDIR} || true
+	install ${S}/../etc/Websocket_Client/css/websocket_demo.css ${D}${WEBDIR}/css || true
+	install ${S}/../etc/Websocket_Client/js/websocket_demo.js ${D}${WEBDIR}/css || true
+	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.css ${D}${WEBDIR}/libs || true
+	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.js ${D}${WEBDIR}/libs || true
+	install ${S}/../etc/Websocket_Client/libs/moment.min.js ${D}${WEBDIR}/libs || true
 }
 
 FILES_${PN} = " \
 	/home/root/${PN} \
+	${WEBDIR} \
 "
 
 INSANE_SKIP_${PN} += " installed-vs-shipped "

@@ -15,6 +15,7 @@ IMAGE_INSTALL_append = " \
 	libpng libjpeg-turbo pv fbida yavta \
 	\
 	mpg123 libexif giflib \
+	thttpd \
 "
 
 IMAGE_INSTALL_append_smarc-rzv2l = " \
