@@ -70,7 +70,6 @@ NN=configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/hrnet_w32_coco_256x192
 OUTPUT=${MODEL}.onnx
 WEIGHT=hrnet_w32_coco_256x192-c78dce93_20200708.pth
 [ ! -f ${WEIGHT} ] && wget https://download.openmmlab.com/mmpose/top_down/${MODEL}/${WEIGHT} -O ${WEIGHT}
-pwd
 python3 tools/deployment/pytorch2onnx.py $NN $WEIGHT --opset-version 11 --shape 1 3 256 192 --output-file $OUTPUT
 cp -Rpfv ${MODEL}.onnx ../../onnx/${MODEL}.onnx
 
