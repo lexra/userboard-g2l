@@ -86,37 +86,64 @@ do_compile () {
 }
 
 do_install_class-target () {
-	install -d ${D}/home/root/Face-dection
+	install -d ${D}/home/root/Head_count_cam/exe/yolov3_cam
+	install ${S}/01_Head_count/Head_count_cam/exe/head_count_cam_app ${D}/home/root/Head_count_cam/exe/Head_count_cam
+	install ${S}/01_Head_count/Head_count_cam/exe/yolov3_cam/* ${D}/home/root/Head_count_cam/exe/yolov3_cam
 
-	cp -Rfv ${WORKDIR}/Head_count_cam ${D}/home/root || true
-	install ${S}/01_Head_count/Head_count_cam/exe/head_count_cam_app ${D}/home/root/Head_count_cam/exe/Head_count_cam || true
+	install -d ${D}/home/root/Head_count_img/exe/yolov3_bmp
+	install ${S}/01_Head_count/Head_count_img/exe/head_count_img_app ${D}/home/root/Head_count_img/exe/Head_count_img || true
+	install ${S}/01_Head_count/Head_count_img/exe/yolov3_bmp/* ${D}/home/root/Head_count_img/exe/yolov3_bmp
+	install -d ${D}/home/root/Head_count_img/test_images
+	install ${S}/01_Head_count/Head_count_img/test_images/* ${D}/home/root/Head_count_img/test_images
 
-	cp -Rfv ${WORKDIR}/Head_count_img ${D}/home/root || true
-	install ${S}/01_Head_count/Head_count_img/exe/01_head_count_img_app ${D}/home/root/Head_count_img/exe/Head_count_img || true
+	install -d ${D}/home/root/Line_crossing_object_counting/exe/tinyyolov2_cam
+	install ${S}/02_Line_crossing_object_counting/exe/02_Line_crossing_object_counting ${D}/home/root/Line_crossing_object_counting/exe/Line_crossing_object_counting
+	install ${S}/02_Line_crossing_object_counting/exe/tinyyolov2_cam/* ${D}/home/root/Line_crossing_object_counting/exe/tinyyolov2_cam
+	install ${S}/02_Line_crossing_object_counting/sample_office.png ${D}/home/root/Line_crossing_object_counting
+	install ${S}/02_Line_crossing_object_counting/tracker_ss.png ${D}/home/root/Line_crossing_object_counting
 
-	cp -Rfv ${WORKDIR}/Line_crossing_object_counting ${D}/home/root || true
-	install ${S}/02_Line_crossing_object_counting/exe/02_Line_crossing_object_counting ${D}/home/root/Line_crossing_object_counting/exe/Line_crossing_object_counting || true
+	install -d ${D}/home/root/Elderly_fall_detection/exe/hrnet_cam
+	install -d ${D}/home/root/Elderly_fall_detection/exe/tinyyolov2_cam
+	install ${S}/03_Elderly_fall_detection/exe/03_Elderly_fall_detection ${D}/home/root/Elderly_fall_detection/exe/Elderly_fall_detection
+	install ${S}/03_Elderly_fall_detection/exe/hrnet_cam/* ${D}/home/root/Elderly_fall_detection/exe/hrnet_cam
+	install ${S}/03_Elderly_fall_detection/exe/tinyyolov2_cam/* ${D}/home/root/Elderly_fall_detection/exe/tinyyolov2_cam
 
-	cp -Rfv ${WORKDIR}/Elderly_fall_detection ${D}/home/root || true
-	install ${S}/03_Elderly_fall_detection/exe/03_Elderly_fall_detection ${D}/home/root/Elderly_fall_detection/exe/Elderly_fall_detection || true
+	install -d ${D}/home/root/Safety_helmet_vest_cam/exe/yolov3
+	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_cam/exe/04_Safety_helmet_vest_cam_app ${D}/home/root/Safety_helmet_vest_cam/exe/Safety_helmet_vest_cam
+	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_cam/exe/yolov3/* ${D}/home/root/Safety_helmet_vest_cam/exe/yolov3
 
-	cp -Rfv ${WORKDIR}/Safety_helmet_vest_cam ${D}/home/root || true
-	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_cam/exe/04_Safety_helmet_vest_cam_app ${D}/home/root/Safety_helmet_vest_cam/exe/Safety_helmet_vest_cam || true
-	cp -Rfv ${WORKDIR}/Safety_helmet_vest_img ${D}/home/root || true
-	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_img/exe/04_Safety_helmet_vest_img_app ${D}/home/root/Safety_helmet_vest_img/exe/Safety_helmet_vest_img || true
+	install -d ${D}/home/root/Safety_helmet_vest_img/exe/yolov3
+	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_img/exe/04_Safety_helmet_vest_img_app ${D}/home/root/Safety_helmet_vest_img/exe/Safety_helmet_vest_img
+	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_img/exe/yolov3/* ${D}/home/root/Safety_helmet_vest_img/exe/yolov3
+	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_img/exe/labels.txt ${D}/home/root/Safety_helmet_vest_img/exe
+	install -d ${D}/home/root/Safety_helmet_vest_img/test_images
+	install ${S}/04_Safety_Helmet_Vest_Detection/Safety_helmet_vest_img/test_images/* ${D}/home/root/Safety_helmet_vest_img/test_images
 
-	cp -Rfv ${WORKDIR}/Face_recognition_cam ${D}/home/root/Face-dection || true
-	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_cam/exe/Face_recognition_cam ${D}/home/root/Face-dection/Face_recognition_cam/exe/ || true
-	cp -Rfv ${WORKDIR}/Face_recognition_img ${D}/home/root/Face-dection || true
-	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_img/exe/Face_recognition_img ${D}/home/root/Face-dection/Face_recognition_img/exe/ || true
-	cp -Rfv ${WORKDIR}/Face_spoof_detection_cam ${D}/home/root/Face-dection || true
-	install ${S}/06_Face_recognition_spoof_detection/Face_spoof_detection_cam/exe/Face_spoof_detection_cam ${D}/home/root/Face-dection/Face_spoof_detection_cam/exe/ || true
-	cp -Rfv ${WORKDIR}/Face_spoof_detection_img ${D}/home/root/Face-dection || true
-	install ${S}/06_Face_recognition_spoof_detection/Face_spoof_detection_img/exe/Face_spoof_detection_img ${D}/home/root/Face-dection/Face_spoof_detection_img/exe/ || true
-	cp -Rfv ${WORKDIR}/Face_registration ${D}/home/root/Face-dection || true
-	install ${S}/06_Face_recognition_spoof_detection/Face_registration/exe/Face_registration ${D}/home/root/Face-dection/Face_registration/exe/ || true
-	cp -Rfv ${WORKDIR}/res ${D}/home/root/Face-dection || true
-	cp -Rfv ${WORKDIR}/database ${D}/home/root/Face-dection || true
+	install -d ${D}/home/root/Face-dection/res
+	install ${S}/06_Face_recognition_spoof_detection/res/* ${D}/home/root/Face-dection/res
+	install -d ${D}/home/root/Face-dection/database
+	install ${S}/06_Face_recognition_spoof_detection/database/* ${D}/home/root/Face-dection/database
+	install -d ${D}/home/root/Face-dection/Face_recognition_cam/exe/resnet50_cam
+	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_cam/exe/Face_recognition_cam ${D}/home/root/Face-dection/Face_recognition_cam/exe
+	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_cam/exe/resnet50_cam/* ${D}/home/root/Face-dection/Face_recognition_cam/exe/resnet50_cam
+
+	install -d ${D}/home/root/Face-dection/Face_recognition_img/exe/resnet50_bmp
+	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_img/exe/Face_recognition_img ${D}/home/root/Face-dection/Face_recognition_img/exe
+	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_img/exe/sample.bmp ${D}/home/root/Face-dection/Face_recognition_img/exe
+	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_img/exe/resnet50_bmp/* ${D}/home/root/Face-dection/Face_recognition_img/exe/resnet50_bmp
+
+	install -d ${D}/home/root/Face-dection/Face_spoof_detection_cam/exe/resnet50_classifier_cam
+	install ${S}/06_Face_recognition_spoof_detection/Face_spoof_detection_cam/exe/Face_spoof_detection_cam ${D}/home/root/Face-dection/Face_spoof_detection_cam/exe
+	install ${S}/06_Face_recognition_spoof_detection/Face_spoof_detection_cam/exe/resnet50_classifier_cam/* ${D}/home/root/Face-dection/Face_spoof_detection_cam/exe/resnet50_classifier_cam
+
+	install -d ${D}/home/root/Face-dection/Face_spoof_detection_img/exe/resnet50_classifier_bmp
+	install ${S}/06_Face_recognition_spoof_detection/Face_recognition_img/exe/sample.bmp ${D}/home/root/Face-dection/Face_spoof_detection_img/exe
+	install ${S}/06_Face_recognition_spoof_detection/Face_spoof_detection_img/exe/Face_spoof_detection_img ${D}/home/root/Face-dection/Face_spoof_detection_img/exe
+	install ${S}/06_Face_recognition_spoof_detection/Face_spoof_detection_img/exe/resnet50_classifier_bmp/* ${D}/home/root/Face-dection/Face_spoof_detection_img/exe/resnet50_classifier_bmp
+
+	install -d ${D}/home/root/Face-dection/Face_registration/exe/resnet50_bmp
+	install ${S}/06_Face_recognition_spoof_detection/Face_registration/exe/Face_registration ${D}/home/root/Face-dection/Face_registration/exe/
+	install ${S}/06_Face_recognition_spoof_detection/Face_registration/exe/resnet50_bmp/* ${D}/home/root/Face-dection/Face_registration/exe/resnet50_bmp
 }
 
 FILES_${PN} = " \
