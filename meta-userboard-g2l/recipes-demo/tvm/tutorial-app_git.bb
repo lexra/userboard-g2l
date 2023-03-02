@@ -6,7 +6,22 @@ LICENSE = "Apache-2.0"
 SRCREV = "860d845b87de9564f143b600e39d84e2455d4281"
 SRC_URI = " \
 	gitsm://github.com/renesas-rz/rzv_drp-ai_tvm.git;protocol=https;branch=main \
-	file://* \
+	file://drpai.h \
+	file://preprocess_tvm_v2l \
+	file://emotion_fp_onnx \
+	file://face_deeppose_pt \
+	file://face_deeppose_cpu \
+	file://googlenet_onnx \
+	file://hrnet_onnx \
+	file://hrnetv2_pt \
+	file://resnet18_onnx \
+	file://resnet18_onnx_cpu \
+	file://resnet18_torch \
+	file://tinyyolov2_onnx \
+	file://tinyyolov3_onnx \
+	file://yolov2_onnx \
+	file://yolov3_onnx \
+	file://ultraface_onnx \
 "
 
 inherit autotools cmake cmake-native pkgconfig python3native
@@ -43,18 +58,31 @@ do_configure_prepend() {
 }
 
 do_install_class-target () {
-	install -d ${D}/home/root/tvm/exe/preprocess_tvm_v2l
-	install -d ${D}/home/root/tvm/exe/resnet18_onnx
-	install -d ${D}/home/root/tvm/etc
 	install -d ${D}/${libdir}
 	install ${S}/../obj/build_runtime/V2L/libtvm_runtime.so ${D}/${libdir}
-	install ${B}/tutorial_app ${D}/home/root/tvm/exe
-	install ${S}/exe/preprocess_tvm_v2l/* ${D}/home/root/tvm/exe/preprocess_tvm_v2l
-	install ${S}/exe/*.txt ${D}/home/root/tvm/exe
-	install ${S}/exe/*.yuv ${D}/home/root/tvm/exe
-	install ${WORKDIR}/deploy.json ${D}/home/root/tvm/exe/resnet18_onnx
-	install ${WORKDIR}/deploy.params ${D}/home/root/tvm/exe/resnet18_onnx
-	install ${WORKDIR}/deploy.so ${D}/home/root/tvm/exe/resnet18_onnx || true
+	install -d ${D}/home/root/tvm
+	install ${B}/tutorial_app ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/ultraface_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/yolov3_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/yolov2_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/tinyyolov3_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/tinyyolov2_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/resnet18_torch ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/resnet18_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/resnet18_onnx_cpu ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/hrnetv2_pt ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/hrnet_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/googlenet_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/face_deeppose_pt ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/face_deeppose_cpu ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/emotion_fp_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/preprocess_tvm_v2l ${D}/home/root/tvm
+
+	install ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
+	install ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
+	install -m 755 ${WORKDIR}/git/how-to/sample_app/exe/sample_app_drpai_tvm_usbcam_http ${D}/home/root/tvm
+
+	#cp -Rfv ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client
 }
 
 FILES_${PN} = " \
