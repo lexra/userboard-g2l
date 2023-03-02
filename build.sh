@@ -200,6 +200,10 @@ cd ${SCRIP_DIR}/meta-userboard-g2l/recipes-demo/rzv-face-dection
 [ ! -e files/Line_crossing_object_counting/exe/tinyyolov2_cam/tinyyolov2_cam_weight.dat ] && \
 	(for S in `ls *.sh`; do ./${S} ; sleep 0.5; done)
 cd -
+cd ${SCRIP_DIR}/meta-userboard-g2l/recipes-demo/usbcam-http-demo
+[ ! -e files/tinyyolov2_cam/tinyyolov2_cam_weight.dat ] && \
+	(for S in `ls *.sh`; do ./${S} ; sleep 0.5; done)
+cd -
 
 ##########################################################
 cd ${SCRIP_DIR}
