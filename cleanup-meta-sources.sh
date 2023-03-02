@@ -18,6 +18,7 @@ sudo rm -rfv sources mnt drp-ai_translator_release drp-ai_tvm \
 	meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam/app_tinyyolov2_cam \
 	meta-userboard-g2l/recipes-demo/app-yolo-img/app_yolo_img \
 	meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp/app_tinyyolov2_isp \
-	meta-userboard-g2l/recipes-demo/rzv-face-dection/files/Line_crossing_object_counting/exe/tinyyolov2_cam/tinyyolov2_cam_weight.dat
+	meta-userboard-g2l/recipes-demo/rzv-face-dection/files/Line_crossing_object_counting/exe/tinyyolov2_cam/tinyyolov2_cam_weight.dat \
+	meta-userboard-g2l/recipes-demo/usbcam-http-demo/files/tinyyolov2_cam/tinyyolov2_cam_weight.dat
 
 exit 0
