@@ -6,19 +6,6 @@ LICENSE = "MIT"
 SRCREV = "f85f325f05fd7116a312f212694ef4de7bd599bb"
 SRC_URI = " \
 	git://github.com/Ignitarium-Renesas/RZV2L_AiLibrary.git;protocol=https;branch=main \
-	file://Elderly_fall_detection \
-	file://Face_recognition_img \
-	file://Face_spoof_detection_cam \
-	file://Head_count_img \
-	file://res \
-	file://Safety_helmet_vest_img \
-	file://database \
-	file://Face_recognition_cam \
-	file://Face_registration \
-	file://Face_spoof_detection_img \
-	file://Head_count_cam \
-	file://Line_crossing_object_counting \
-	file://Safety_helmet_vest_cam \
 "
 
 inherit pkgconfig
