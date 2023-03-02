@@ -1,0 +1,782 @@
+{
+  "nodes": [
+    {
+      "op": "null", 
+      "name": "Input3", 
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "p16", 
+      "inputs": []
+    }, 
+    {
+      "op": "null", 
+      "name": "p17", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_cast_subtract_divide", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "3", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_cast_subtract_divide", 
+        "hash": "1fd4909dee9508ed"
+      }, 
+      "inputs": [
+        [
+          0, 
+          0, 
+          0
+        ], 
+        [
+          1, 
+          0, 
+          0
+        ], 
+        [
+          2, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_0", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_0"
+      }, 
+      "inputs": [
+        [
+          3, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p18", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu", 
+        "hash": "6f660a760382242b"
+      }, 
+      "inputs": [
+        [
+          4, 
+          0, 
+          0
+        ], 
+        [
+          5, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_2", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_2"
+      }, 
+      "inputs": [
+        [
+          6, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p19", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu1", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu", 
+        "hash": "6f660a760382242b"
+      }, 
+      "inputs": [
+        [
+          7, 
+          0, 
+          0
+        ], 
+        [
+          8, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_4", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_4"
+      }, 
+      "inputs": [
+        [
+          9, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p20", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_1", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_1", 
+        "hash": "f241473b3be1ed76"
+      }, 
+      "inputs": [
+        [
+          10, 
+          0, 
+          0
+        ], 
+        [
+          11, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_6", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_6"
+      }, 
+      "inputs": [
+        [
+          12, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p21", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_11", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_1", 
+        "hash": "f241473b3be1ed76"
+      }, 
+      "inputs": [
+        [
+          13, 
+          0, 
+          0
+        ], 
+        [
+          14, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_8", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_8"
+      }, 
+      "inputs": [
+        [
+          15, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p22", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_2", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_2", 
+        "hash": "66b4c4353aa77787"
+      }, 
+      "inputs": [
+        [
+          16, 
+          0, 
+          0
+        ], 
+        [
+          17, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_10", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_10"
+      }, 
+      "inputs": [
+        [
+          18, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p23", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_21", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_2", 
+        "hash": "66b4c4353aa77787"
+      }, 
+      "inputs": [
+        [
+          19, 
+          0, 
+          0
+        ], 
+        [
+          20, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_12", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_12"
+      }, 
+      "inputs": [
+        [
+          21, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p24", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_22", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_2", 
+        "hash": "66b4c4353aa77787"
+      }, 
+      "inputs": [
+        [
+          22, 
+          0, 
+          0
+        ], 
+        [
+          23, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_14", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_14"
+      }, 
+      "inputs": [
+        [
+          24, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p25", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_3", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_3", 
+        "hash": "7d79690dd10cac9b"
+      }, 
+      "inputs": [
+        [
+          25, 
+          0, 
+          0
+        ], 
+        [
+          26, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_16", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_16"
+      }, 
+      "inputs": [
+        [
+          27, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p26", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_31", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_3", 
+        "hash": "7d79690dd10cac9b"
+      }, 
+      "inputs": [
+        [
+          28, 
+          0, 
+          0
+        ], 
+        [
+          29, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_18", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_18"
+      }, 
+      "inputs": [
+        [
+          30, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "null", 
+      "name": "p27", 
+      "inputs": []
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_add_nn_relu_32", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "2", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_add_nn_relu_3", 
+        "hash": "7d79690dd10cac9b"
+      }, 
+      "inputs": [
+        [
+          31, 
+          0, 
+          0
+        ], 
+        [
+          32, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_20", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_20"
+      }, 
+      "inputs": [
+        [
+          33, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_nn_relu", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_nn_relu", 
+        "hash": "ce73aac5ddde3b02"
+      }, 
+      "inputs": [
+        [
+          34, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_21", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_21"
+      }, 
+      "inputs": [
+        [
+          35, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_fused_nn_relu1", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_fused_nn_relu", 
+        "hash": "ce73aac5ddde3b02"
+      }, 
+      "inputs": [
+        [
+          36, 
+          0, 
+          0
+        ]
+      ]
+    }, 
+    {
+      "op": "tvm_op", 
+      "name": "tvmgen_default_tvmgen_default_mera_drp_22", 
+      "attrs": {
+        "num_outputs": "1", 
+        "num_inputs": "1", 
+        "flatten_data": "0", 
+        "func_name": "tvmgen_default_tvmgen_default_mera_drp_22"
+      }, 
+      "inputs": [
+        [
+          37, 
+          0, 
+          0
+        ]
+      ]
+    }
+  ], 
+  "arg_nodes": [
+    0, 
+    1, 
+    2, 
+    5, 
+    8, 
+    11, 
+    14, 
+    17, 
+    20, 
+    23, 
+    26, 
+    29, 
+    32
+  ], 
+  "heads": [
+    [
+      38, 
+      0, 
+      0
+    ]
+  ], 
+  "attrs": {
+    "dltype": [
+      "list_str", 
+      [
+        "float32", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16", 
+        "float16"
+      ]
+    ], 
+    "storage_id": [
+      "list_int", 
+      [
+        0, 
+        1, 
+        2, 
+        3, 
+        4, 
+        5, 
+        6, 
+        4, 
+        7, 
+        6, 
+        4, 
+        8, 
+        6, 
+        4, 
+        9, 
+        6, 
+        4, 
+        10, 
+        6, 
+        4, 
+        11, 
+        6, 
+        4, 
+        12, 
+        6, 
+        4, 
+        13, 
+        6, 
+        4, 
+        14, 
+        6, 
+        4, 
+        15, 
+        6, 
+        3, 
+        16, 
+        3, 
+        16, 
+        17
+      ]
+    ], 
+    "shape": [
+      "list_shape", 
+      [
+        [1, 1, 64, 64], 
+        [], 
+        [], 
+        [1, 1, 64, 64], 
+        [1, 64, 64, 64], 
+        [1, 64, 1, 1], 
+        [1, 64, 64, 64], 
+        [1, 64, 64, 64], 
+        [1, 64, 1, 1], 
+        [1, 64, 64, 64], 
+        [1, 128, 32, 32], 
+        [1, 128, 1, 1], 
+        [1, 128, 32, 32], 
+        [1, 128, 32, 32], 
+        [1, 128, 1, 1], 
+        [1, 128, 32, 32], 
+        [1, 256, 16, 16], 
+        [1, 256, 1, 1], 
+        [1, 256, 16, 16], 
+        [1, 256, 16, 16], 
+        [1, 256, 1, 1], 
+        [1, 256, 16, 16], 
+        [1, 256, 16, 16], 
+        [1, 256, 1, 1], 
+        [1, 256, 16, 16], 
+        [1, 256, 8, 8], 
+        [1, 256, 1, 1], 
+        [1, 256, 8, 8], 
+        [1, 256, 8, 8], 
+        [1, 256, 1, 1], 
+        [1, 256, 8, 8], 
+        [1, 256, 8, 8], 
+        [1, 256, 1, 1], 
+        [1, 256, 8, 8], 
+        [1, 1024], 
+        [1, 1024], 
+        [1, 1024], 
+        [1, 1024], 
+        [1, 8]
+      ]
+    ]
+  }, 
+  "node_row_ptr": [
+    0, 
+    1, 
+    2, 
+    3, 
+    4, 
+    5, 
+    6, 
+    7, 
+    8, 
+    9, 
+    10, 
+    11, 
+    12, 
+    13, 
+    14, 
+    15, 
+    16, 
+    17, 
+    18, 
+    19, 
+    20, 
+    21, 
+    22, 
+    23, 
+    24, 
+    25, 
+    26, 
+    27, 
+    28, 
+    29, 
+    30, 
+    31, 
+    32, 
+    33, 
+    34, 
+    35, 
+    36, 
+    37, 
+    38, 
+    39
+  ]
+}
