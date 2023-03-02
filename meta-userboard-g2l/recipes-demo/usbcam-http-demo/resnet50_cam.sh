@@ -11,6 +11,7 @@ DRPAI_TRANSLATOR_RELEASE=../../../drp-ai_translator_release
 [ ! -e ${DRPAI_TRANSLATOR_RELEASE}/pytorch/resnet50/convert_to_onnx.py ] && exit 1
 
 ##########################################################
+PN=usbcam-http-demo
 MODEL=resnet50
 IMG_SRC=cam
 
@@ -34,8 +35,8 @@ cd ${DRPAI_TRANSLATOR_RELEASE}
 rm -rf output/${MODEL}_${IMG_SRC}
 ./run_DRP-AI_translator_V2L.sh ${MODEL}_${IMG_SRC} \
 	-onnx onnx/${MODEL}.onnx \
-	-prepost ../build_smarc-rzv2l/tmp/work/aarch64-poky-linux/usbcam-http-demo/git-r0/git/usbcam_http_drp-ai/etc/${MODEL}_${IMG_SRC}/prepost_${MODEL}.yaml \
-	-addr ../build_smarc-rzv2l/tmp/work/aarch64-poky-linux/usbcam-http-demo/git-r0/git/usbcam_http_drp-ai/etc/${MODEL}_${IMG_SRC}/addrmap_in_${MODEL}.yaml
+	-prepost ../build_smarc-rzv2l/tmp/work/aarch64-poky-linux/${PN}/git-r0/git/usbcam_http_drp-ai/etc/${MODEL}_${IMG_SRC}/prepost_${MODEL}.yaml \
+	-addr ../build_smarc-rzv2l/tmp/work/aarch64-poky-linux/${PN}/git-r0/git/usbcam_http_drp-ai/etc/${MODEL}_${IMG_SRC}/addrmap_in_${MODEL}.yaml
 cd -
 
 ##########################################################
