@@ -21,19 +21,25 @@ S = "${WORKDIR}/git/apps"
 B = "${WORKDIR}/build"
 
 do_configure_prepend() {
-	export TVM_ROOT=${S}/..
-	export TVM_HOME=${S}/../tvm
+	export TVM_ROOT=${WORKDIR}/git
+	export TVM_HOME=${TVM_ROOT}/tvm
 	export PYTHONPATH=${TVM_HOME}/python:${PYTHONPATH}
 	export PRODUCT=V2L
-	export TRANSLATOR=${S}/../../../../../../../../drp-ai_translator_release
+	export TRANSLATOR=${WORKDIR}/../../../../../../drp-ai_translator_release
+	export SDK=${WORKDIR}/../../../x86_64-nativesdk-pokysdk-linux/meta-environment-smarc-rzv2l/1.0-r8/sdk/image/usr/local/oe-sdk-hardcoded-buildpath
 
-	cd ${S}/..
+	cd ${TVM_ROOT}
 	bash setup/make_drp_env.sh || true
-	cd -
+	cd ${S}
 
 	mkdir -p ${S}/../tvm/include/linux
 	cp -fv ${WORKDIR}/drpai.h ${S}/../tvm/include/linux
-	echo y | (ffmpeg -i etc/sample.bmp -s 640x480 -pix_fmt yuyv422 exe/sample.yuv || true)
+
+	#(echo y | /usr/bin/ffmpeg -i etc/sample.bmp -s 640x480 -pix_fmt yuyv422 exe/sample.yuv) || true
+	#cd ${TVM_ROOT}/tutorials
+	#[ ! -e resnet18-v1-7.onnx ] && wget https://github.com/onnx/models/raw/main/vision/classification/resnet/model/resnet18-v1-7.onnx -v -O resnet18-v1-7.onnx
+	#/usr/bin/python3 compile_onnx_model.py resnet18-v1-7.onnx -o resnet18_onnx -s 1,3,224,224 -i data
+	#cd -
 }
 
 do_install_class-target () {
