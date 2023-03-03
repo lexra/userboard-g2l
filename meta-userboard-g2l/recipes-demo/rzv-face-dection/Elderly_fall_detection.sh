@@ -62,6 +62,7 @@ if [ ! -e ${DRPAI_TRANSLATOR_RELEASE}/hrnet/mmpose ]; then
 	sudo python3 setup.py develop
 	(pip3 uninstall opencv_python_headless -y || true) && pip3 install opencv-python-headless==4.5.4.60
 	(pip3 uninstall mmcv -y || true) && pip3 install mmcv==1.3.16
+	(pip3 uninstall mmcv-full -y || true) && pip3 install mmcv-full==1.3.16
 fi
 
 MODEL=hrnet
