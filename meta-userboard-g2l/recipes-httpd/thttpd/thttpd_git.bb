@@ -51,6 +51,10 @@ do_install_class-target () {
 	install -m 755 ${S}/cgi-src/redirect ${D}${WEBDIR_DEMO}/cgi-bin
 	install -m 755 ${S}/cgi-src/ssi ${D}${WEBDIR_DEMO}/cgi-bin
 
+	install -m 755 ${S}/cgi-src/phf ${D}${WEBDIR_TVM}/cgi-bin
+	install -m 755 ${S}/cgi-src/redirect ${D}${WEBDIR_TVM}/cgi-bin
+	install -m 755 ${S}/cgi-src/ssi ${D}${WEBDIR_TVM}/cgi-bin
+
 	cat ${WORKDIR}/init | sed -e 's,@@SRVDIR,${WEBDIR_DEMO},g' > ${WORKDIR}/thttpd
 	install -c -m 755 ${WORKDIR}/thttpd ${D}${sysconfdir}/init.d/thttpd
 }
