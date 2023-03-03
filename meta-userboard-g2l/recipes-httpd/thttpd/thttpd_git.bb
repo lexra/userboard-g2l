@@ -25,10 +25,11 @@ INITSCRIPT_PARAMS = "defaults"
 
 inherit pkgconfig update-rc.d
 
-WEBDIR = "${localstatedir}/thttpd"
+WEBDIR_DEMO = "${localstatedir}/demo"
+WEBDIR_TVM = "${localstatedir}/tvm"
 
 EXTRA_OEMAKE += " \
-	WEBDIR=${WEBDIR} \
+	WEBDIR=${WEBDIR_DEMO} \
 "
 
 do_configure () {
@@ -37,7 +38,8 @@ do_configure () {
 
 do_install_class-target () {
 	install -d ${D}${sbindir}
-	install -d ${D}${WEBDIR}/cgi-bin
+	install -d ${D}${WEBDIR_DEMO}/cgi-bin
+	install -d ${D}${WEBDIR_TVM}/cgi-bin
 	install -d ${D}${sysconfdir}/init.d
 
 	install -m 755 ${S}/thttpd ${D}${sbindir}
@@ -45,16 +47,17 @@ do_install_class-target () {
 	install -m 755 ${S}/extras/htpasswd ${D}${sbindir}
 	install -m 755 ${S}/extras/syslogtocern ${D}${sbindir}
 
-	install -m 755 ${S}/cgi-src/phf ${D}${WEBDIR}/cgi-bin
-	install -m 755 ${S}/cgi-src/redirect ${D}${WEBDIR}/cgi-bin
-	install -m 755 ${S}/cgi-src/ssi ${D}${WEBDIR}/cgi-bin
+	install -m 755 ${S}/cgi-src/phf ${D}${WEBDIR_DEMO}/cgi-bin
+	install -m 755 ${S}/cgi-src/redirect ${D}${WEBDIR_DEMO}/cgi-bin
+	install -m 755 ${S}/cgi-src/ssi ${D}${WEBDIR_DEMO}/cgi-bin
 
-	cat ${WORKDIR}/init | sed -e 's,@@SRVDIR,${WEBDIR},g' > ${WORKDIR}/thttpd
+	cat ${WORKDIR}/init | sed -e 's,@@SRVDIR,${WEBDIR_DEMO},g' > ${WORKDIR}/thttpd
 	install -c -m 755 ${WORKDIR}/thttpd ${D}${sysconfdir}/init.d/thttpd
 }
 
 FILES_${PN}_append = " \
 	${sbindir} \
-	${WEBDIR} \
+	${WEBDIR_DEMO} \
+	${WEBDIR_TVM} \
 	${sysconfdir} \
 "

@@ -6,6 +6,7 @@ LICENSE = "Apache-2.0"
 SRCREV = "860d845b87de9564f143b600e39d84e2455d4281"
 SRC_URI = " \
 	gitsm://github.com/renesas-rz/rzv_drp-ai_tvm.git;protocol=https;branch=main \
+	file://tutorial_app \
 	file://drpai.h \
 	file://preprocess_tvm_v2l \
 	file://emotion_fp_onnx \
@@ -32,8 +33,11 @@ DEPENDS += " \
         wayland-protocols \
 "
 
-S = "${WORKDIR}/git/apps"
+#S = "${WORKDIR}/git/apps"
+S = "${WORKDIR}/git/how-to/sample_app/src"
 B = "${WORKDIR}/build"
+
+WEBDIR = "${localstatedir}/tvm"
 
 do_configure_prepend() {
 	export TVM_ROOT=${WORKDIR}/git
@@ -47,21 +51,25 @@ do_configure_prepend() {
 	bash setup/make_drp_env.sh || true
 	cd ${S}
 
-	mkdir -p ${S}/../tvm/include/linux
-	cp -fv ${WORKDIR}/drpai.h ${S}/../tvm/include/linux
+	mkdir -p ${WORKDIR}/git/tvm/include/linux
+	cp -fv ${WORKDIR}/drpai.h ${WORKDIR}/git/tvm/include/linux
 
 	#(echo y | /usr/bin/ffmpeg -i etc/sample.bmp -s 640x480 -pix_fmt yuyv422 exe/sample.yuv) || true
 	#cd ${TVM_ROOT}/tutorials
 	#[ ! -e resnet18-v1-7.onnx ] && wget https://github.com/onnx/models/raw/main/vision/classification/resnet/model/resnet18-v1-7.onnx -v -O resnet18-v1-7.onnx
 	#/usr/bin/python3 compile_onnx_model.py resnet18-v1-7.onnx -o resnet18_onnx -s 1,3,224,224 -i data
 	#cd -
+
+	sed 's|:3000/ws/|:4000/ws/|g' -i ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/websocket_demo.js
+	sed 's|"3000", "ws"|"4000", "ws"|g' -i ${WORKDIR}/git/how-to/sample_app/src/main.cpp
 }
 
 do_install_class-target () {
 	install -d ${D}/${libdir}
-	install ${S}/../obj/build_runtime/V2L/libtvm_runtime.so ${D}/${libdir}
+	install ${WORKDIR}/git/obj/build_runtime/V2L/libtvm_runtime.so ${D}/${libdir}
 	install -d ${D}/home/root/tvm
-	install ${B}/tutorial_app ${D}/home/root/tvm
+	install ${WORKDIR}/tutorial_app ${D}/home/root/tvm
+	install ${B}/sample_app_drpai_tvm_usbcam_http ${D}/home/root/tvm
 	cp -Rfv ${WORKDIR}/ultraface_onnx ${D}/home/root/tvm
 	cp -Rfv ${WORKDIR}/yolov3_onnx ${D}/home/root/tvm
 	cp -Rfv ${WORKDIR}/yolov2_onnx ${D}/home/root/tvm
@@ -82,12 +90,20 @@ do_install_class-target () {
 	install ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
 	install -m 755 ${WORKDIR}/git/how-to/sample_app/exe/sample_app_drpai_tvm_usbcam_http ${D}/home/root/tvm
 
-	#cp -Rfv ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client
+	install -d ${D}${WEBDIR}/css
+        install -d ${D}${WEBDIR}/js
+        install -d ${D}${WEBDIR}/libs
+        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/index.html ${D}${WEBDIR}
+        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/css/websocket_demo.css ${D}${WEBDIR}/css
+        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/websocket_demo.js ${D}${WEBDIR}/css
+        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
+        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
 }
 
 FILES_${PN} = " \
-        /home/root/tvm \
+	/home/root/tvm \
+	${WEBDIR} \
 "
 
-INSANE_SKIP_${PN} += " file-rdeps rpaths dev-deps dev-elf "
-INSANE_SKIP_${PN}-dev += " file-rdeps rpaths dev-deps dev-elf "
+INSANE_SKIP_${PN} += " file-rdeps rpaths dev-deps dev-elf already-stripped "
+INSANE_SKIP_${PN}-dev += " file-rdeps rpaths dev-deps dev-elf already-stripped "

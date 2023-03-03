@@ -24,7 +24,7 @@ DEPENDS += " \
 
 S = "${WORKDIR}/git/usbcam_http_drp-ai/src"
 B = "${WORKDIR}/build"
-WEBDIR = "${localstatedir}/thttpd"
+WEBDIR = "${localstatedir}/demo"
 
 do_install_class-target () {
 	install -d ${D}/home/root/${PN}/hrnet_cam
