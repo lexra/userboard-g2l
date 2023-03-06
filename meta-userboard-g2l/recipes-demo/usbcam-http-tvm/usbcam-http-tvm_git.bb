@@ -87,7 +87,6 @@ do_install_class-target () {
 	cp -Rfv ${WORKDIR}/preprocess_tvm_v2l ${D}/home/root/tvm
 
 	install ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
-	install ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
 	install ${WORKDIR}/git/apps/exe/synset_words_imagenet.txt ${D}/home/root/tvm
 	install ${WORKDIR}/git/apps/exe/sample.yuv ${D}/home/root/tvm
 
