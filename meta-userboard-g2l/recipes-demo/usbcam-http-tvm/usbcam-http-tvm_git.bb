@@ -88,7 +88,6 @@ do_install_class-target () {
 
 	install ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
 	install ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
-	install -m 755 ${WORKDIR}/git/how-to/sample_app/exe/sample_app_drpai_tvm_usbcam_http ${D}/home/root/tvm
 
 	install -d ${D}${WEBDIR}/css
         install -d ${D}${WEBDIR}/js
