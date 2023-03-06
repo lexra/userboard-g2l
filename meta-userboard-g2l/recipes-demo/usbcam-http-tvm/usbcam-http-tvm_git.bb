@@ -92,11 +92,11 @@ do_install_class-target () {
 	install -d ${D}${WEBDIR}/css
         install -d ${D}${WEBDIR}/js
         install -d ${D}${WEBDIR}/libs
-        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/index.html ${D}${WEBDIR}
-        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/css/websocket_demo.css ${D}${WEBDIR}/css
-        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/websocket_demo.js ${D}${WEBDIR}/js
-        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
-        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
+        install -m 644 ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/index.html ${D}${WEBDIR}
+        install -m 644 ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/css/*.css ${D}${WEBDIR}/css
+        install -m 644 ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/*.js ${D}${WEBDIR}/js
+        install -m 644 ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
+        install -m 644 ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
 }
 
 FILES_${PN} = " \

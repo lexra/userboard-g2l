@@ -44,11 +44,11 @@ do_install_class-target () {
 	install ${WORKDIR}/tinyyolov2_cam/* ${D}/home/root/${PN}/tinyyolov2_cam
 	install ${WORKDIR}/yolov3_cam/* ${D}/home/root/${PN}/yolov3_cam
 
-	install ${S}/../etc/Websocket_Client/index.html ${D}${WEBDIR}
-	install ${S}/../etc/Websocket_Client/css/websocket_demo.css ${D}${WEBDIR}/css
-	install ${S}/../etc/Websocket_Client/js/*.js ${D}${WEBDIR}/js
-	install ${S}/../etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
-	install ${S}/../etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
+	install -m 644 ${S}/../etc/Websocket_Client/index.html ${D}${WEBDIR}
+	install -m 644 ${S}/../etc/Websocket_Client/css/*.css ${D}${WEBDIR}/css
+	install -m 644 ${S}/../etc/Websocket_Client/js/*.js ${D}${WEBDIR}/js
+	install -m 644 ${S}/../etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
+	install -m 644 ${S}/../etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
 }
 
 FILES_${PN} = " \
