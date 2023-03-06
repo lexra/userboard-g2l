@@ -7,13 +7,12 @@
 
 
 thttpd=/usr/sbin/thttpd
-port=30000
 test -x "$thttpd" || exit 0
 
 case "$1" in
   start)
     echo -n "Starting thttpd"
-    ifconfig eth0:0 192.168.1.11 || true
+    #ifconfig eth0:0 192.168.1.11 || true
     start-stop-daemon --start --quiet --exec $thttpd -- -d @@SRVDIR -p 30000
     start-stop-daemon --start --quiet --exec $thttpd -- -d /var/tvm -p 40000
     echo "."
