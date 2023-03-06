@@ -36,20 +36,19 @@ do_install_class-target () {
 	install -d ${D}${WEBDIR}/libs
 
 	install ${B}/sample_app_usbcam_http ${D}/home/root/${PN}
-	install ${WORKDIR}/coco-labels-2014_2017.txt ${D}/home/root/${PN} || true
-	install ${WORKDIR}/synset_words_imagenet.txt ${D}/home/root/${PN} || true
+	install ${WORKDIR}/coco-labels-2014_2017.txt ${D}/home/root/${PN}
+	install ${WORKDIR}/synset_words_imagenet.txt ${D}/home/root/${PN}
 
-	install ${WORKDIR}/hrnet_cam/* ${D}/home/root/${PN}/hrnet_cam || true
-	install ${WORKDIR}/resnet50_cam/* ${D}/home/root/${PN}/resnet50_cam || true
-	install ${WORKDIR}/tinyyolov2_cam/* ${D}/home/root/${PN}/tinyyolov2_cam || true
-	install ${WORKDIR}/yolov3_cam/* ${D}/home/root/${PN}/yolov3_cam || true
+	install ${WORKDIR}/hrnet_cam/* ${D}/home/root/${PN}/hrnet_cam
+	install ${WORKDIR}/resnet50_cam/* ${D}/home/root/${PN}/resnet50_cam
+	install ${WORKDIR}/tinyyolov2_cam/* ${D}/home/root/${PN}/tinyyolov2_cam
+	install ${WORKDIR}/yolov3_cam/* ${D}/home/root/${PN}/yolov3_cam
 
-	install ${S}/../etc/Websocket_Client/index.html ${D}${WEBDIR} || true
-	install ${S}/../etc/Websocket_Client/css/websocket_demo.css ${D}${WEBDIR}/css || true
-	install ${S}/../etc/Websocket_Client/js/websocket_demo.js ${D}${WEBDIR}/css || true
-	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.css ${D}${WEBDIR}/libs || true
-	install ${S}/../etc/Websocket_Client/libs/bootstrap.min.js ${D}${WEBDIR}/libs || true
-	install ${S}/../etc/Websocket_Client/libs/moment.min.js ${D}${WEBDIR}/libs || true
+	install ${S}/../etc/Websocket_Client/index.html ${D}${WEBDIR}
+	install ${S}/../etc/Websocket_Client/css/websocket_demo.css ${D}${WEBDIR}/css
+	install ${S}/../etc/Websocket_Client/js/*.js ${D}${WEBDIR}/js
+	install ${S}/../etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
+	install ${S}/../etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
 }
 
 FILES_${PN} = " \

@@ -94,7 +94,7 @@ do_install_class-target () {
         install -d ${D}${WEBDIR}/libs
         install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/index.html ${D}${WEBDIR}
         install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/css/websocket_demo.css ${D}${WEBDIR}/css
-        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/websocket_demo.js ${D}${WEBDIR}/css
+        install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/websocket_demo.js ${D}${WEBDIR}/js
         install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
         install ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
 }
