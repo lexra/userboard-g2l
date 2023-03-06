@@ -60,8 +60,8 @@ do_configure_prepend() {
 	#/usr/bin/python3 compile_onnx_model.py resnet18-v1-7.onnx -o resnet18_onnx -s 1,3,224,224 -i data
 	#cd -
 
-	sed 's|:3000/ws/|:4000/ws/|g' -i ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/websocket_demo.js
-	sed 's|"3000", "ws"|"4000", "ws"|g' -i ${WORKDIR}/git/how-to/sample_app/src/main.cpp
+	sed 's|192.168.1.11:3000/ws/|192.168.1.111:4000/ws/|' -i ${WORKDIR}/git/how-to/sample_app/etc/Websocket_Client/js/websocket_demo.js
+	sed 's|"192.168.1.11", "3000", "ws"|"192.168.1.111", "4000", "ws"|' -i ${WORKDIR}/git/how-to/sample_app/src/main.cpp
 }
 
 do_install_class-target () {

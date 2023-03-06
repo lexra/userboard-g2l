@@ -26,6 +26,11 @@ S = "${WORKDIR}/git/usbcam_http_drp-ai/src"
 B = "${WORKDIR}/build"
 WEBDIR = "${localstatedir}/demo"
 
+do_configure_prepend() {
+	sed 's|ws://192.168.1.11:3000/ws/|ws://192.168.1.111:3000/ws/|' -i ${WORKDIR}/git/usbcam_http_drp-ai/etc/Websocket_Client/js/websocket_demo.js
+	sed 's|"192.168.1.11", "3000"|"192.168.1.111", "3000"|' -i ${WORKDIR}/git/usbcam_http_drp-ai/src/main.cpp
+}
+
 do_install_class-target () {
 	install -d ${D}/home/root/${PN}/hrnet_cam
 	install -d ${D}/home/root/${PN}/resnet50_cam
