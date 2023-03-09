@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/git/README;md5=36371044a9cdfeca561b979be04
 SRCREV = "0066035fc65d190186486a478c61f0b592e7224c"
 SRC_URI = " \
 	git://github.com/jpouellet/thttpd.git;protocol=https;branch=master \
+	file://poll.patch \
 	file://init \
 "
 
@@ -20,8 +21,15 @@ DEPENDS += " \
 PARALLEL_MAKE = ""
 
 INITSCRIPT_NAME = "thttpd"
-INITSCRIPT_PARAMS = "defaults"
-#INITSCRIPT_PARAMS = "start 8 5 2 . stop 21 0 1 6 ."
+#INITSCRIPT_PARAMS = "defaults"
+INITSCRIPT_PARAMS = "start 8 5 2 . stop 21 0 1 6 ."
+
+CFLAGS += " \
+        -Wno-maybe-uninitialized \
+        -Wno-implicit-fallthr \
+        -Wno-implicit-function-declaration \
+	-Wno-unused-result \
+"
 
 inherit pkgconfig update-rc.d
 

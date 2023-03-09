@@ -1,0 +1,26 @@
+diff --git a/fdwatch.c b/fdwatch.c
+index 0829cc4..4ac5f33 100644
+--- a/fdwatch.c
++++ b/fdwatch.c
+@@ -33,6 +33,7 @@
+ #include <sys/resource.h>
+ #include <syslog.h>
+ #include <fcntl.h>
++#include <linux/poll.h>
+ 
+ #ifndef MIN
+ #define MIN(a,b) ((a) < (b) ? (a) : (b))
+diff --git a/thttpd.c b/thttpd.c
+index 42ec8bd..16d2c36 100644
+--- a/thttpd.c
++++ b/thttpd.c
+@@ -37,7 +37,8 @@
+ #include <sys/uio.h>
+ 
+ #include <errno.h>
+-#ifdef HAVE_FCNTL_H
++#if 1//def HAVE_FCNTL_H
++#include <linux/poll.h>
+ #include <fcntl.h>
+ #endif
+ #include <pwd.h>
