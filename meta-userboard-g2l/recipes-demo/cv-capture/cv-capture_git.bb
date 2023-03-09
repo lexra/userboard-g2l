@@ -44,3 +44,6 @@ FILES_${PN} += " \
 	${bindir}/libgpiod-input \
 	${bindir}/libgpiod-led \
 "
+
+INSANE_SKIP_${PN} += " ldflags "
+INSANE_SKIP_${PN}-dev += " ldflags "
