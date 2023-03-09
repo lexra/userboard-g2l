@@ -24,3 +24,42 @@ index 42ec8bd..16d2c36 100644
  #include <fcntl.h>
  #endif
  #include <pwd.h>
+diff --git a/Makefile.in b/Makefile.in
+index af2c125..2ac3a14 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -50,7 +50,7 @@ CC =		@CC@
+ CCOPT =		@V_CCOPT@
+ DEFS =		@DEFS@
+ INCLS =		-I.
+-CFLAGS =	$(CCOPT) $(DEFS) $(INCLS)
++CFLAGS =	$(CCOPT) $(DEFS) $(INCLS) -Wno-maybe-uninitialized -Wno-implicit-function-declaration -Wno-unused-variable -Wno-missing-field-initializers -Wno-incompatible-pointer-types -Wno-unused-result -Wno-int-conversion 
+ LDFLAGS =	@LDFLAGS@
+ LIBS =		@LIBS@
+ NETLIBS =	@V_NETLIBS@
+diff --git a/cgi-src/Makefile.in b/cgi-src/Makefile.in
+index ac2f354..fd1558c 100644
+--- a/cgi-src/Makefile.in
++++ b/cgi-src/Makefile.in
+@@ -34,7 +34,7 @@ CC =		@CC@
+ CCOPT =		@V_CCOPT@
+ DEFS =		@DEFS@
+ INCLS =		-I..
+-CFLAGS =	$(CCOPT) $(DEFS) $(INCLS)
++CFLAGS =	$(CCOPT) $(DEFS) $(INCLS) -Wno-maybe-uninitialized -Wno-implicit-function-declaration -Wno-unused-variable -Wno-missing-field-initializers -Wno-incompatible-pointer-types -Wno-unused-result -Wno-int-conversion
+ LDFLAGS =	@LDFLAGS@ @V_STATICFLAG@
+ LIBS =		@LIBS@
+ NETLIBS =	@V_NETLIBS@
+diff --git a/extras/Makefile.in b/extras/Makefile.in
+index 021255d..2f1c71f 100644
+--- a/extras/Makefile.in
++++ b/extras/Makefile.in
+@@ -35,7 +35,7 @@ CC =		@CC@
+ CCOPT =		@V_CCOPT@
+ DEFS =		@DEFS@
+ INCLS =		-I..
+-CFLAGS =	$(CCOPT) $(DEFS) $(INCLS)
++CFLAGS =	$(CCOPT) $(DEFS) $(INCLS) -Wno-maybe-uninitialized -Wno-implicit-function-declaration -Wno-unused-variable -Wno-missing-field-initializers -Wno-incompatible-pointer-types -Wno-unused-result -Wno-int-conversion
+ STATICFLAG =	@V_STATICFLAG@
+ LDFLAGS =	@LDFLAGS@
+ LIBS =		@LIBS@
