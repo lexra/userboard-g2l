@@ -74,8 +74,9 @@ do_compile () {
 
 do_install_class-target () {
 	install -d ${D}/home/root/Head_count_cam/exe/yolov3_cam
-	install ${S}/01_Head_count/Head_count_cam/exe/01_head_count_cam_app ${D}/home/root/Head_count_cam/exe/Head_count_cam
+	install ${S}/01_Head_count/Head_count_cam/exe/head_count_cam_app ${D}/home/root/Head_count_cam/exe/Head_count_cam
 	install ${S}/01_Head_count/Head_count_cam/exe/yolov3_cam/* ${D}/home/root/Head_count_cam/exe/yolov3_cam
+	install ${WORKDIR}/Head_count_cam/exe/yolov3_cam/yolov3_cam_weight.dat ${D}/home/root/Head_count_cam/exe/yolov3_cam || true
 
 	install -d ${D}/home/root/Head_count_img/exe/yolov3_bmp
 	install ${S}/01_Head_count/Head_count_img/exe/01_head_count_img_app ${D}/home/root/Head_count_img/exe/Head_count_img
