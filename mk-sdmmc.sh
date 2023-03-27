@@ -20,8 +20,8 @@ BUILD_DIR=build_${TARGET_BOARD}
 [ "${TARGET_BOARD}" == "gnk-rzv2l" ] && SOC_FAMILY=r9a07g054l
 
 SDDEV=${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/SDMMC.img
-TOTAL=9216
-PART1=3072
+TOTAL=10240
+PART1=3328
 
 function print_boot_example() {
 	echo ""

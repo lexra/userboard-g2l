@@ -3,6 +3,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=e3da7ab23b52a5de7ef39aea4addc59f"
 LICENSE = "MIT"
 
+SVC = "thttpd-demo"
 SRCREV = "ceacb18ba51d7e818b462f7eb23516132b8f00b8"
 SRC_URI = " \
 	git://github.com/renesas-rz/rzv2l_smarc_sample_code.git;protocol=https;branch=main \
@@ -12,9 +13,14 @@ SRC_URI = " \
 	file://resnet50_cam \
 	file://tinyyolov2_cam \
 	file://yolov3_cam \
+        file://${SVC}.sh \
+        file://${SVC}.service \
 "
 
-inherit cmake pkgconfig
+SYSTEMD_SERVICE_${SVC} = "${SVC}.service"
+SYSTEMD_AUTO_ENABLE = "disable"
+
+inherit cmake pkgconfig systemd
 
 DEPENDS += " \
 	drpai \
@@ -41,8 +47,9 @@ do_install_class-target () {
 	install -d ${D}${WEBDIR}/libs
 
 	install ${B}/sample_app_usbcam_http ${D}/home/root/${PN}
-	install ${WORKDIR}/coco-labels-2014_2017.txt ${D}/home/root/${PN}
-	install ${WORKDIR}/synset_words_imagenet.txt ${D}/home/root/${PN}
+	install ${WORKDIR}/${SVC}.sh ${D}/home/root/${PN}
+	install -m 644 ${WORKDIR}/coco-labels-2014_2017.txt ${D}/home/root/${PN}
+	install -m 644 ${WORKDIR}/synset_words_imagenet.txt ${D}/home/root/${PN}
 
 	install ${WORKDIR}/hrnet_cam/* ${D}/home/root/${PN}/hrnet_cam
 	install ${WORKDIR}/resnet50_cam/* ${D}/home/root/${PN}/resnet50_cam
@@ -54,9 +61,13 @@ do_install_class-target () {
 	install -m 644 ${S}/../etc/Websocket_Client/js/*.js ${D}${WEBDIR}/js
 	install -m 644 ${S}/../etc/Websocket_Client/libs/*.css ${D}${WEBDIR}/libs
 	install -m 644 ${S}/../etc/Websocket_Client/libs/*.js ${D}${WEBDIR}/libs
+
+	install -d ${D}${nonarch_base_libdir}/systemd/system
+	install ${WORKDIR}/${SVC}.service ${D}${nonarch_base_libdir}/systemd/system
 }
 
 FILES_${PN} = " \
+	${nonarch_base_libdir} \
 	/home/root/${PN} \
 	${WEBDIR} \
 "

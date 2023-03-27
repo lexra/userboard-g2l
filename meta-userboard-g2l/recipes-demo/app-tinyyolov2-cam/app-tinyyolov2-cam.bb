@@ -23,16 +23,12 @@ SRC_URI = " \
 S = "${WORKDIR}/src"
 
 do_install_class-target () {
-	install -d ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC}
-	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC} || true
+	install -d ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC}
+	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC} || true
 
-	install ${WORKDIR}/exe/sample_app* ${D}/home/root/${APP_NAME}/exe || true
-	install ${WORKDIR}/exe/*.txt ${D}/home/root/${APP_NAME}/exe || true
-	install ${WORKDIR}/exe/*.bmp ${D}/home/root/${APP_NAME}/exe || true
-
-	install -d ${D}/home/root/${APP_NAME}/etc
-	install ${WORKDIR}/etc/*.yaml ${D}/home/root/${APP_NAME}/etc || true
-	install ${S}/sample_${APP_NAME} ${D}/home/root/${APP_NAME}/exe
+	install -m 644 ${WORKDIR}/exe/*.txt ${D}/home/root/${APP_NAME} || true
+	install -m 644 ${WORKDIR}/exe/*.bmp ${D}/home/root/${APP_NAME} || true
+	install -m 755 ${S}/sample_${APP_NAME} ${D}/home/root/${APP_NAME}
 }
 
 do_compile_prepend() {

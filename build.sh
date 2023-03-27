@@ -55,22 +55,14 @@ function print_boot_example() {
 }
 
 ##########################################################
+DRP_AI_TRANSLATOR=r20ut5035ej0181-drp-ai-translator
+DRP_SUPPORT_PACKAGE=r11an0549ej0730-rzv2l-drpai-sp
+VERIFIED_LINUX_PACKAGE=RTK0EF0045Z0024AZJ-v3.0.2
+CM33_MULTI_OS_PACKAGE=r01an6238ej0110-rzv2l-cm33-multi-os-pkg
+ISP_SUPPORT_PACKAGE=r11an0561ej0121-rzv2l-isp-sp
+
 sudo umount mnt || true
 mkdir -p mnt && sudo rm -rfv mnt/*
-if [ ! -e Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2.zip ]; then
-	echo -e ${YELLOW}'Please download the RTK0EF0045Z0024AZJ-v3.0.0-update2.zip from renesas.com . '${NC}
-	exit 1
-fi
-if [ ! -e Renesas_software/RTK0EF0045Z14001ZJ-v1.4_rzv_EN.zip ]; then
-	echo -e ${YELLOW}'Please download the RTK0EF0045Z14001ZJ-v1.4_rzv_EN.zip from renesas.com . '${NC}
-	exit 1
-fi
-if [ ! -e Renesas_software/RTK0EF0045Z16001ZJ-v1.0.1_rzv_EN.zip ]; then
-	echo -e ${YELLOW}'Please download the RTK0EF0045Z16001ZJ-v1.0.1_rzv_EN.zip from renesas.com . '${NC}
-	exit 1
-fi
-
-##########################################################
 sudo chown -R ${USER}.${USER} Renesas_software meta-userboard* build.sh
 
 ##########################################################
@@ -84,19 +76,12 @@ echo ""
 mkdir -p ${SCRIP_DIR}/sources
 cd ${SCRIP_DIR}/sources
 
-echo -e ${GREEN}'>> RZ/G Verified Linux Package V3.0.0-update2'${NC}
-[ ! -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2 ] && \
-	unzip -o ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2.zip -d ../Renesas_software
+echo -e ${GREEN}'>> Verified Linux Package => ${VERIFIED_LINUX_PACKAGE}.zip '${NC}
+[ ! -d ../Renesas_software/${VERIFIED_LINUX_PACKAGE} ] && \
+	(mkdir -p ../Renesas_software/${VERIFIED_LINUX_PACKAGE} && unzip -o ../Renesas_software/${VERIFIED_LINUX_PACKAGE}.zip -d ../Renesas_software/${VERIFIED_LINUX_PACKAGE})
 if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
-	tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2/rzv_bsp_v3.0.0.tar.gz
-	patch -p1 -l -f --fuzz 3 -i ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.0-update2/rzv_v300-to-v300update2.patch
+	tar zxvf ../Renesas_software/${VERIFIED_LINUX_PACKAGE}/rzv_bsp_v3.0.2.tar.gz
 fi
-#echo -e ${GREEN}'>> RZ/G Verified Linux Package V3.0.2'${NC}
-#	[ ! -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 ] && \
-#		(mkdir -p ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2 && unzip -o ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2.zip -d ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2)
-#	if [ ! -d meta-renesas -o ! -d poky -o ! -d meta-openembedded -o ! -d meta-qt5 ]; then
-#		tar zxvf ../Renesas_software/RTK0EF0045Z0024AZJ-v3.0.2/rzv_bsp_v3.0.2.tar.gz
-#	fi
 
 echo -e ${GREEN}'>> RZ MPU Graphics Library Version 1.4 for RZ/G2L, RZ/G2LC, and RZ/V2L'${NC}
 [ ! -d ../Renesas_software/RTK0EF0045Z14001ZJ-v1.4_EN ] && \
@@ -110,15 +95,15 @@ echo -e ${GREEN}'>> RZ MPU Video Codec Library Version 1.0.1 for RZ/G2L and RZ/V
 [ ! -e meta-rz-features/recipes-codec/omx-module/omx-user-module.bb ] && \
 	tar zxvf ../Renesas_software/RTK0EF0045Z16001ZJ-v1.0.1_EN/meta-rz-features_codec_v1.0.1.tar.gz
 
-if [ ! -e Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz ]; then
-	unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip -d ../Renesas_software
-	unzip -o ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/rzv2l_cm33_rpmsg_demo.zip -d ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg
-	tar zxvf ../Renesas_software/r01an6238ej0102-rzv2l-cm33-multi-os-pkg/meta-rz-features.tar.gz
+if [ ! -e Renesas_software/${CM33_MULTI_OS_PACKAGE}/meta-rz-features.tar.gz ]; then
+	unzip -o ../Renesas_software/${CM33_MULTI_OS_PACKAGE}.zip -d ../Renesas_software/${CM33_MULTI_OS_PACKAGE}
+	unzip -o ../Renesas_software/${CM33_MULTI_OS_PACKAGE}/rzv2l_cm33_rpmsg_demo.zip -d ../Renesas_software/${CM33_MULTI_OS_PACKAGE}
+	tar zxvf ../Renesas_software/${CM33_MULTI_OS_PACKAGE}/meta-rz-features.tar.gz
 fi
 
 if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "${TARGET_BOARD}" == "gnk-rzv2l" ]; then
-	echo -e ${GREEN}'>> r11an0549ej0720-rzv2l-drpai-sp.zip'${NC}
-	if [ ! -e ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz \
+	echo -e ${GREEN}'>> ${DRP_SUPPORT_PACKAGE}.zip'${NC}
+	if [ ! -e ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-driver/meta-rz-features.tar.gz \
 		-o ! -e ../meta-userboard-g2l/recipes-demo/app-hrnet-cam/app_hrnet_cam \
 		-o ! -e ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam/app_hrnet_pre-tinyyolov2_cam \
 		-o ! -e ../meta-userboard-g2l/recipes-demo/app-resnet50-cam/app_resnet50_cam \
@@ -127,46 +112,48 @@ if [ "${TARGET_BOARD}" == "smarc-rzv2l" -o "${TARGET_BOARD}" == "rzv2l-dev" -o "
 		-o ! -e ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp/app_tinyyolov2_isp \
 		-o ! -e ../meta-userboard-g2l/recipes-demo/app-yolo-img/app_yolo_img ]; then
 
-		unzip -o ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp.zip -d ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-driver/meta-rz-features.tar.gz
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.20.tar.gz -C ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide
-		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-cam
-		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_hrnet_pre-tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam
-		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_cam ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
-		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_resnet50_img ../meta-userboard-g2l/recipes-demo/app-resnet50-img
-		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam
-		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_tinyyolov2_isp ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp
-		cp -Rpfv ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv2l_drpai-sample-application/app_yolo_img ../meta-userboard-g2l/recipes-demo/app-yolo-img
+		unzip -o ../Renesas_software/${DRP_SUPPORT_PACKAGE}.zip -d ../Renesas_software/${DRP_SUPPORT_PACKAGE}
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-driver/meta-rz-features.tar.gz
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/rzv2l_drpai-sample-application_ver7.30.tar.gz -C ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv_ai-implementation-guide/rzv_ai-implementation-guide_ver7.30.tar.gz -C ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv_ai-implementation-guide
+		cp -Rpfv ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/app_hrnet_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-cam
+		cp -Rpfv ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/app_hrnet_pre-tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-hrnet-pre-tinyyolov2-cam
+		cp -Rpfv ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/app_resnet50_cam ../meta-userboard-g2l/recipes-demo/app-resnet50-cam
+		cp -Rpfv ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/app_resnet50_img ../meta-userboard-g2l/recipes-demo/app-resnet50-img
+		cp -Rpfv ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/app_tinyyolov2_cam ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-cam
+		cp -Rpfv ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/app_tinyyolov2_isp ../meta-userboard-g2l/recipes-demo/app-tinyyolov2-isp
+		cp -Rpfv ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv2l_drpai-sample-application/app_yolo_img ../meta-userboard-g2l/recipes-demo/app-yolo-img
 	fi
 
-	echo -e ${GREEN}'>> r20ut5035ej0180-drp-ai-translator.zip'${NC}
-	if [ ! -e ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install -o ! -e ../drp-ai_translator_release/pytorch/resnet50/convert_to_onnx.py ]; then
-		unzip -o ../Renesas_software/r20ut5035ej0180-drp-ai-translator.zip -d ../Renesas_software/drp-ai-translator
-		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+	echo -e ${GREEN}'>> ${DRP_AI_TRANSLATOR}.zip'${NC}
+	if [ ! -e ../drp-ai_translator_release/pytorch/resnet50/convert_to_onnx.py ]; then
+		unzip -o ../Renesas_software/${DRP_AI_TRANSLATOR}.zip -d ../Renesas_software/drp-ai-translator
+		chmod +x ../Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.81-Linux-x86_64-Install
 		cd ..
-		echo y | Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.80-Linux-x86_64-Install
+		echo y | Renesas_software/drp-ai-translator/DRP-AI_Translator-v1.81-Linux-x86_64-Install
 		cd -
 
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_resnet/pytorch_resnet_ver7.20.tar.gz -C ../drp-ai_translator_release
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/mmpose_hrnet/mmpose_hrnet_ver7.20.tar.gz -C ../drp-ai_translator_release
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/darknet_yolo/darknet_yolo_ver7.20.tar.gz -C ../drp-ai_translator_release
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_mobilenet/pytorch_mobilenet_ver7.20.tar.gz -C ../drp-ai_translator_release
-		tar zxvf ../Renesas_software/r11an0549ej0720-rzv2l-drpai-sp/rzv_ai-implementation-guide/pytorch_deeplabv3/pytorch_deeplabv3_ver7.20.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv_ai-implementation-guide/pytorch_resnet/pytorch_resnet_ver7.30.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv_ai-implementation-guide/mmpose_hrnet/mmpose_hrnet_ver7.30.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv_ai-implementation-guide/darknet_yolo/darknet_yolo_ver7.30.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv_ai-implementation-guide/pytorch_mobilenet/pytorch_mobilenet_ver7.30.tar.gz -C ../drp-ai_translator_release
+		tar zxvf ../Renesas_software/${DRP_SUPPORT_PACKAGE}/rzv_ai-implementation-guide/pytorch_deeplabv3/pytorch_deeplabv3_ver7.30.tar.gz -C ../drp-ai_translator_release
 	fi
 
-	echo -e ${GREEN}'>> r11an0561ej0120-rzv2l-isp-sp.zip'${NC}
-	if [ ! -e ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz ]; then
-		unzip -o ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp.zip -d ../Renesas_software
-		#tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/meta-rz-features.tar.gz
-		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-adjustment-tool_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
-		tar zxvf ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp/rzv2l_isp-sample-application_ver1.20.tar.gz -C ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp
+	echo -e ${GREEN}'>> ${ISP_SUPPORT_PACKAGE}.zip'${NC}
+	if [ ! -e ../Renesas_software/${ISP_SUPPORT_PACKAGE}/meta-rz-features.tar.gz ]; then
+		unzip -o ../Renesas_software/${ISP_SUPPORT_PACKAGE}.zip -d ../Renesas_software
+		#tar zxvf ../Renesas_software/${ISP_SUPPORT_PACKAGE}/meta-rz-features.tar.gz
+		tar zxvf ../Renesas_software/${ISP_SUPPORT_PACKAGE}/rzv2l_isp-adjustment-tool_ver1.21.tar.gz -C ../Renesas_software/${ISP_SUPPORT_PACKAGE}
+		tar zxvf ../Renesas_software/${ISP_SUPPORT_PACKAGE}/rzv2l_isp-sample-application_ver1.21.tar.gz -C ../Renesas_software/${ISP_SUPPORT_PACKAGE}
 	fi
 else
-	rm -rfv ../Renesas_software/rzv2l-drpai-sp ../Renesas_software/r11an0561ej0120-rzv2l-isp-sp ../Renesas_software/drp-ai-translator
+	rm -rfv ../Renesas_software/rzv2l-drpai-sp ../Renesas_software/${ISP_SUPPORT_PACKAGE} ../Renesas_software/drp-ai-translator
 	rm -rfv meta-rz-features/recipes-drpai
 	rm -rfv meta-rz-features/recipes-isp
 	rm -rfv meta-rz-features/include/drpai
+	#rm -rfv meta-rz-features/recipes-openamp
+	#rm -rfv meta-rz-features/include/openamp
 fi
 
 ##########################################################
@@ -189,28 +176,18 @@ git -C meta-browser checkout -b develop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67
 cd ${SCRIP_DIR}/sources
 echo -e ${GREEN}'>> meta-gnk-board '${NC}
 git clone https://github.com/xlloss/meta-gnk-board.git || true
-git -C meta-gnk-board checkout -b develop 6963c722438e2ab0acde7154d52895107924b6ab || true
+git -C meta-gnk-board checkout -b develop 1120853a4f97fccda3f1f1938b6f33213f66fa87 || true
 git -C meta-gnk-board checkout .
-sed 's|userboard|gnk|g' -i meta-gnk-board/conf/layer.conf
-sed 's|^BBFILES += "${@|#BBFILES += "${@|g' -i meta-gnk-board/conf/layer.conf
-sed 's|^               for layer in BBFILE_COLLECTIONS.split()|#               for layer in BBFILE_COLLECTIONS.split()|g' -i meta-gnk-board/conf/layer.conf
 
 ##########################################################
-cd -
-cd ${SCRIP_DIR}/meta-userboard-g2l/recipes-demo/usbcam-http-demo
-[ ! -e files/tinyyolov2_cam/tinyyolov2_cam_weight.dat ] && \
-	(for S in `ls *.sh`; do ./${S} ; sleep 0.5; done)
-cd -
-
-##########################################################
-cd ${SCRIP_DIR}
 echo -e ${GREEN}'>> oe-init-build-env '${NC}
+cd ${SCRIP_DIR}
 source sources/poky/oe-init-build-env ${BUILD_DIR}
 echo ""
 
 ##########################################################
-cd ${SCRIP_DIR}/${BUILD_DIR}
 echo -e ${GREEN}'>> local.conf bblayers.conf '${NC}
+cd ${SCRIP_DIR}/${BUILD_DIR}
 cp -fv ../meta-userboard-g2l/docs/template/conf/${TARGET_BOARD}/local.conf ./conf/local.conf
 cp -fv ../meta-userboard-g2l/docs/template/conf/${TARGET_BOARD}/bblayers.conf ./conf/bblayers.conf
 cp -Rpfv ../meta-userboard-g2l/conf/machine/${TARGET_BOARD}.conf ../sources/meta-renesas/conf/machine
@@ -218,10 +195,12 @@ echo ""
 
 ##########################################################
 echo -e ${GREEN}'>> show-layers '${NC}
+cd ${SCRIP_DIR}/${BUILD_DIR}
 bitbake-layers show-layers
 echo ""
 echo -e ${GREEN}'>> core-image '${NC}
 cd ${SCRIP_DIR}/${BUILD_DIR}
+#bitbake usbcam-http-demo usbcam-http-tvm -c cleansstate
 bitbake ${CORE_IMAGE} -v
 #bitbake ${CORE_IMAGE} -v -c populate_sdk
 echo ""

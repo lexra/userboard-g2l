@@ -11,7 +11,7 @@ SRC_URI_append_smarc-rzv2ul = " file://makefile "
 SRC_URI_append_rzv2l-dev = " file://makefile "
 
 do_compile () {
-	cp -fv ${WORKDIR}/makefile ${S} || true
+	#cp -fv ${WORKDIR}/makefile ${S} || true
 
 	if [ "${MACHINE}" == "gnk-rzg2l" ]; then
 		BOARD="GNK_RZG2L";

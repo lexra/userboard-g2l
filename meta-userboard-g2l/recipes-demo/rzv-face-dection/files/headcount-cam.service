@@ -1,0 +1,11 @@
+[Unit]
+Description=Head Count for MIPI camera
+After=multi-user.target
+
+[Service]
+Environment=XDG_RUNTIME_DIR=/run/user/0
+ExecStart=/home/root/Head_count/headcount-cam.sh
+Type=simple
+
+#[Install]
+#WantedBy=multi-user.target

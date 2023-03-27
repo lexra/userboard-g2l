@@ -24,26 +24,24 @@ S = "${WORKDIR}/src"
 
 do_install_class-target () {
 	MODEL=tinyyolov2
-	install -d ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC}
-	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC} || true
+	install -d ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC}
+	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC} || true
 
 	MODEL=tinyyolov3
-	install -d ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC}
-	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC} || true
+	install -d ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC}
+	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC} || true
 
 	MODEL=yolov2
-	install -d ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC}
-	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC} || true
+	install -d ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC}
+	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC} || true
 
 	MODEL=yolov3
-	install -d ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC}
-	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/exe/${MODEL}_${IMG_SRC} || true
+	install -d ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC}
+	install ${WORKDIR}/exe/${MODEL}_${IMG_SRC}/* ${D}/home/root/${APP_NAME}/${MODEL}_${IMG_SRC} || true
 
-	install ${S}/sample_app* ${D}/home/root/${APP_NAME}/exe
-	install ${WORKDIR}/exe/*.txt ${D}/home/root/${APP_NAME}/exe || true
-	install ${WORKDIR}/exe/*.bmp ${D}/home/root/${APP_NAME}/exe || true
-	install -d ${D}/home/root/${APP_NAME}/etc
-	install ${WORKDIR}/etc/*.yaml ${D}/home/root/${APP_NAME}/etc || true
+	install -m 755 ${S}/sample_app* ${D}/home/root/${APP_NAME}
+	install -m 644 ${WORKDIR}/exe/*.txt ${D}/home/root/${APP_NAME} || true
+	install -m 644 ${WORKDIR}/exe/*.bmp ${D}/home/root/${APP_NAME} || true
 }
 
 do_compile_prepend() {

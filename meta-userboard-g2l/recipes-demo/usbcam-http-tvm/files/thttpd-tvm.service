@@ -1,0 +1,11 @@
+[Unit]
+Description=USBCAM HTTPD TVM DEMO
+After=multi-user.target
+
+[Service]
+Environment=XDG_RUNTIME_DIR=/run/user/0
+ExecStart=/home/root/tvm/thttpd-tvm.sh
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

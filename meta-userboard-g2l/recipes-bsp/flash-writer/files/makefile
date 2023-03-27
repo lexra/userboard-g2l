@@ -108,6 +108,16 @@ DDR_TYPE = DDR4
 DDR_SIZE = 1GB_1PCS
 SWIZZLE  = T3BCUD2
 DEVICE_TYPE = 1
+else ifeq ("$(BOARD)", "RZG2UL_TYPE2_SMARC")
+#--------------------------------------
+# RZ/G2UL Type2 Smarc board
+#--------------------------------------
+FILENAME_ADD = _RZG2UL_TYPE2_SMARC
+DEVICE   = RZG2UL
+DDR_TYPE = DDR4
+DDR_SIZE = 1GB_1PCS
+SWIZZLE  = T3BC
+DEVICE_TYPE = 2
 else ifeq ("$(BOARD)", "RZG2UL_TYPE2_DEV")
 #--------------------------------------
 # RZ/G2UL Type2 Dev board
@@ -154,6 +164,36 @@ DEVICE   = RZV2L
 DDR_TYPE = DDR4
 DDR_SIZE = 4GB
 SWIZZLE  = T2C
+else ifeq ("$(BOARD)", "RZA3UL_DEV")
+#--------------------------------------
+# RZ/A3UL DDR4 Dev board
+#--------------------------------------
+FILENAME_ADD = _RZA3UL_DEV
+DEVICE   = RZA3UL
+DDR_TYPE = DDR4
+DDR_SIZE = 1GB_1PCS
+SWIZZLE  = T3BCUD
+DEVICE_TYPE = 1
+else ifeq ("$(BOARD)", "RZA3UL_DDR3L_DEV")
+#--------------------------------------
+# RZ/A3UL DDR3L Dev board
+#--------------------------------------
+FILENAME_ADD = _RZA3UL_DEV
+DEVICE   = RZA3UL
+DDR_TYPE = DDR3L
+DDR_SIZE = 512MB_1PCS
+SWIZZLE  = T3BCUL
+DEVICE_TYPE = 1
+else ifeq ("$(BOARD)", "RZA3UL_SMARC")
+#--------------------------------------
+# RZ/A3UL Smarc board
+#--------------------------------------
+FILENAME_ADD = _RZA3UL_SMARC
+DEVICE   = RZA3UL
+DDR_TYPE = DDR4
+DDR_SIZE = 1GB_1PCS
+SWIZZLE  = T3BCUD2
+DEVICE_TYPE = 1
 endif
 
 ifeq ("$(BOARD)", "GNK_RZG2L")
@@ -220,6 +260,9 @@ ifeq ("$(DEVICE)", "RZG2UL")
 endif
 ifeq ("$(DEVICE)", "RZV2L")
 	CFLAGS += -DRZV2L=1
+endif
+ifeq ("$(DEVICE)", "RZA3UL")
+	CFLAGS += -DRZA3UL=1
 endif
 
 ifeq ("$(DDR_TYPE)", "DDR4")
@@ -315,12 +358,18 @@ endif
 
 ifeq ("$(INTERNAL_MEMORY_ONLY)", "DISABLE")
 	CFLAGS += -DINTERNAL_MEMORY_ONLY=0
-	MEMORY_DEF = memory_writer.def
+	LINKER_FILE = memory_writer.def.s
 endif
 ifeq ("$(INTERNAL_MEMORY_ONLY)", "ENABLE")
-	CFLAGS += -DINTERNAL_MEMORY_ONLY=1
-	MEMORY_DEF = memory_writer_internal.def
+	CFLAGS += -Os -DINTERNAL_MEMORY_ONLY=1
+	LINKER_FILE = memory_writer_internal.def.s
 endif
+
+ifeq ("$(TRUSTED_BOARD_BOOT)", "ENABLE")
+	CFLAGS += -DTRUSTED_BOARD_BOOT=1
+endif
+
+MEMORY_DEF := $(LINKER_FILE:%.def.s=$(OBJECT_DIR)/%.def)
 
 DDR_DEF = ddr_qos_init_setting
 
@@ -332,6 +381,8 @@ DDR_COMMON = ddr/common
 ifeq ("$(DEVICE)", "RZV2L")
 DDR_SOC    = ddr/v2l
 else ifeq ("$(DEVICE)", "RZG2UL")
+DDR_SOC    = ddr/g2ul
+else ifeq ("$(DEVICE)", "RZA3UL")
 DDR_SOC    = ddr/g2ul
 else
 DDR_SOC    = ddr/g2l
@@ -374,6 +425,9 @@ SRC_FILE +=				\
 else ifeq ("$(DEVICE)", "RZG2UL")
 SRC_FILE +=				\
 	ddr/g2ul/ddr_g2ul.c
+else ifeq ("$(DEVICE)", "RZA3UL")
+SRC_FILE +=				\
+	ddr/g2ul/ddr_g2ul.c
 else
 SRC_FILE +=				\
 	ddr/g2l/ddr_g2l.c
@@ -402,11 +456,13 @@ endif
 OBJ_FILE := $(addprefix $(OBJECT_DIR)/,$(patsubst %.c,%.o,$(SRC_FILE)))
 
 #Dependency File
-DEPEND_FILE = $(patsubst %.lib, ,$(OBJ_FILE:%.o=%.d))
+DEPEND_FILE = $(patsubst %.lib, ,$(OBJ_FILE:%.o=%.d)) $(LINKER_FILE:.s=.d)
 
 ###################################################
 #C compiler
 CC ?= $(CROSS_COMPILE)gcc
+#C++ compiler
+CPP ?= $(CROSS_COMPILE)cpp
 #Assembler
 AS ?= $(CROSS_COMPILE)as
 #Linker
@@ -429,7 +485,7 @@ CL = rm -rf
 # Command
 
 .PHONY: all
-all: $(OBJECT_DIR) $(OUTPUT_DIR) $(OBJ_FILE_BOOT) $(OBJ_FILE) $(OUTPUT_FILE)
+all: $(OBJECT_DIR) $(OUTPUT_DIR) $(OBJ_FILE_BOOT) $(OBJ_FILE) $(OUTPUT_FILE) $(MEMORY_DEF)
 
 #------------------------------------------
 # Make Directory
@@ -449,6 +505,10 @@ $(OBJECT_DIR)/%.o:$(BOOTDIR)/%.s
 $(OBJECT_DIR)/%.o:%.c
 	@if [ ! -e `dirname $@` ]; then mkdir -p `dirname $@`; fi
 	$(CC) -g -Os $(ALIGN) $(CPU) $(CC_NEON) $(THUMB) -MMD -MP -c -I $(BOOTDIR) -I $(INCLUDE_DIR) -I $(DDR_COMMON) -I $(DDR_SOC) $< -o $@ -D$(AArch32_64)=0 -D$(BOOT_DEF)=0 -D$(TOOL_DEF)=0 $(CFLAGS) -D$(DDR_DEF)=0
+
+$(OBJECT_DIR)/%.def:%.def.s
+	@if [ ! -e `dirname $@` ]; then mkdir -p `dirname $@`; fi
+	$(CPP) $(CPU) $(CFLAGS) -I $(BOOTDIR) -I $(INCLUDE_DIR) -x assembler-with-cpp -MMD -MP -P $< -o $@ -D$(AArch32_64)=0 -D$(BOOT_DEF)=0 -D$(TOOL_DEF)=0 -D$(DDR_DEF)=0
 
 #------------------------------------------
 # Linker
