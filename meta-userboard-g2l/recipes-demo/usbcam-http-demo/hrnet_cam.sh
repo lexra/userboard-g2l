@@ -26,6 +26,7 @@ cd mmpose
 git checkout tools/deployment/pytorch2onnx.py
 patch -p1 -l -f --fuzz 3 -i ../../../extra/mmpose_tools_deployment_pytorch2onnx_py.patch
 
+PYTHONPATH=`pwd`:${PYTHONPATH}
 NN=configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/hrnet_w32_coco_256x192.py
 OUTPUT=${MODEL}.onnx
 WEIGHT=hrnet_w32_coco_256x192-c78dce93_20200708.pth
