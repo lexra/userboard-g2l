@@ -14,7 +14,9 @@ SRC_URI = " \
 	file://hrnet_onnx \
 	file://hrnetv2_pt \
 	file://resnet18_onnx \
+	file://resnet18_onnx_cpu \
 	file://resnet18_torch \
+	file://resnet18_reference \
 	file://tinyyolov2_onnx \
 	file://tinyyolov3_onnx \
 	file://yolov2_onnx \
@@ -75,7 +77,19 @@ do_compile_append () {
 	export TVM_HOME=${TVM_ROOT}/tvm
 	export PRODUCT=V2L
 
+	mkdir -p ${WORKDIR}/git/apps/toolchain
 	cd ${WORKDIR}/git/apps/toolchain
+	cmake ..
+	oe_runmake VERBOSE=1
+	cd -
+
+	cp ${WORKDIR}/git/apps/MeraDrpRuntimeWrapper.cpp ${WORKDIR}/git/how-to/tips/compare_difference/apps
+	cp ${WORKDIR}/git/apps/MeraDrpRuntimeWrapper.h ${WORKDIR}/git/how-to/tips/compare_difference/apps
+	cp ${WORKDIR}/git/apps/PreRuntime.cpp ${WORKDIR}/git/how-to/tips/compare_difference/apps
+	cp ${WORKDIR}/git/apps/PreRuntime.h ${WORKDIR}/git/how-to/tips/compare_difference/apps
+	sed 's|set(TVM_ROOT ${CMAKE_CURRENT_BINARY_DIR}/../../tvm/)|set(TVM_ROOT ${CMAKE_CURRENT_BINARY_DIR}/../../../../../tvm/)|' -i ${WORKDIR}/git/how-to/tips/compare_difference/apps/CMakeLists.txt
+	mkdir -p ${WORKDIR}/git/how-to/tips/compare_difference/apps/toolchain
+	cd ${WORKDIR}/git/how-to/tips/compare_difference/apps/toolchain
 	cmake ..
 	oe_runmake VERBOSE=1
 	cd -
@@ -85,8 +99,11 @@ do_install_class-target () {
 	install -d ${D}${libdir}
 	install ${WORKDIR}/git/obj/build_runtime/V2L/libtvm_runtime.so ${D}${libdir}
 	install -d ${D}/home/root/tvm
+
 	install -m 755 ${WORKDIR}/git/apps/toolchain/tutorial_app ${D}/home/root/tvm
+	install -m 755 ${WORKDIR}/git/how-to/tips/compare_difference/apps/toolchain/inference_comparison ${D}/home/root/tvm
 	install -m 755 ${B}/sample_app_drpai_tvm_usbcam_http ${D}/home/root/tvm
+
 	install -m 755 ${WORKDIR}/${SVC}.sh ${D}/home/root/tvm
 
 	cp -Rfv ${WORKDIR}/git/apps/exe/preprocess_tvm_v2l ${D}/home/root/tvm
