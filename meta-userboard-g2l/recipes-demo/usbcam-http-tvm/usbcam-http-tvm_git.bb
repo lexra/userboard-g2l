@@ -70,6 +70,8 @@ do_configure_prepend () {
 	sed 's|preprocess_tvm_v2ma|preprocess_tvm_v2l|' -i ${WORKDIR}/git/how-to/sample_app/src/recognize/deeppose/tvm_drpai_deeppose.h
 	sed 's|preprocess_tvm_v2ma|preprocess_tvm_v2l|' -i ${WORKDIR}/git/how-to/sample_app/src/recognize/hrnet/tvm_drpai_hrnet.h
 	sed 's|preprocess_tvm_v2ma|preprocess_tvm_v2l|' -i ${WORKDIR}/git/how-to/sample_app/src/recognize/ultraface/tvm_drpai_ultraface.h
+
+	sed 's|runtime.SetInput(0, pre_output_ptr);$|runtime.SetInput(0, pre_output_ptr); runtime.ProfileRun("profile_table.txt", "profile.csv");|' -i ${WORKDIR}/git/how-to/sample_app/src/recognize/recognize_base.cpp
 }
 
 do_compile_append () {
@@ -103,6 +105,7 @@ do_install_class-target () {
 	install -m 755 ${WORKDIR}/git/apps/toolchain/tutorial_app ${D}/home/root/tvm
 	install -m 755 ${WORKDIR}/git/how-to/tips/compare_difference/apps/toolchain/inference_comparison ${D}/home/root/tvm
 	install -m 755 ${B}/sample_app_drpai_tvm_usbcam_http ${D}/home/root/tvm
+	install -m 644 ${WORKDIR}/git/how-to/tips/profiling/profile_reader.py ${D}/home/root/tvm
 
 	install -m 755 ${WORKDIR}/${SVC}.sh ${D}/home/root/tvm
 

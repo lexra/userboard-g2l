@@ -9,7 +9,9 @@ SRC_URI = " \
 	file://init \
 "
 
-#SRC_URI_append = " file://poll.patch "
+SRC_URI_append = " \
+	${@'' if (d.getVar("CIP_MODE") == 'Buster' or d.getVar("CIP_MODE") == 'Bullseye') else 'file://poll.patch' } \
+"
 
 S = "${WORKDIR}/git"
 
