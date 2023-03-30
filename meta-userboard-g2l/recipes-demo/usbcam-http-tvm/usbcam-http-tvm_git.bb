@@ -9,7 +9,6 @@ SRC_URI = " \
 	gitsm://github.com/renesas-rz/rzv_drp-ai_tvm.git;protocol=https;branch=main \
 	file://make_drp_env.sh \
 	file://face_deeppose_pt \
-	file://face_deeppose_cpu \
 	file://googlenet_onnx \
 	file://hrnet_onnx \
 	file://hrnetv2_pt \
@@ -26,7 +25,7 @@ SRC_URI = " \
 	file://${SVC}.service \
 	file://index.html \
 "
-#SRC_URI_append = " file://emotion_fp_onnx "
+SRC_URI_append = " file://emotion_fp_onnx "
 
 SYSTEMD_SERVICE_${SVC}= "${SVC}.service"
 SYSTEMD_AUTO_ENABLE = "disable"
@@ -122,8 +121,7 @@ do_install_class-target () {
 	cp -Rfv ${WORKDIR}/hrnet_onnx ${D}/home/root/tvm
 	cp -Rfv ${WORKDIR}/googlenet_onnx ${D}/home/root/tvm
 	cp -Rfv ${WORKDIR}/face_deeppose_pt ${D}/home/root/tvm
-	cp -Rfv ${WORKDIR}/face_deeppose_cpu ${D}/home/root/tvm
-	#cp -Rfv ${WORKDIR}/emotion_fp_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/emotion_fp_onnx ${D}/home/root/tvm
 
 	install -m 644 ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
 	install -m 644 ${WORKDIR}/git/how-to/sample_app/exe/synset_words_imagenet.txt ${D}/home/root/tvm
