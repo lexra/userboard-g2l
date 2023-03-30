@@ -1,10 +1,8 @@
-EXT_GFX_BACKEND = "${@oe.utils.ifelse((d.getVar('RZ_FEATURE') == 'True') and (d.getVar('USE_RENESAS_GLES') == '1'), '1', '0')}"
+require conf/machine/include/${SOC_FAMILY}.inc
 
-# 32BIT package install (default is disable)
-# This variables can be used only in multilib.
-USE_32BIT_PKGS ?= "0"
-USE_32BIT_WAYLAND ?= "0"
-USE_32BIT_MMP ?= "0"
+MACHINEOVERRIDES =. "rzfive:"
+
+BBMASK_append = " recipes-rzg2h|recipes-rzv2l|recipes-rzg2l"
 
 MACHINE_FEATURES = ""
 
@@ -13,8 +11,8 @@ IMAGE_FSTYPES_append = " tar.bz2 ext4"
 
 SERIAL_CONSOLES = "115200;ttySC0"
 
-# Configuration for ARM Trusted Firmware
-EXTRA_IMAGEDEPENDS += " trusted-firmware-a"
+# Configuration for OPENSBI
+EXTRA_IMAGEDEPENDS += " opensbi"
 
 # Add variable to Build Configuration in build log
 BUILDCFG_VARS_append = " SOC_FAMILY"
@@ -30,4 +28,4 @@ PREFERRED_VERSION_gdbm-native ?= "${@bb.utils.contains("INCOMPATIBLE_LICENSE", "
 PREFERRED_VERSION_u-boot = "v2021.10%"
 EXTRA_IMAGEDEPENDS += " u-boot"
 
-BBMASK_append = " recipes-rzfive"
+PACKAGE_INSTALL_remove += " optee-client v4l2-init "
