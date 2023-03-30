@@ -21,11 +21,11 @@ SRC_URI = " \
 	file://yolov2_onnx \
 	file://yolov3_onnx \
 	file://ultraface_onnx \
+	file://emotion_fp_onnx \
 	file://${SVC}.sh \
 	file://${SVC}.service \
 	file://index.html \
 "
-SRC_URI_append = " file://emotion_fp_onnx "
 
 SYSTEMD_SERVICE_${SVC}= "${SVC}.service"
 SYSTEMD_AUTO_ENABLE = "disable"
@@ -122,6 +122,7 @@ do_install_class-target () {
 	cp -Rfv ${WORKDIR}/googlenet_onnx ${D}/home/root/tvm
 	cp -Rfv ${WORKDIR}/face_deeppose_pt ${D}/home/root/tvm
 	cp -Rfv ${WORKDIR}/emotion_fp_onnx ${D}/home/root/tvm
+	cp -Rfv ${WORKDIR}/resnet18_reference ${D}/home/root/tvm
 
 	install -m 644 ${WORKDIR}/git/how-to/sample_app/exe/coco-labels-2014_2017.txt ${D}/home/root/tvm
 	install -m 644 ${WORKDIR}/git/how-to/sample_app/exe/synset_words_imagenet.txt ${D}/home/root/tvm
