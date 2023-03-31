@@ -14,7 +14,7 @@ IMAGE_INSTALL_append = " \
 	libdrm-tests libdrm-kms libdrm \
 	libpng libjpeg-turbo pv fbida yavta \
 	\
-	mpg123 libexif giflib \
+	mpg123 libexif giflib mrtg \
 "
 
 IMAGE_INSTALL_append_smarc-rzv2l = " \
