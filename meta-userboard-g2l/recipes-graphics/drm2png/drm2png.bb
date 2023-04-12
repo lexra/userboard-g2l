@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=7c0d7ef03a7eb04ce795b0f60e68e7e1"
 DEPENDS += " \
 	libdrm \
 	libpng \
+	libsdl2 \
+	virtual/libgles2 \
 "
 
 SRC_URI_append = " \
@@ -13,11 +15,18 @@ SRC_URI_append = " \
         file://fbgrab.c \
         file://i2c_read_data.c \
         file://ntpc.c \
+        file://hello_triangle.cpp \
 	file://COPYING \
 "
 S = "${WORKDIR}"
 
-FILES_${PN} += "${bindir}/drm2png ${bindir}/fbgrab ${bindir}/i2c_read_data ${bindir}/ntpc"
+FILES_${PN} += " \
+	${bindir}/drm2png \
+	${bindir}/fbgrab \
+	${bindir}/i2c_read_data \
+	${bindir}/ntpc \
+	/home/root/sdl-tests \
+"
 FILES_${PN}-dev = ""
 
 do_compile () {
@@ -30,6 +39,9 @@ do_install_class-target () {
 	install ${S}/fbgrab ${D}${bindir}
 	install ${S}/i2c_read_data ${D}${bindir}
 	install ${S}/ntpc ${D}${bindir}
+
+	install -d ${D}/home/root/sdl-tests
+	install ${S}/hello_triangle ${D}/home/root/sdl-tests
 }
 
 do_configure[noexec] = "1"
