@@ -164,20 +164,21 @@ cp -fv ../meta-userboard-g2l/conf/meta-rz-features-layer.conf meta-rz-features/c
 cd ${SCRIP_DIR}/sources
 echo -e ${GREEN}'>> meta-python2 '${NC}
 git clone git://git.openembedded.org/meta-python2 || true
-git -C meta-python2 checkout -b develop 07dca1e54f82a06939df9b890c6d1ce1e3197f75 || true
+git -C meta-python2 checkout -b mydevelop 07dca1e54f82a06939df9b890c6d1ce1e3197f75 || true
 echo -e ${GREEN}'>> meta-clang '${NC}
 git clone https://github.com/kraj/meta-clang || true
-git -C meta-clang checkout -b develop e63d6f9abba5348e2183089d6ef5ea384d7ae8d8 || true
+git -C meta-clang checkout -b mydevelop e63d6f9abba5348e2183089d6ef5ea384d7ae8d8 || true
 echo -e ${GREEN}'>> meta-browser '${NC}
 git clone https://github.com/OSSystems/meta-browser || true
-git -C meta-browser checkout -b develop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67 || true
+git -C meta-browser checkout -b mydevelop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67 || true
 
 ##########################################################
 cd ${SCRIP_DIR}/sources
 echo -e ${GREEN}'>> meta-gnk-board '${NC}
 git clone https://github.com/xlloss/meta-gnk-board.git || true
-git -C meta-gnk-board checkout -b develop 1120853a4f97fccda3f1f1938b6f33213f66fa87 || true
-git -C meta-gnk-board checkout .
+#git -C meta-gnk-board checkout -b mydevelop 1120853a4f97fccda3f1f1938b6f33213f66fa87 || true
+git -C meta-gnk-board checkout -b mydevelop 1673cc0419e2be69b1830346234eef1fc2cee9e2 || true
+#git -C meta-gnk-board checkout .
 
 ##########################################################
 echo -e ${GREEN}'>> oe-init-build-env '${NC}

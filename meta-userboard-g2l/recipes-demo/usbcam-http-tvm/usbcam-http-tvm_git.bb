@@ -78,6 +78,8 @@ do_compile_append () {
 	export TVM_HOME=${TVM_ROOT}/tvm
 	export PRODUCT=V2L
 
+	sed 's|^// #define DEBUG_LOG|#define DEBUG_LOG|' -i ${WORKDIR}/git/apps/PreRuntime.h
+
 	mkdir -p ${WORKDIR}/git/apps/toolchain
 	cd ${WORKDIR}/git/apps/toolchain
 	cmake ..

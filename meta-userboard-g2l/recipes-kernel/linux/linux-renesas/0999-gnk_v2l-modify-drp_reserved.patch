@@ -1,0 +1,43 @@
+diff --git a/arch/arm64/boot/dts/renesas/r9a07g054l2-smarc-gnk.dts b/arch/arm64/boot/dts/renesas/r9a07g054l2-smarc-gnk.dts
+index a64a2b2e6190..21683d95fdbc 100644
+--- a/arch/arm64/boot/dts/renesas/r9a07g054l2-smarc-gnk.dts
++++ b/arch/arm64/boot/dts/renesas/r9a07g054l2-smarc-gnk.dts
+@@ -25,7 +25,7 @@ reserved-memory {
+ 		/* device specific region for contiguous allocations */
+ 		drp_reserved: DRP-AI {
+ 			reusable;
+-			reg = <0x0 0x20000000 0x0 0x20000000>;
++			reg = <0x0 0x78000000 0x0 0x08000000>;
+ 		};
+ 
+ 		image_buf0: image_buf@0 {
+@@ -40,6 +40,21 @@ isp_work0: SIMPLE_ISP {
+ 			reg = <0x0 0x74000000 0x0 0x03000000>;
+ 		};
+ 	};
++
++	udmabuf@0 {
++		compatible = "ikwzm,u-dma-buf";
++		device-name = "udmabuf0";
++		minor-number = <0>;
++		size = <0x4000000>; // 64MiB
++		dma-coherent;
++		memory-region = <&image_buf0>;
++        };
++};
++
++&drpai0 {
++	memory-region = <&drp_reserved>;
++	linux-memory-region = < &{/memory@48000000} >;
++	status = "okay";
+ };
+ 
+ &scif1 {
+@@ -54,7 +69,6 @@ &scif3 {
+ 	status = "okay";
+ };
+ 
+-
+ &pinctrl {
+ 	/delete-node/ can0-stb;
+ 	/delete-node/ can1-stb;
