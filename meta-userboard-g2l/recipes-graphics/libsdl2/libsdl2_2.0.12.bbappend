@@ -2,7 +2,10 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI_append = " \
 	file://makefile.test \
+	file://textures.cpp \
+	file://assets \
 "
+DEPENDS += "glib-2.0 libpng"
 
 BBCLASSEXTEND += " native nativesdk"
 
@@ -18,8 +21,8 @@ PACKAGECONFIG = " \
 	tslib \
 "
 
-PACKAGECONFIG[gles2]      = "--enable-video-opengles,--disable-video-opengles,virtual/libgles2"
-PACKAGECONFIG[wayland]    = "--enable-video-wayland,--disable-video-wayland,wayland-native wayland wayland-protocols libxkbcommon"
+PACKAGECONFIG[gles2] = "--enable-video-opengles,--disable-video-opengles,virtual/libgles2"
+PACKAGECONFIG[wayland] = "--enable-video-wayland,--disable-video-wayland,wayland-native wayland wayland-protocols libxkbcommon"
 
 do_install_append_class-target () {
 	install -d ${D}/home/root/sdl-tests/shapes
@@ -39,11 +42,18 @@ do_install_append_class-target () {
 		testgamecontroller testgesture testgles2 testhaptic testhittesting testhotplug testiconv testime testintersections \
 		testjoystick testkeys testloadso testlock testmessage testmultiaudio testnative testoverlay2 testplatform testqsort testrelative testrendercopyex \
 		testrendertarget testresample testrumble testscale testsem testsensor testshape testsprite2 testspriteminimal teststreaming \
-		testthread testtimer testver testviewport testvulkan testwm2 testyuv torturethread ${D}/home/root/sdl-tests
+		testthread testtimer testver testviewport testvulkan testwm2 testyuv torturethread \
+		textures \
+		${D}/home/root/sdl-tests
 	cd -
+	install -d ${D}/home/root/sdl-tests/assets
+	install ${WORKDIR}/assets/awesomeface.png ${D}/home/root/sdl-tests/assets
+	install ${WORKDIR}/assets/texture-shader-1.frag ${D}/home/root/sdl-tests/assets
+	install ${WORKDIR}/assets/vertex-shader-1.vert ${D}/home/root/sdl-tests/assets
 }
 
 do_compile_append_class-target () {
+	cp ${WORKDIR}/textures.cpp ${S}/test
 	cp ${WORKDIR}/makefile.test ${S}/test/Makefile
 	oe_runmake -C ${S}/test
 }
