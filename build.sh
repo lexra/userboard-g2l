@@ -171,6 +171,8 @@ git -C meta-clang checkout -b mydevelop e63d6f9abba5348e2183089d6ef5ea384d7ae8d8
 echo -e ${GREEN}'>> meta-browser '${NC}
 git clone https://github.com/OSSystems/meta-browser || true
 git -C meta-browser checkout -b mydevelop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67 || true
+echo -e ${GREEN}'>> meta-voice-agent '${NC}
+git clone https://github.com/lexra/meta-voice-agent.git || true
 
 ##########################################################
 cd ${SCRIP_DIR}/sources

@@ -6,6 +6,13 @@ TOOLCHAIN_TARGET_TASK_append = " \
 	${@oe.utils.conditional("ISP_RECIPES", "True", "isp", "", d)} \
 "
 
+FORTRAN_TOOLS = " \
+    gfortran \
+    gfortran-symlinks \
+    libgfortran \
+    libgfortran-dev \
+"
+
 IMAGE_INSTALL_append = " \
 	tslib nfs-utils e2fsprogs e2fsprogs-mke2fs e2fsprogs-resize2fs udev curl bc usbutils wget \
 	mmc-utils squashfs-tools iputils sqlite3 libevent \
@@ -15,6 +22,7 @@ IMAGE_INSTALL_append = " \
 	libpng libjpeg-turbo pv fbida yavta \
 	\
 	mpg123 libexif giflib mrtg \
+	portaudio-v19 ${FORTRAN_TOOLS} \
 "
 
 IMAGE_INSTALL_append_smarc-rzv2l = " \
@@ -37,6 +45,7 @@ IMAGE_INSTALL_append = " \
 	cv-capture \
 	bayer2raw drm2png \
 	mkfs-helper \
+	${@oe.utils.conditional("VOICE_AGENT", "1", "python3-vosk-api vosk vosk-server boost-dev", "", d)} \
 	${@oe.utils.conditional("CHROMIUM", "1", "chromium-ozone-wayland", "", d)} \
 	${@bb.utils.contains("DISTRO_FEATURES", "wayland", "glmark2", "", d)} \
 	lws \
