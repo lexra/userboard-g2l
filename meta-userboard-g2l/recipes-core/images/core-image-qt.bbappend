@@ -7,10 +7,10 @@ TOOLCHAIN_TARGET_TASK_append = " \
 "
 
 FORTRAN_TOOLS = " \
-    gfortran \
-    gfortran-symlinks \
-    libgfortran \
-    libgfortran-dev \
+	gfortran \
+	gfortran-symlinks \
+	libgfortran \
+	libgfortran-dev \
 "
 
 IMAGE_INSTALL_append = " \
