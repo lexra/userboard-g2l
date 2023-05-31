@@ -28,17 +28,17 @@ IMAGE_INSTALL_append = " \
 IMAGE_INSTALL_append_smarc-rzv2l = " \
 	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
 	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
-	${@oe.utils.conditional("DRPAI_RECIPES", "True", "thttpd usbcam-http-tvm usbcam-http-demo rzv-face-dection", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "thttpd usbcam-http-tvm rzv-face-dection", "", d)} \
 "
 IMAGE_INSTALL_append_rzv2l-dev = " \
 	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
 	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
-	${@oe.utils.conditional("DRPAI_RECIPES", "True", "thttpd usbcam-http-tvm usbcam-http-demo rzv-face-dection", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "thttpd usbcam-http-tvm rzv-face-dection", "", d)} \
 "
 IMAGE_INSTALL_append_gnk-rzv2l = " \
 	${@oe.utils.conditional("DRPAI_RECIPES", "True", "app-hrnet-cam app-hrnet-pre-tinyyolov2-cam app-resnet50-cam app-resnet50-img app-tinyyolov2-cam app-yolo-img", "", d)} \
 	${@oe.utils.conditional("ISP_RECIPES", "True", "app-tinyyolov2-isp", "", d)} \
-	${@oe.utils.conditional("DRPAI_RECIPES", "True", "thttpd usbcam-http-tvm usbcam-http-demo rzv-face-dection", "", d)} \
+	${@oe.utils.conditional("DRPAI_RECIPES", "True", "thttpd usbcam-http-tvm rzv-face-dection", "", d)} \
 "
 
 IMAGE_INSTALL_append = " \

@@ -7,24 +7,25 @@ SVC = "thttpd-tvm"
 SRCREV = "860d845b87de9564f143b600e39d84e2455d4281"
 SRC_URI = " \
 	gitsm://github.com/renesas-rz/rzv_drp-ai_tvm.git;protocol=https;branch=main \
-	file://make_drp_env.sh \
+	file://emotion_fp_onnx \
 	file://face_deeppose_pt \
 	file://googlenet_onnx \
 	file://hrnet_onnx \
 	file://hrnetv2_pt \
 	file://resnet18_onnx \
 	file://resnet18_onnx_cpu \
-	file://resnet18_torch \
 	file://resnet18_reference \
+	file://resnet18_torch \
 	file://tinyyolov2_onnx \
 	file://tinyyolov3_onnx \
 	file://yolov2_onnx \
 	file://yolov3_onnx \
 	file://ultraface_onnx \
-	file://emotion_fp_onnx \
+	\
 	file://${SVC}.sh \
 	file://${SVC}.service \
 	file://index.html \
+	file://make_drp_env.sh \
 "
 
 SYSTEMD_SERVICE_${SVC}= "${SVC}.service"
