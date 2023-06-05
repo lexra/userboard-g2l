@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8ad67f1..46fc266 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,8 +2,13 @@ cmake_minimum_required(VERSION 3.10)
+ 
+ project(oai)
+ 
++option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
++include(FindPkgConfig)
++
+ find_package(nlohmann_json CONFIG REQUIRED)
+-find_package(CURL CONFIG REQUIRED)
++
++pkg_check_modules(CURL libcurl REQUIRED)
++include_directories(SYSTEM ${CURL_INCLUDE_DIRS})
+ 
+ add_library(oai
+ components/audio.cpp
+@@ -24,7 +29,7 @@ core/response.cpp
+ target_compile_features(oai PRIVATE cxx_std_17)
+ 
+ target_link_libraries(oai PRIVATE nlohmann_json::nlohmann_json)
+-target_link_libraries(oai PRIVATE CURL::libcurl)
++target_link_libraries(oai PRIVATE ${CURL_LIBRARIES})
+ 
+ install(TARGETS oai DESTINATION lib)
+ #not needed anymore

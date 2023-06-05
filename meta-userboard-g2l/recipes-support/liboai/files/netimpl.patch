@@ -1,0 +1,9 @@
+diff --git a/core/netimpl.cpp b/core/netimpl.cpp
+index 1a1a371..d651131 100644
+--- a/core/netimpl.cpp
++++ b/core/netimpl.cpp
+@@ -1,3 +1,4 @@
++#include <filesystem>
+ #include "../include/core/netimpl.h"
+ 
+ liboai::netimpl::CurlHolder::CurlHolder() {
