@@ -171,8 +171,18 @@ git -C meta-clang checkout -b mydevelop e63d6f9abba5348e2183089d6ef5ea384d7ae8d8
 echo -e ${GREEN}'>> meta-browser '${NC}
 git clone https://github.com/OSSystems/meta-browser || true
 git -C meta-browser checkout -b mydevelop dcfb4cedc238eee8ed9bd6595bdcacf91c562f67 || true
-echo -e ${GREEN}'>> meta-voice-agent '${NC}
-git clone https://github.com/lexra/meta-voice-agent.git || true
+echo -e ${GREEN}'>> meta-vosk '${NC}
+git clone https://github.com/lexra/meta-vosk.git || true
+echo -e ${GREEN}'>> meta-renesas-ai '${NC}
+git clone https://github.com/renesas-rz/meta-renesas-ai.git || true
+git -C meta-renesas-ai checkout -b mydevelop 1b2db060c2d49ea21c6f8fc00e141f8265100798 || true
+git -C meta-renesas-ai checkout \
+	recipes-core/images/extra_configuration.inc \
+	recipes-devtools/python3/python3-numpy_1.19.5.bb \
+	recipes-mathematics/arm-compute-library/arm-compute-library_22.02.bb \
+	recipes-mathematics/onnxruntime/onnxruntime_1.8.0.bb \
+	recipes-support/initscripts/mkswap.bb
+patch -d meta-renesas-ai -p1 -l -f --fuzz 3 -i ../../patches/meta-renesas-ai.patch
 
 ##########################################################
 cd ${SCRIP_DIR}/sources

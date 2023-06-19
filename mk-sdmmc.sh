@@ -20,8 +20,8 @@ BUILD_DIR=build_${TARGET_BOARD}
 SOC_FAMILY_PLUS=${SOC_FAMILY}2
 
 SDDEV=${SCRIP_DIR}/build_${TARGET_BOARD}/tmp/deploy/images/${TARGET_BOARD}/SDMMC.img
-TOTAL=10240
-PART1=3584
+TOTAL=12288
+PART1=5120
 
 function print_boot_example() {
 	echo ""

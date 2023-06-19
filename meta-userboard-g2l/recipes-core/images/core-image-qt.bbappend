@@ -46,7 +46,8 @@ IMAGE_INSTALL_append = " \
 	cv-capture \
 	bayer2raw drm2png \
 	mkfs-helper \
-	${@oe.utils.conditional("VOICE_AGENT", "1", "python3-vosk-api vosk vosk-server boost-dev", "", d)} \
+	${@bb.utils.contains("DISTRO_FEATURES", "edge-ai", "onnxruntime-benchmark armnn-benchmark tensorflow-lite-benchmark models-onnx models-tensorflow-lite ai-tests mkswap", "", d)} \
+	${@bb.utils.contains("DISTRO_FEATURES", "vosk", "python3-vosk-api vosk vosk-server boost-dev", "", d)} \
 	${@oe.utils.conditional("CHROMIUM", "1", "chromium-ozone-wayland", "", d)} \
 	${@bb.utils.contains("DISTRO_FEATURES", "wayland", "glmark2", "", d)} \
 	lws \
