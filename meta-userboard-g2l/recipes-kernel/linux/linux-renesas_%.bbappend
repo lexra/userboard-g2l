@@ -2,9 +2,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
 	file://nfsd.cfg \
+	file://0001-clk-clk-versaclock3-add-property-to-enable-disable-3.patch \
 "
-
-#	file://0101-clock_frequency_16000000.patch
 
 SRC_URI_append_gnk-rzv2l = " \
 	file://0999-gnk_v2l-modify-drp_reserved.patch \

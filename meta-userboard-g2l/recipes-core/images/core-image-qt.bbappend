@@ -24,6 +24,7 @@ IMAGE_INSTALL_append = " \
 	\
 	mpg123 libexif giflib mrtg \
 	portaudio-v19 ${FORTRAN_TOOLS} \
+	dtc \
 "
 
 IMAGE_INSTALL_append_smarc-rzv2l = " \
